@@ -37,3 +37,14 @@ class User(AbstractUser):
         'Фамилия',
         max_length=MAX_LENGTH_CHAR_FIELD,
     )
+
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+        ordering = ('id',)
+
+    def __str__(self):
+        return (
+            f'phone_number: {self.phone_number}, '
+            f'Email: {self.email}'
+        )
