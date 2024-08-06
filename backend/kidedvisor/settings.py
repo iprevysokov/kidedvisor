@@ -23,7 +23,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'drf_yasg',
+    'phonenumber_field'
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -110,4 +112,8 @@ SWAGGER_SETTINGS = {
             'in': 'header'
       }
    }
+}
+
+DJOSER = {
+    'LOGIN_FIELD': 'phone_number',
 }
