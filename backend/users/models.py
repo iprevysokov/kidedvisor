@@ -11,7 +11,7 @@ class User(AbstractUser):
 
     USERNAME_FIELD = USERNAME
 
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'email', 'phone_number']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
 
     username = None
 

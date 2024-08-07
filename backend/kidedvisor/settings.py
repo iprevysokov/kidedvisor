@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'drf_yasg',
-    'phonenumber_field'
+    'phonenumber_field',
 
     'rest_framework',
     'rest_framework.authtoken',
