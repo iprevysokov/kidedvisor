@@ -60,8 +60,9 @@ export default function MainPage() {
         </div>
       </section>
       <section className="sections">
-
-        <SliderSection heading="Искусство"/>
+        <SliderSection heading="Искусство" />
+        <SliderSection heading="Спорт" />
+        <SliderSection heading="Наука" />
       </section>
     </main>
   );

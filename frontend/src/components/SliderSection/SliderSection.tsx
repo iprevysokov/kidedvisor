@@ -28,10 +28,14 @@ export default function SliderSection({ heading }: props) {
                 navigation
                 autoplay={true}
                 slidesPerView={3}
+                spaceBetween={"10"}
             >
-                <SwiperSlide>
-                    {mockData.map((item, index) => (<SectionCard card={item} key={index} />))}
-                </SwiperSlide>
+                {mockData.map((item, index) => (
+                    <SwiperSlide key={index}>
+                        <SectionCard card={item} />
+                    </SwiperSlide>
+                ))}
+
             </Swiper>
         </section>
     )
