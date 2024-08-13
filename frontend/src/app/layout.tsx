@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "../styles/globals.scss";
 import Header from "../components/Header/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
   title: "Kidedvisor",

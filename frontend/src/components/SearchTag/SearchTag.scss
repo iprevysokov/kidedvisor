@@ -1,0 +1,19 @@
+@import "../../styles/variables.scss";
+
+.SearchTag {
+  color: $darkBlueColor;
+
+  padding: 10px 22px;
+
+  background: none;
+
+  border: none;
+  border: 2px solid $darkBlueColor;
+  border-radius: 35px/30px;
+
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
