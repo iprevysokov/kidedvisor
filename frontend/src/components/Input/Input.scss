@@ -1,0 +1,20 @@
+.auth_data_text_field {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+    margin-top: 16px;
+    height: 48px;
+
+    &__input {
+        padding: 0px;
+        margin: 0px;
+        padding: 16px 15px;
+        border: 1px solid #222020;
+        border-radius: 8px;
+        width: 328px;
+        font-family: var(--font-inter), sans-serif;
+        font-size: 16px;
+        outline: none;
+    }
+}

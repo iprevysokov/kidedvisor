@@ -1,0 +1,15 @@
+.auth_button {
+    border: none;
+    padding: 0;
+    background-color: #0085FF;
+    border-radius: 50px;
+    width: 328px;
+    height: 48px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    &:disabled {
+        background-color: #C7C7C7;
+    }
+}
