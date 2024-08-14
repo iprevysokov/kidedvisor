@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from datetime import timedelta
 
 from dotenv import load_dotenv
 
@@ -29,8 +30,6 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-
-    'djoser',
 
     'users.apps.UsersConfig',
     'api.apps.ApiConfig',
@@ -114,6 +113,16 @@ SWAGGER_SETTINGS = {
    }
 }
 
-DJOSER = {
-    'LOGIN_FIELD': 'phone_number',
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
+SIMPLE_JWT = {
+   'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # срок жизни токена
+   'AUTH_HEADER_TYPES': ('Bearer',),
 }
