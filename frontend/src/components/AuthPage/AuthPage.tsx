@@ -13,7 +13,6 @@ enum AuthState {
 export default function AuthPage() {
     const [authState, setAuthState] = useState<AuthState>(AuthState.TEL)
 
-
     function onNextClick() {
         setAuthState(AuthState.EMAIL)
     }
@@ -23,11 +22,11 @@ export default function AuthPage() {
     }
 
     return (
-        <main>
+        <main className='authPage'>
             {authState == AuthState.TEL && (
                 <>
                     <Input title='телефон' type='tel' />
-                    <Button onClick={onNextClick} title='Далее' />
+                    <Button onClick={onNextClick} title='Далее' additionalClass='пример' />
                 </>)}
             {authState == AuthState.EMAIL && (
                 <>
