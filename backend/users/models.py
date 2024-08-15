@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
+from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
 
 from kidedvisor.constant import MAX_LENGTH_EMAIL_FIELD, MAX_LENGTH_CHAR_FIELD
@@ -9,7 +10,7 @@ class UserManager(BaseUserManager):
     """Менеджер пользователя."""
 
     def create_user(
-            self, email, phone_number=None, password=None, **extra_fields
+            self, email, phone_number, password=None, **extra_fields
             ):
         """Создание пользователя."""
 
@@ -34,8 +35,10 @@ class UserManager(BaseUserManager):
 
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-        user = self.create_user(email, password=password, **extra_fields)
-        user.save(using=self._db)
+        user = self.create_user(
+            email, phone_number=None, password=password, **extra_fields
+            )
+
         return user
 
 
@@ -83,33 +86,47 @@ class User(AbstractUser):
 
     def __str__(self):
         return (
-            f'Создан пользователь {self.email})'
+            f'Создан пользователь {self.email}'
         )
 
 
-class Parents(models.Model):
-    """Модель родителя."""
+class RolesUser(models.Model):
+    """Модель ролей пользователя."""
 
-    user = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE,
-        primary_key=True,
-        related_name='parent'
+    ROLE_CHOICES = (
+        ('parent', 'Parent'),
+        ('owner', 'Section Owner'),
     )
 
-    def __str__(self):
-        return f'Родитель: {self.user.email}'
-
-
-class SectionsOwner(models.Model):
-    """Модель владельца секции."""
-
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        primary_key=True,
-        related_name='section_owner'
-        )
+        related_name='roles',
+        verbose_name='Пользователь',
+    )
+
+    role = models.CharField(
+        'Роль',
+        max_length=MAX_LENGTH_CHAR_FIELD,
+        blank=False,
+        null=False,
+        choices=ROLE_CHOICES,
+    )
+    date_joined = models.DateTimeField(
+        'Дата получения роли',
+        default=timezone.now,
+    )
+
+    class Meta:
+        verbose_name = 'Роль пользователя'
+        verbose_name_plural = 'Роли пользователей'
+        ordering = ('user',)
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'role'],
+                name='unique_user_role'
+                )
+        ]
 
     def __str__(self):
-        return f'Владелец секции: {self.user.email}'
+        return f'Пользователь: {self.user} получил роль: {self.role}'
