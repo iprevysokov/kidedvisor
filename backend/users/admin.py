@@ -46,7 +46,9 @@ class CustomUserAdmin(UserAdmin):
 
     ordering = ('date_joined',)
 
-    def save_model(self, request: Any, obj: Any, form: Any, change: Any) -> None:
+    def save_model(  # to do Не работает сохранение пользователя в админке
+            self, request: Any, obj: Any, form: Any, change: Any
+            ) -> None:
         if not change:
             obj.set_unusable_password()
         return super().save_model(request, obj, form, change)
