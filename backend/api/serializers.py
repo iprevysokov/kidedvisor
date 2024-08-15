@@ -5,11 +5,6 @@ from users.models import User, RolesUser
 class UserSerializer(serializers.ModelSerializer):
     """Сериализатор регистрации пользователя."""
 
-    role = serializers.ChoiceField(
-        choices=RolesUser.ROLE_CHOICES,
-        default=None,
-        )
-
     class Meta:
         model = User
         fields = (
@@ -17,7 +12,6 @@ class UserSerializer(serializers.ModelSerializer):
             'phone_number',
             'first_name',
             'last_name',
-            'role'
         )
 
     def validate(self, data):
@@ -27,28 +21,25 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Номер телефона обязательное поле.'
             )
+
         return data
 
     def create(self, validated_data):
         """
-        Создание пользователя или добавление роли существующему пользователю.
+        Создание пользователя.
         """
 
-        role = validated_data.pop('role')  # Извлекаем роль из данных
-        email = validated_data.get('email')
-
-        # Пытаемся найти пользователя с таким email,
-        # если не найден, создаем нового
-        user, user_created = User.objects.get_or_create(
-            email=email, defaults=validated_data
-            )
-
-        if user_created:
-            # Если пользователь создан, сохраняем роль
-            RolesUser.objects.create(user=user, role=role)
-
-        else:
-            # Если пользователь уже существовал, проверяем наличие роли
-            RolesUser.objects.get_or_create(user=user, role=role)
-
+        user = User(**validated_data)
+        user.set_unusable_password()
+        user.save()
         return user
+
+    def save_with_role(self, role):
+        """
+        Сохраняем пользователя с заданной ролью.
+        """
+        # создаем или получаем пользователя
+        user = self.create(self.validated_data)
+
+        RolesUser.objects.create(user=user, role=role)
+        return
