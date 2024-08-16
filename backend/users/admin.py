@@ -1,6 +1,7 @@
 from typing import Any
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django import forms
 
 from .models import User, RolesUser
 
@@ -11,6 +12,8 @@ admin.site.empty_value_display = '-Не задано-'
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
     """Административная модель пользователя."""
+
+    form = CustomUserChangeForm
 
     list_display = (
         'email', 'phone_number', 'first_name',

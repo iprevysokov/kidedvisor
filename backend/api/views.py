@@ -10,7 +10,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     Представление для  работы с пользователя.
     Создание, чтение, обновление, удаление
-    Назначение ролеи пользователю.
+    Назначение ролеи пользователю (родитель, владелец).
     """
 
     queryset = User.objects.all()
@@ -27,20 +27,33 @@ class UserViewSet(viewsets.ModelViewSet):
         return [permissions.IsAuthenticated()]
 
     def get_queryset(self):
-        """Запрещаем получение списка пользователей."""
+        """Запрещаем получение списка пользователей. Всем пользователям."""
 
         if self.action == 'list':
             return User.objects.none()
         return super().get_queryset()
 
+    def create(self, request, *args, **kwargs):
+        """Запрещаем создание пользователя через стандартные маршруты."""
+
+        return Response(
+            {
+                'message':
+                'Регистрация доступна только через специальные маршруты.'
+            },
+            status=status.HTTP_405_METHOD_NOT_ALLOWED,
+        )
+
     @action(detail=False, methods=['post'])
     def register_parent(self, request):
         """Регистрация родителя."""
+
         return self._register_user(request, 'parent')
 
     @action(detail=False, methods=['post'])
     def register_owner(self, request):
         """Регистрация владельца."""
+
         return self._register_user(request, 'owner')
 
     @staticmethod

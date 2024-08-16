@@ -29,9 +29,8 @@ class UserSerializer(serializers.ModelSerializer):
         Создание пользователя.
         """
 
-        user = User(**validated_data)
-        user.set_unusable_password()
-        user.save()
+        user = User.objects.create_user(**validated_data)
+
         return user
 
     def save_with_role(self, role):
