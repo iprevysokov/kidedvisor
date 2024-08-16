@@ -8,9 +8,11 @@ from .serializers import UserSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     """
-    Представление для  работы с пользователя.
+    Представление для  работы с пользователями.
     Создание, чтение, обновление, удаление
-    Назначение ролеи пользователю (родитель, владелец).
+    Доополнительная логика:
+    Присвоечения ролей пользователю при регистрации.
+    Роли: 'parent', 'owner'.
     """
 
     queryset = User.objects.all()
@@ -18,8 +20,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         """
-        Для не авторизованного пользователя.
-        Ограничиваем действия только регистрацией в системе.
+        Для любого не авторизованного пользователя,
+        ограничиваем действия. Им доступна только регистрацией в системе.
         """
 
         if self.action in ['register_parent', 'register_owner']:
@@ -27,14 +29,14 @@ class UserViewSet(viewsets.ModelViewSet):
         return [permissions.IsAuthenticated()]
 
     def get_queryset(self):
-        """Запрещаем получение списка пользователей. Всем пользователям."""
+        """Запрещено получение списка пользователей. Всем пользователям."""
 
         if self.action == 'list':
             return User.objects.none()
         return super().get_queryset()
 
     def create(self, request, *args, **kwargs):
-        """Запрещаем создание пользователя через стандартные маршруты."""
+        """Запрещено создание пользователя через стандартные маршруты."""
 
         return Response(
             {
@@ -46,19 +48,26 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['post'])
     def register_parent(self, request):
-        """Регистрация родителя."""
+        """Регистраци пользователя в системе в роле родителя 'parent'."""
 
-        return self._register_user(request, 'parent')
+        return self._register_user(request=request, role='parent')
 
     @action(detail=False, methods=['post'])
     def register_owner(self, request):
-        """Регистрация владельца."""
+        """
+        Регистраци пользователя в системе в роле владельца секции 'owner'.
+        """
 
-        return self._register_user(request, 'owner')
+        return self._register_user(request=request, role='owner')
 
     @staticmethod
     def _register_user(request, role):
-        """Общий метод регистрации пользователя."""
+        """
+        Общий статический метод регистрации пользователя, для всех ролей.
+        При попытке зарегистрировать существующего пользователя в системе,
+        выполняется проверка роли пользователя.
+        Если такой роли у пользователя нет, то присваивается новая роль.
+        """
 
         text = 'Вы успешно зарегистрировались. Вам направлено письмо на email'
 

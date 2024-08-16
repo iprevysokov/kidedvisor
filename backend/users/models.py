@@ -7,12 +7,20 @@ from kidedvisor.constant import MAX_LENGTH_EMAIL_FIELD, MAX_LENGTH_CHAR_FIELD
 
 
 class UserManager(BaseUserManager):
-    """Менеджер пользователя."""
+    """Переопределенный, пользовательский менеджер пользователя."""
 
     def create_user(
             self, email, phone_number, password=None, **extra_fields
             ):
-        """Создание пользователя."""
+        """
+        Создание пользователя.
+        Номер телефона обязательное поле
+        для любого пользователя, кроме superuser.
+        Пароль необязательное поле для любого пользователя, кроме superuser.
+        Выполняется установка неактивного пароля set_unusable_password
+        для любого пользователя, кроме superuser.
+        Для superuser пароль обязательное поле.
+        """
 
         if not email:
             raise ValueError('Email обязательное поле.')
@@ -31,7 +39,11 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password, **extra_fields):
-        """Создание суперпользователя."""
+        """
+        Создание суперпользователя.
+        Пароль обязательное поле.
+        Номер телефона необязательное поле, только для superuser.
+        """
 
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
@@ -71,6 +83,12 @@ class User(AbstractUser):
         blank=True,
     )
 
+    middle_name = models.CharField(
+        'Отчество',
+        max_length=MAX_LENGTH_CHAR_FIELD,
+        blank=True,
+    )
+
     last_name = models.CharField(
         'Фамилия',
         max_length=MAX_LENGTH_CHAR_FIELD,
@@ -86,7 +104,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return (
-            f'Создан пользователь {self.email}'
+            f'Пользователь: {self.email}'
         )
 
 

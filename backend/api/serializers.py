@@ -3,7 +3,10 @@ from users.models import User, RolesUser
 
 
 class UserSerializer(serializers.ModelSerializer):
-    """Сериализатор регистрации пользователя."""
+    """
+    Сериализатор для работы с пользователями.
+    Сохраняет пользователя, если его нет в базе. С заданной ролью.
+    """
 
     class Meta:
         model = User
@@ -11,11 +14,16 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'phone_number',
             'first_name',
+            'middle_name',
             'last_name',
         )
 
     def validate(self, data):
-        """Валидация данных."""
+        """
+        Валидация данных. Проверка на наличие номера телефона.
+        Проверка на уровне входных данных.
+        В моделе User поле phone_number как не обязательное поле.
+        """
 
         if not data['phone_number']:
             raise serializers.ValidationError(
@@ -26,7 +34,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """
-        Создание пользователя.
+        Сохраняем пользователя, с помощью create_user.
+        Данный метод вызывается на уровне модели UserManager(BaseUserManager).
+        переопределенного менеджера пользователя.
         """
 
         user = User.objects.create_user(**validated_data)
