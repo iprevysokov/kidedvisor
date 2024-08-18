@@ -1,9 +1,11 @@
 .header {
-  width: calc(100% - 32px);
+  padding: 0 16px;
   height: 109px;
+  width: 100%;
   display: flex;
-  align-items: flex-end;
   &__logo {
+    margin-top: auto;
+    margin-bottom: 10px;
     width: 266px;
   }
 }

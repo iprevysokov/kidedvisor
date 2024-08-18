@@ -2,18 +2,17 @@ import React from 'react'
 import './Input.scss';
 
 interface props {
-    title: string;
+    placeholder: string;
     type?: 'text' | 'password' | 'tel' | 'email';
+    additionalClass?: string;
 }
 
-export default function Input({ title, type = 'text' }: props) {
+export default function Input({ placeholder, type = 'text', additionalClass }: props) {
     return (
-        <div className={'auth_data_text_field'}>
-            <input
-                className={'auth_data_text_field__input'}
-                type={type}
-                placeholder={title}
-            />
-        </div>
+        <input
+            className={`input ${additionalClass}`}
+            type={type}
+            placeholder={placeholder}
+        />
     )
 }
