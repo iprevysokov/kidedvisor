@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
@@ -6,17 +6,23 @@ from users.models import User, RolesUser
 from .serializers import UserSerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(mixins.UpdateModelMixin,
+                  mixins.DestroyModelMixin,
+                  viewsets.GenericViewSet):
     """
     Представление для  работы с пользователями.
     Создание, чтение, обновление, удаление
     Доополнительная логика:
     Присвоечения ролей пользователю при регистрации.
     Роли: 'parent', 'owner'.
+    Доступные HTTP методы: GET, PATCH, DELETE, POST
+
     """
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    http_method_names = ['get', 'patch', 'delete', 'post']
 
     def get_permissions(self):
         """
@@ -27,24 +33,6 @@ class UserViewSet(viewsets.ModelViewSet):
         if self.action in ['register_parent', 'register_owner']:
             return [permissions.AllowAny()]
         return [permissions.IsAuthenticated()]
-
-    def get_queryset(self):
-        """Запрещено получение списка пользователей. Всем пользователям."""
-
-        if self.action == 'list':
-            return User.objects.none()
-        return super().get_queryset()
-
-    def create(self, request, *args, **kwargs):
-        """Запрещено создание пользователя через стандартные маршруты."""
-
-        return Response(
-            {
-                'message':
-                'Регистрация доступна только через специальные маршруты.'
-            },
-            status=status.HTTP_405_METHOD_NOT_ALLOWED,
-        )
 
     @action(detail=False, methods=['post'])
     def register_parent(self, request):
@@ -87,3 +75,11 @@ class UserViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save_with_role(role)
         return Response({'message': text}, status=status.HTTP_201_CREATED)
+
+    @action(detail=False, methods=['get'])
+    def get_me(self, request):
+        """Получение информации о пользователе."""
+
+        user = User.objects.get(id=request.user.id)
+        serializer = self.get_serializer(user)
+        return Response(serializer.data)
