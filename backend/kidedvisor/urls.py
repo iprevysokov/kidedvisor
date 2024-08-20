@@ -10,7 +10,7 @@ from drf_yasg import openapi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls', namespace='api')),
+    path('api/users/', include('users.urls', namespace='users')),
 ]
 
 if settings.DEBUG:
