@@ -62,9 +62,9 @@ class User(AbstractUser):
 
     username = None
 
-    images = models.ImageField(
+    image = models.ImageField(
         'Аватарка',
-        upload_to='media/avatars/',
+        upload_to='avatars/',
         blank=True,
         null=True,
     )

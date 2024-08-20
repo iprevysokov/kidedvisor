@@ -43,7 +43,7 @@ class CustomUserAdmin(UserAdmin):
 
     fieldsets = (
         ('Личные данные', {
-            'fields': ('first_name', 'last_name')
+            'fields': ('first_name', 'last_name',)
             }),
         ('Доcтуп', {
             'fields': ('is_staff', 'is_superuser', 'is_active')
@@ -55,7 +55,7 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('email', 'phone_number', 'role')
             }),
         ('Личные данные', {
-            'fields': ('first_name', 'last_name')
+            'fields': ('first_name', 'last_name', 'image')
             }),
         ('Доступ', {
             'fields': ('is_staff', 'is_superuser', 'is_active')
@@ -81,9 +81,9 @@ class CustomUserAdmin(UserAdmin):
 
     @admin.display(description='Аватар')
     def get_image(self, obj):
-        if obj.images:
+        if obj.image:
             return mark_safe(
-                f'<img src="{obj.images.url}" width="80" height="60" />'
+                f'<img src="{obj.image.url}" width="80" height="60" />'
             )
 
         return f'{NO_VALUE}'
