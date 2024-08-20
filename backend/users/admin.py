@@ -2,11 +2,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django import forms
+from django.utils.safestring import mark_safe
 
 from .models import User, RolesUser
 
+from kidedvisor.constant import NO_VALUE
 
-admin.site.empty_value_display = '-Не задано-'
+admin.site.empty_value_display = NO_VALUE
 
 
 class CustomUserForm(forms.ModelForm):
@@ -29,7 +31,7 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserForm
 
     list_display = (
-        'email', 'phone_number', 'first_name',
+        'get_image', 'email', 'phone_number', 'first_name',
         'last_name', 'date_joined', 'is_active',
         )
 
@@ -77,6 +79,14 @@ class CustomUserAdmin(UserAdmin):
         if role and not change:
             RolesUser.objects.create(user=obj, role=role)
 
+    @admin.display(description='Аватар')
+    def get_image(self, obj):
+        if obj.images:
+            return mark_safe(
+                f'<img src="{obj.images.url}" width="80" height="60" />'
+            )
+
+        return f'{NO_VALUE}'
 
 @admin.register(RolesUser)
 class RolesUserAdmin(admin.ModelAdmin):

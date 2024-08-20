@@ -1,3 +1,4 @@
+from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 from users.models import User, RolesUser
 
@@ -8,6 +9,13 @@ class UserSerializer(serializers.ModelSerializer):
     Сохраняет пользователя, если его нет в базе. С заданной ролью.
     """
 
+    images = Base64ImageField(
+        max_length=None,
+        use_url=True,
+        allow_null=False,
+        allow_empty_file=False,
+    )
+
     class Meta:
         model = User
         fields = (
@@ -16,6 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
             'first_name',
             'middle_name',
             'last_name',
+            'images',
         )
 
     def validate(self, data):
