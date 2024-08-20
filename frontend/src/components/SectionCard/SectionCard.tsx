@@ -1,4 +1,4 @@
-import { ISectionCard } from '@/src/lib/types'
+import { ISectionCard } from '@/src/utils/types'
 import Image from 'next/image';
 import React from 'react';
 import './SectionCard.scss';

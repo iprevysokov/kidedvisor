@@ -4,7 +4,7 @@ import './AuthPage.scss';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import { useForm } from 'react-hook-form';
-import { defaultRequiredMessage } from '@/src/lib/constants';
+import { defaultRequiredMessage } from '@/src/utils/constants';
 
 enum AuthState {
     TEL,
