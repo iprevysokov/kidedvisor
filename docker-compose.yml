@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "python ./backend/manage.py runserver 0.0.0.0:8080"
+    restart: always
+    networks:
+      - app_network
+    ports:
+      - "8080:8080"
+networks:
+  app_network:
+    driver: bridge
