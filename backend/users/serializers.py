@@ -1,4 +1,3 @@
-from cProfile import label
 from rest_framework import serializers
 from users.models import User, RolesUser
 
@@ -6,18 +5,8 @@ from users.models import User, RolesUser
 class UserSerializer(serializers.ModelSerializer):
     """
     Сериализатор для работы с пользователями.
-    Сохраняет пользователя, если его нет в базе. С заданной ролью.
+    Поддерживает запись, чтение и обновление данных пользователя.
     """
-
-    image = serializers.ImageField(
-        max_length=None,
-        use_url=True,
-        allow_null=True,
-        allow_empty_file=False,
-        required=False,
-        read_only=False,
-        label='Аватарка',
-    )
 
     class Meta:
         model = User
@@ -32,9 +21,10 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """
-        Валидация данных. Проверка на наличие номера телефона.
-        Проверка на уровне входных данных.
-        В моделе User поле phone_number как не обязательное поле.
+        Выполняет валидацию данных. Проверяет наличие номера телефона.
+
+        Хотя в модели User поле phone_number не является обязательным,
+        здесь оно проверяется на наличие.
         """
 
         if not data['phone_number']:
@@ -46,9 +36,11 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """
-        Сохраняем пользователя, с помощью create_user.
-        Данный метод вызывается на уровне модели UserManager(BaseUserManager).
-        переопределенного менеджера пользователя.
+        Создает пользователя с использованием метода create_user.
+
+        Метод create_user вызывается на уровне модели
+          UserManager(BaseUserManager),
+        который является переопределенным менеджером пользователя.
         """
 
         user = User.objects.create_user(**validated_data)

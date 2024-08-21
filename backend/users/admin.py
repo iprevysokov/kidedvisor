@@ -6,9 +6,9 @@ from django.utils.safestring import mark_safe
 
 from .models import User, RolesUser
 
-from kidedvisor.constant import NO_VALUE
+from kidedvisor.constant import DEFAULT_EMPTY_VALUE
 
-admin.site.empty_value_display = NO_VALUE
+admin.site.empty_value_display = DEFAULT_EMPTY_VALUE
 
 
 class CustomUserForm(forms.ModelForm):
@@ -31,7 +31,7 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserForm
 
     list_display = (
-        'get_image', 'email', 'phone_number', 'first_name',
+        'email', 'get_image', 'phone_number', 'first_name',
         'last_name', 'date_joined', 'is_active',
         )
 
@@ -86,7 +86,8 @@ class CustomUserAdmin(UserAdmin):
                 f'<img src="{obj.image.url}" width="80" height="60" />'
             )
 
-        return f'{NO_VALUE}'
+        return f'{DEFAULT_EMPTY_VALUE}'
+
 
 @admin.register(RolesUser)
 class RolesUserAdmin(admin.ModelAdmin):

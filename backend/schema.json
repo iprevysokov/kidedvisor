@@ -30,7 +30,7 @@
     "/api/users/register_owner/": {
       "post": {
         "operationId": "registerOwnerUser",
-        "description": "Регистраци пользователя в системе в роле владельца секции 'owner'.",
+        "description": "Регистрация пользователя в системе в роле владельца секции 'owner'.",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -71,7 +71,7 @@
     "/api/users/register_parent/": {
       "post": {
         "operationId": "registerParentUser",
-        "description": "Регистраци пользователя в системе в роле родителя 'parent'.",
+        "description": "Регистрация пользователя в системе в роли родителя ('parent').",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -112,7 +112,7 @@
     "/api/users/{id}/": {
       "patch": {
         "operationId": "partialUpdateUser",
-        "description": "Представление для  работы с пользователями.\nСоздание, чтение, обновление, удаление\nДоополнительная логика:\nПрисвоечения ролей пользователю при регистрации.\nРоли: 'parent', 'owner'.\nДоступные HTTP методы: GET, PATCH, DELETE, POST",
+        "description": "Представление для работы с пользователями.\nСоздание, чтение, обновление и удаление пользователей.\nДополнительная логика:\n- Присвоение ролей пользователю при регистрации.\n- Поддерживаемые роли: 'parent', 'owner'.\nДоступные HTTP методы: GET, PATCH, DELETE, POST.",
         "parameters": [
           {
             "name": "id",
@@ -161,7 +161,7 @@
       },
       "delete": {
         "operationId": "destroyUser",
-        "description": "Представление для  работы с пользователями.\nСоздание, чтение, обновление, удаление\nДоополнительная логика:\nПрисвоечения ролей пользователю при регистрации.\nРоли: 'parent', 'owner'.\nДоступные HTTP методы: GET, PATCH, DELETE, POST",
+        "description": "Представление для работы с пользователями.\nСоздание, чтение, обновление и удаление пользователей.\nДополнительная логика:\n- Присвоение ролей пользователю при регистрации.\n- Поддерживаемые роли: 'parent', 'owner'.\nДоступные HTTP методы: GET, PATCH, DELETE, POST.",
         "parameters": [
           {
             "name": "id",
@@ -210,10 +210,16 @@
           "last_name": {
             "type": "string",
             "maxLength": 150
+          },
+          "image": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
           }
         },
         "required": [
-          "email"
+          "email",
+          "phone_number"
         ]
       }
     }

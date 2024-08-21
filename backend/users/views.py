@@ -4,19 +4,19 @@ from rest_framework.decorators import action
 
 from .models import User, RolesUser
 from .serializers import UserSerializer
+from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
 
 
 class UserViewSet(mixins.UpdateModelMixin,
                   mixins.DestroyModelMixin,
                   viewsets.GenericViewSet):
     """
-    Представление для  работы с пользователями.
-    Создание, чтение, обновление, удаление пользователя.
-    Доополнительная логика:
-    Присвоение ролей пользователю при регистрации.
-    Роли: 'parent', 'owner'.
-    Доступные HTTP методы: GET, PATCH, DELETE, POST
-
+    Представление для работы с пользователями.
+    Создание, чтение, обновление и удаление пользователей.
+    Дополнительная логика:
+    - Присвоение ролей пользователю при регистрации.
+    - Поддерживаемые роли: 'parent', 'owner'.
+    Доступные HTTP методы: GET, PATCH, DELETE, POST.
     """
 
     queryset = User.objects.all()
@@ -26,8 +26,8 @@ class UserViewSet(mixins.UpdateModelMixin,
 
     def get_permissions(self):
         """
-        Для любого не авторизованного пользователя,
-        ограничиваем действия. Им доступна только регистрацией в системе.
+        Ограничиваем действия для неавторизованных пользователей.
+        Им доступна только регистрация в системе.
         """
 
         if self.action in ['register_parent', 'register_owner']:
@@ -36,14 +36,14 @@ class UserViewSet(mixins.UpdateModelMixin,
 
     @action(detail=False, methods=['post'])
     def register_parent(self, request):
-        """Регистраци пользователя в системе в роле родителя 'parent'."""
+        """Регистрация пользователя в системе в роли родителя ('parent')."""
 
         return self._register_user(request=request, role='parent')
 
     @action(detail=False, methods=['post'])
     def register_owner(self, request):
         """
-        Регистраци пользователя в системе в роле владельца секции 'owner'.
+        Регистрация пользователя в системе в роле владельца секции 'owner'.
         """
 
         return self._register_user(request=request, role='owner')
@@ -51,13 +51,18 @@ class UserViewSet(mixins.UpdateModelMixin,
     @staticmethod
     def _register_user(request, role):
         """
-        Общий статический метод регистрации пользователя, для всех ролей.
-        При попытке зарегистрировать существующего пользователя в системе,
-        выполняется проверка роли пользователя.
-        Если такой роли у пользователя нет, то присваивается новая роль.
-        """
+        Общий статический метод для регистрации пользователя с указанной ролью.
 
-        text = 'Вы успешно зарегистрировались. Вам направлено письмо на email'
+        Если пользователь с данным email уже существует,
+        проверяется наличие указанной роли.
+        Если роль уже присвоена, возвращается сообщение об ошибке.
+        Если роль отсутствует, она добавляется пользователю.
+
+        Если пользователь не существует,
+        создается новый пользователь с указанной ролью.
+
+        Возвращает Response с сообщением об успешной регистрации или ошибке.
+        """
 
         user = User.objects.filter(email=request.data['email']).first()
 
@@ -69,12 +74,18 @@ class UserViewSet(mixins.UpdateModelMixin,
                 )
 
             RolesUser.objects.create(user=user, role=role)
-            return Response({'message': text}, status=status.HTTP_200_OK)
+            return Response(
+                {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
+                status=status.HTTP_200_OK
+                )
 
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save_with_role(role)
-        return Response({'message': text}, status=status.HTTP_201_CREATED)
+        return Response(
+            {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
+            status=status.HTTP_201_CREATED
+            )
 
     @action(detail=False, methods=['get'])
     def get_me(self, request):
