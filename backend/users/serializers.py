@@ -51,7 +51,7 @@ class UserSerializer(serializers.ModelSerializer):
         """
         Сохраняем пользователя с заданной ролью.
         """
-        # создаем или получаем пользователя
+        
         user = self.create(self.validated_data)
 
         RolesUser.objects.create(user=user, role=role)
