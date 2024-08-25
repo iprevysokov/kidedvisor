@@ -1,10 +1,12 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import './AuthPage.scss';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import AuthWith_Button from '../AuthWith_Button/AuthWith_Button';
 import { useForm } from 'react-hook-form';
 import { defaultRequiredMessage } from '@/src/utils/constants';
+//import AuthWith_Menu from '../AuthWith_Menu/AuthWIth_Menu';
 
 enum AuthState {
     TEL,
@@ -46,6 +48,7 @@ export default function AuthPage() {
                                 message: "Некорректный номер телефона",
                             },
                         })} />
+                        <AuthWith_Button />
                         <Button onClick={onNextClick} title='Далее' additionalClass='authPage__button' disabled={Boolean(errors.tel)} />
                     </>
                 )}

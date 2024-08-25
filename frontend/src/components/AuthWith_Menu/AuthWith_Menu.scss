@@ -1,0 +1,27 @@
+.authWith_menu_ul {
+    display: block;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+a {
+    color: black;
+}
+
+#auth_vk {
+    margin-top: 32px;
+}
+
+.auth_vk_img, .auth_ya_img {
+    vertical-align: middle;
+}
+
+#auth_hr {
+    margin-top: 16px;
+    height: 1px;
+    background-color: #C7C7C7;
+}
+
+#auth_yandex {
+    margin-top: 16px;
+}
