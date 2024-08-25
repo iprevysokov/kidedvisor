@@ -7,12 +7,13 @@ interface props {
     additionalClass?: string;
 }
 
-export default function Input({ placeholder, type = 'text', additionalClass }: props) {
+export default function Input({ placeholder, type = 'text', additionalClass, ...props }: props) {
     return (
         <input
             className={`input ${additionalClass}`}
             type={type}
             placeholder={placeholder}
+            {...props}
         />
     )
 }
