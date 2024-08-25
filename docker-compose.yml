@@ -8,18 +8,19 @@ services:
       dockerfile: Dockerfile
     command: /home/worker/backend/run.sh
     volumes:
-      - static_volume:/home/worker/staticfiles
+      - static_volume:/home/worker/backend/static
     restart: always
     networks:
       - app_network
     expose:
       - 8080
+
   nginx:
     networks:
       - app_network
     build: ./nginx
     volumes:
-      - static_volume:/home/worker/staticfiles
+      - static_volume:/var/html/static/
     ports:
       - 1337:80
     depends_on:

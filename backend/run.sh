@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 cd ./backend
 python ./manage.py makemigrations
 python ./manage.py collectstatic --noinput
