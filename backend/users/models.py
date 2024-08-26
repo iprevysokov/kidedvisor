@@ -91,18 +91,21 @@ class User(AbstractUser):
         'Имя',
         max_length=MAX_LENGTH_CHAR_FIELD,
         blank=True,
+        null=True,
     )
 
     middle_name = models.CharField(
         'Отчество',
         max_length=MAX_LENGTH_CHAR_FIELD,
         blank=True,
+        null=True,
     )
 
     last_name = models.CharField(
         'Фамилия',
         max_length=MAX_LENGTH_CHAR_FIELD,
         blank=True,
+        null=True,
     )
 
     objects = UserManager()
