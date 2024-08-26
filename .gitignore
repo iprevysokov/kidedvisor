@@ -162,3 +162,7 @@ cython_debug/
 #.idea/
 .vscode
 media/
+
+# Игнорировать все файлы в migrations, кроме __init__.py
+*/migrations/*
+!*/migrations/__init__.py
