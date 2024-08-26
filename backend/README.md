@@ -6,3 +6,10 @@
 
 Локальный запуск:
 http://localhost:8000/redoc/ и http://localhost:8000/swagger/
+
+Команда для создания администратора приложения Django:
+```
+python manage.py kidedvisor_super_user
+```
+Логин: kidedvisor@gmail.com
+Пароль: password_1234

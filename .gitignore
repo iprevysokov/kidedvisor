@@ -163,3 +163,7 @@ cython_debug/
 .vscode
 media/
 sent_emails/
+
+# Игнорировать все файлы в migrations, кроме __init__.py
+*/migrations/*
+!*/migrations/__init__.py
