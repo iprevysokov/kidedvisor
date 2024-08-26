@@ -4,7 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Category(models.Model):
     """Направления, к которым относятся секции"""
-    category_name = models.CharField(max_length=150, db_index=True, verbose_name='Направление')
+    category_name = models.CharField(max_length=150, db_index=True, verbose_name='Направление', blank=True, null=True)
 #    type_name = models.CharField(max_length=150, db_index=True, verbose_name='Вид деятельности')
 
     class Meta:
@@ -32,7 +32,7 @@ class Section(models.Model):
     """Модель описания секции"""
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  verbose_name='Выберите направление')
-    type = models.CharField(max_length=200, db_index=True, verbose_name='Выберите вид деятельности')
+    type = models.CharField(max_length=200, db_index=True, verbose_name='Выберите вид деятельности', blank=True, null=True)
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название секции')
     address = models.CharField(max_length=200, db_index=True, verbose_name='Адрес')
     age_s = models.DecimalField(max_digits=2, decimal_places=0, verbose_name='Возраст от')
