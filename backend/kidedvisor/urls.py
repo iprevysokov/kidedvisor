@@ -12,6 +12,7 @@ from drf_yasg import openapi
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls', namespace='users')),
+    path('api/sections/', include('sections.urls', namespace='sections')),
 ]
 
 if settings.DEBUG:

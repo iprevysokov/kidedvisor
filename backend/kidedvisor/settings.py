@@ -33,6 +33,8 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
 
+    'sections.apps.SectionsConfig'
+
 ]
 
 MIDDLEWARE = [
