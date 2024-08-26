@@ -5,6 +5,7 @@ from rest_framework.decorators import action
 from .models import User, RolesUser
 from .serializers import UserSerializer
 from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
+from .utils import send_email_for_user_login
 
 
 class UserViewSet(mixins.UpdateModelMixin,
@@ -74,6 +75,7 @@ class UserViewSet(mixins.UpdateModelMixin,
                 )
 
             RolesUser.objects.create(user=user, role=role)
+            send_email_for_user_login(user)
             return Response(
                 {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
                 status=status.HTTP_200_OK
@@ -81,7 +83,8 @@ class UserViewSet(mixins.UpdateModelMixin,
 
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save_with_role(role)
+        user = serializer.save_with_role(role)
+        send_email_for_user_login(user)
         return Response(
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED
