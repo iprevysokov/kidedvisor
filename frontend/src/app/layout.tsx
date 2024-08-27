@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.scss";
 import Header from "../components/Header/Header";
+import ReduxProvider from "../utils/redux/StoreProvider";
+import InitialDataLoader from "../components/InitialDataLoader";
 
 const inter = Inter({ subsets: ["cyrillic"] });
 
@@ -18,8 +20,11 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={inter.className}>
-        <Header />
-        {children}
+        <ReduxProvider>
+          <Header />
+          {children}
+          <InitialDataLoader />
+        </ReduxProvider>
       </body>
     </html>
   );
