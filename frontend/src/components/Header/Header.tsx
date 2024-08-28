@@ -29,9 +29,6 @@ export default function Header() {
           />
         </button>
       )}
-
-
-
       <div>
         <Image
           className="header__logo"

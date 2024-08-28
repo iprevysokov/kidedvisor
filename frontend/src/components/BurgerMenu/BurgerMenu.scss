@@ -68,3 +68,35 @@
         gap: 3px;
     }
 }
+
+.links {
+    display: flex;
+    flex-direction: column;
+    &__item {
+        padding-top: 10px;
+        padding-bottom: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #C7C7C7;
+        &::after {
+            content: '';
+            width: 8px;
+            height: 10px;
+            background-image: url('../../images/rightArrow.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+}
+
+.link {
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #393939;
+
+
+}
