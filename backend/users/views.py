@@ -1,9 +1,10 @@
 from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .models import User, RolesUser
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserTokenObtainPairSerializer
 from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
 
 
@@ -77,7 +78,7 @@ class UserViewSet(mixins.UpdateModelMixin,
             return Response(
                 {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
                 status=status.HTTP_200_OK
-                )
+            )
 
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -85,7 +86,7 @@ class UserViewSet(mixins.UpdateModelMixin,
         return Response(
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED
-            )
+        )
 
     @action(detail=False, methods=['get'])
     def get_me(self, request):
@@ -94,3 +95,7 @@ class UserViewSet(mixins.UpdateModelMixin,
         user = User.objects.get(id=request.user.id)
         serializer = self.get_serializer(user)
         return Response(serializer.data)
+
+
+class UserTokenObtainPairView(TokenObtainPairView):
+    serializer_class = UserTokenObtainPairSerializer
