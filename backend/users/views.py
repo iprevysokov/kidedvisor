@@ -1,7 +1,7 @@
 from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from .models import User, RolesUser
 from .serializers import UserSerializer, UserTokenObtainPairSerializer
@@ -98,4 +98,8 @@ class UserViewSet(mixins.UpdateModelMixin,
 
 
 class UserTokenObtainPairView(TokenObtainPairView):
+    serializer_class = UserTokenObtainPairSerializer
+
+
+class UserTokenRefreshView(TokenRefreshView):
     serializer_class = UserTokenObtainPairSerializer

@@ -133,4 +133,6 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # срок жизни токена
    'AUTH_HEADER_TYPES': ('Bearer',),
+"TOKEN_OBTAIN_SERIALIZER": "users.serializers.UserTokenObtainPairSerializer",
+    "TOKEN_REFRESH_SERIALIZER": "users.serializers.UserTokenRefreshSerializer",
 }
