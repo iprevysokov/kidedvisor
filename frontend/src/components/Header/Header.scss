@@ -2,7 +2,9 @@
   padding: 0 16px;
   height: 109px;
   width: 100%;
-  //display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   &__logo {
     margin-top: auto;
     margin-bottom: 10px;
@@ -17,4 +19,8 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   gap: 250px;
+  &__item {
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
