@@ -17,6 +17,7 @@
         font-weight: 600;
         font-size: 16px;
     }
+
     &__info {
         margin-top: 4px;
         font-size: 12px;
@@ -24,4 +25,25 @@
         margin-bottom: 16px;
     }
 
+}
+
+
+
+.top-container {
+    padding-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 2px 0;
+
+    &__item {
+        margin-right: 10px;
+    }
+}
+
+.header {
+    width: calc(100% - 34px);
+    display: flex;
+    flex-direction: column;
+    gap:36px;
 }

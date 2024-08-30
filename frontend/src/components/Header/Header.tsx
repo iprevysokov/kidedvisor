@@ -2,8 +2,6 @@
 import React from "react";
 import "./Header.scss";
 import logo from "../../images/Kidedvisor.svg";
-import back_afford from '../../images/back_aff.svg';
-import close_afford from '../../images/close_aff.svg';
 import burgerImage from '../../images/burger.svg';
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/src/utils/redux/store";
