@@ -1,7 +1,44 @@
+.authWith_menu_container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba($color: #000000, $alpha: 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    overflow: hidden;
+    transition: all 0.5s;
+    opacity: 0;
+
+    &_opened {
+        opacity: 1;
+    }
+
+    &_closed {
+        opacity: 0;
+    }
+}
+
 .authWith_menu_ul {
     display: block;
     flex-wrap: wrap;
     text-align: center;
+    background-color: white;
+    border-radius: 14px 14px 0 0;
+    padding-bottom: 46px;
+    z-index: 2;
+    transition: all 0.3s;
+    transform: translateY(100%);
+
+    &_opened {
+        transform: translateY(0);
+    }
+
+    &_closed {
+        transform: translateY(100%);
+    }
 }
 
 a {
@@ -12,7 +49,8 @@ a {
     margin-top: 32px;
 }
 
-.auth_vk_img, .auth_ya_img {
+.auth_vk_img,
+.auth_ya_img {
     vertical-align: middle;
 }
 
