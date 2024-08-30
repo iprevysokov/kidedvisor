@@ -1,3 +1,4 @@
+from django.db import transaction
 from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -50,6 +51,7 @@ class UserViewSet(mixins.UpdateModelMixin,
         return self._register_user(request=request, role='owner')
 
     @staticmethod
+    @transaction.atomic
     def _register_user(request, role):
         """
         Общий статический метод для регистрации пользователя с указанной ролью.
