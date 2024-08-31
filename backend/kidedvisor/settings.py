@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-nt&o)oe$gc$4e%^ber)1g7d7%n!iss_!p629ol@t&4)2+y51iq')
@@ -45,7 +44,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "email"
 ROOT_URLCONF = 'kidedvisor.urls'
 
 TEMPLATES = [
@@ -108,13 +108,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SWAGGER_SETTINGS = {
-   'SECURITY_DEFINITIONS': {
-      'Bearer': {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
             'type': 'apiKey',
             'name': 'Authorization',
             'in': 'header'
-      }
-   }
+        }
+    }
 }
 
 REST_FRAMEWORK = {
@@ -131,8 +131,8 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-   'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # срок жизни токена
-   'AUTH_HEADER_TYPES': ('Bearer',),
-"TOKEN_OBTAIN_SERIALIZER": "users.serializers.UserTokenObtainPairSerializer",
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # срок жизни токена
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    "TOKEN_OBTAIN_SERIALIZER": "users.serializers.UserTokenObtainPairSerializer",
     "TOKEN_REFRESH_SERIALIZER": "users.serializers.UserTokenRefreshSerializer",
 }

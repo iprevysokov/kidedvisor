@@ -7,13 +7,9 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from users.views import UserTokenObtainPairView, UserTokenRefreshView
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls', namespace='users')),
-    path('token/', UserTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', UserTokenRefreshView.as_view(), name='token_refresh'),
 ]
 
 if settings.DEBUG:
