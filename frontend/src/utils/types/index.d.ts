@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface ISectionCard {
     image: string;
     name: string;
@@ -17,4 +19,9 @@ export interface IFetch {
     method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
     headers?: HeadersInit;
     body?: BodyInit | Record<string, unknown>;
+  }
+
+  export interface IPopup {
+    isOpened: boolean;
+    children: ReactNode;
   }

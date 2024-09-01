@@ -13,6 +13,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import AuthWith_Menu from '../AuthWith_Menu/AuthWIth_Menu';
 import logo from "../../images/Kidedvisor.svg";
+import { useAppDispatch } from '@/src/utils/redux/store';
+import { openPopup } from '@/src/utils/redux/slices/appSlice';
 
 enum AuthState {
     TEL,
@@ -27,15 +29,18 @@ interface formData {
 export default function AuthPage() {
     const { register, handleSubmit, watch, formState: { errors, isValid }, trigger } = useForm<formData>({ mode: 'all' });
     const [authState, setAuthState] = useState<AuthState>(AuthState.TEL)
-    const [isOAuthMenuOpen, setIsOAuthMenuOpen] = useState<boolean>(false);
-
+    const dispatch = useAppDispatch();
     const router = useRouter();
     function onNextClick() {
         setAuthState(AuthState.EMAIL)
     }
 
     function onSendCodeClick() {
-
+        dispatch(openPopup(<div className='default_popup'>
+            <h2 className='default_popup__heading'>Проверьте почту</h2>
+            <p className='default_popup__info'>Пройдите по ссылке в почте для завершения регистрации</p>
+            <Button title={'Изменить почту'} />
+        </div>))
     }
 
     useEffect(() => {
@@ -43,11 +48,7 @@ export default function AuthPage() {
     }, [])
 
     function openOAuthMenu() {
-        setIsOAuthMenuOpen(true);
-    }
-
-    function closeOAuthMenu() {
-        setIsOAuthMenuOpen(false);
+        dispatch(openPopup(<AuthWith_Menu />))
     }
 
     return (
@@ -108,7 +109,7 @@ export default function AuthPage() {
                         </>
                     )}
                 </form>
-                {isOAuthMenuOpen && (<AuthWith_Menu onCloseMenu={closeOAuthMenu} />)}
+
             </main>
         </>
     )
