@@ -6,6 +6,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 
+#class SubscriptionAdmin(admin.ModelAdmin):
+#    list_display = ['subscription_name']
+
+#admin.site.register(Subscription, SubscriptionAdmin)
+
 #class TypeAdmin(admin.ModelAdmin):
 #    list_display = ['type_name']
 

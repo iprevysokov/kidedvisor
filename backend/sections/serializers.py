@@ -5,54 +5,44 @@ from sections.models import Category, Section
 class SectionSerializer(serializers.ModelSerializer):
     """
     Сериализатор для работы с секциями.
-    Поддерживает запись, чтение и обновление данных пользователя.
+    Поддерживает запись, чтение и обновление данных о секциях.
     """
 
     class Meta:
         model = Section
-        fields = (
-            'email',
-            'phone_number',
-            'first_name',
-            'middle_name',
-            'last_name',
-            'image',
+        fields = ( 
+            'category_name',
+            'type_name',
+            'name',
+            'address',
+            'age_s',
+            'age_f',
+           # 'phone_number',
+           # 'time_s',
+           # 'time_f',
+           # 'subscription',
+           # 'schedule',
+           # 'description',
+           # 'image'
         )
 
     def validate(self, data):
         """
-        Выполняет валидацию данных. Проверяет наличие номера телефона.
-
-        Хотя в модели User поле phone_number не является обязательным,
-        здесь оно проверяется на наличие.
+        Выполняет валидацию данных. Проверяет заполнение полей.
         """
 
-        if not data['phone_number']:
+        if not data['name']:
             raise serializers.ValidationError(
-                'Номер телефона обязательное поле.'
+                'Наименование секции обязательное поле.'
             )
 
         return data
 
     def create(self, validated_data):
         """
-        Создает пользователя с использованием метода create_user.
+        Создает секцию с использованием метода create_section.
 
-        Метод create_user вызывается на уровне модели
-          UserManager(BaseUserManager),
-        который является переопределенным менеджером пользователя.
         """
+        Section = Section.objects.register_section(**validated_data)
 
-        user = User.objects.create_user(**validated_data)
-
-        return user
-
-    def save_with_role(self, role):
-        """
-        Сохраняем пользователя с заданной ролью.
-        """
-
-        user = self.create(self.validated_data)
-
-        RolesUser.objects.create(user=user, role=role)
-        return
+        return Section
