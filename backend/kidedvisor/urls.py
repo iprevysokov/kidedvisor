@@ -12,6 +12,7 @@ from drf_yasg import openapi
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls', namespace='users')),
+    path('api/moderation/', include('moderation.urls', namespace='moderation')),  # Добавленный маршрут для приложения moderation
 ]
 
 if settings.DEBUG:
