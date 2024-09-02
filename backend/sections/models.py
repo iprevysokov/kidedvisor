@@ -71,7 +71,6 @@ class Days(models.Model):
 #class subscription_type(models.Model):
 #    subscription_type = models.CharField(max_length=15)
 
-
 #    """Модель абонемента"""
 #class Subscription(models.Model):
 #    """Абонементы"""
@@ -109,7 +108,7 @@ class Days(models.Model):
 class Section(models.Model):
     """Модель описания секции"""
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                 verbose_name='Выберите направление', blank=True)
+                                 verbose_name='Выберите направление')
     type_name = models.CharField(max_length=200, db_index=True, verbose_name='Выберите вид деятельности', blank=True, null=True)
     #models.ForeignKey(Type, on_delete=models.CASCADE,                                  verbose_name='Выберите вид деятельности')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название секции')
@@ -119,16 +118,16 @@ class Section(models.Model):
     age_f = models.DecimalField(max_digits=2, decimal_places=0, verbose_name='Возраст до',
                                 validators = [MaxValueValidator(99), MinValueValidator(0)])
     phone_number = PhoneNumberField('Контакты',unique=True, blank=True, null=True)
-    email = models.EmailField('Электронная почта', max_length=MAX_LENGTH_EMAIL_FIELD, unique=True, blank=False, null=False,        )
-    time_s = models.TimeField()
-    time_f = models.TimeField()
-    days = models.CharField(max_length=200, db_index=True, verbose_name='Рабочие дни') #не сделан множественный выбор 
+    email = models.EmailField('Электронная почта', max_length=MAX_LENGTH_EMAIL_FIELD, unique=True, blank=True, null=False,       )
+    time_s = models.TimeField(blank=True)
+    time_f = models.TimeField(blank=True)
+    days = models.CharField(max_length=200, db_index=True, verbose_name='Рабочие дни', blank=True) #не сделан множественный выбор 
     #models.ManyToManyField(Days)
-    #models.CharField(max_length=1, choices=DAYS_OF_WEEK) #не сделан множественный выбор, выбор из перечисления
-    subscription = subscription = models.CharField(max_length=500, db_index=True, verbose_name='Абонементы')
+    #models.CharField(max_length=1, choices=DAYS_OF_WEEK) #для выбора из перечисления
+    subscription = models.CharField(max_length=500, db_index=True, verbose_name='Абонементы', blank=True)
     # models.ForeignKey(Subscription, on_delete=models.CASCADE, verbose_name='Выберите абонемент')
-    schedule = models.CharField(max_length=1000, db_index=True, verbose_name='Расписание')
-    description = models.CharField(max_length=1000, db_index=True, verbose_name='Описание')
+    schedule = models.CharField(max_length=1000, db_index=True, verbose_name='Расписание', blank=True)
+    description = models.CharField(max_length=1000, db_index=True, verbose_name='Описание', blank=True)
     image = models.ImageField(upload_to='sections/%Y/%m/%d', blank=True, verbose_name='Фото')
 
 

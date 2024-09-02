@@ -14,6 +14,7 @@ class SectionViewSet(mixins.UpdateModelMixin,
     serializer_class = SectionSerializer
 
     http_method_names = ['get', 'patch', 'delete', 'post']
+    
 
     @action(detail=False, methods=['post'])
     def register_section(self, request):
@@ -49,7 +50,7 @@ class SectionViewSet(mixins.UpdateModelMixin,
 
         serializer = SectionSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save(self, request = section)
+        serializer.save()
         return Response(
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED

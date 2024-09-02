@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Category, Section
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['category_name']
+    list_display = ['category_name', 'id']
 
 admin.site.register(Category, CategoryAdmin)
 
