@@ -14,3 +14,6 @@ DEFAULT_EMPTY_VALUE = '-Не задано-'
 SUCCESSFUL_REGISTRATION_MESSAGE = (
     'Вы успешно зарегистрировались. Вам направлено письмо на email'
     )
+
+# users utils
+TEXT_ENTER_APP = 'Добро пожаловать в Kidedvisor'
