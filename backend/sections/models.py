@@ -122,8 +122,9 @@ class Section(models.Model):
     email = models.EmailField('Электронная почта', max_length=MAX_LENGTH_EMAIL_FIELD, unique=True, blank=False, null=False,        )
     time_s = models.TimeField()
     time_f = models.TimeField()
-    days = models.ManyToManyField(Days)
-    #models.CharField(max_length=1, choices=DAYS_OF_WEEK) #не сделан множественный выбор 
+    days = models.CharField(max_length=200, db_index=True, verbose_name='Рабочие дни') #не сделан множественный выбор 
+    #models.ManyToManyField(Days)
+    #models.CharField(max_length=1, choices=DAYS_OF_WEEK) #не сделан множественный выбор, выбор из перечисления
     subscription = subscription = models.CharField(max_length=500, db_index=True, verbose_name='Абонементы')
     # models.ForeignKey(Subscription, on_delete=models.CASCADE, verbose_name='Выберите абонемент')
     schedule = models.CharField(max_length=1000, db_index=True, verbose_name='Расписание')
