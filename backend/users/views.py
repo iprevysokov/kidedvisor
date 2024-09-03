@@ -1,3 +1,4 @@
+from django.db import transaction
 from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -6,6 +7,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .models import User, RolesUser
 from .serializers import UserSerializer, UserTokenObtainPairSerializer
 from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
+from .utils import send_email_for_user_login
 
 
 class UserViewSet(mixins.UpdateModelMixin,
@@ -15,8 +17,9 @@ class UserViewSet(mixins.UpdateModelMixin,
     Представление для работы с пользователями.
     Создание, чтение, обновление и удаление пользователей.
     Дополнительная логика:
-    - Присвоение ролей пользователю при регистрации.
+    - Присвоение ролей пользователю при регистрации.в
     - Поддерживаемые роли: 'parent', 'owner'.
+    - Отправка письма на email при регистрации пользователя в системе в ролях 'parent' и 'owner'.
     Доступные HTTP методы: GET, PATCH, DELETE, POST.
     """
 
@@ -50,6 +53,7 @@ class UserViewSet(mixins.UpdateModelMixin,
         return self._register_user(request=request, role='owner')
 
     @staticmethod
+    @transaction.atomic
     def _register_user(request, role):
         """
         Общий статический метод для регистрации пользователя с указанной ролью.
@@ -75,6 +79,7 @@ class UserViewSet(mixins.UpdateModelMixin,
                 )
 
             RolesUser.objects.create(user=user, role=role)
+            send_email_for_user_login(user)
             return Response(
                 {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
                 status=status.HTTP_200_OK
@@ -82,7 +87,8 @@ class UserViewSet(mixins.UpdateModelMixin,
 
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save_with_role(role)
+        user = serializer.save_with_role(role)
+        send_email_for_user_login(user)
         return Response(
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED

@@ -56,7 +56,7 @@ class UserSerializer(serializers.ModelSerializer):
         user = self.create(self.validated_data)
 
         RolesUser.objects.create(user=user, role=role)
-        return
+        return user
 
 
 class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
