@@ -43,7 +43,7 @@ class CustomUserAdmin(UserAdmin):
 
     fieldsets = (
         ('Личные данные', {
-            'fields': ('first_name', 'last_name',)
+            'fields': ('first_name', 'last_name','image')
             }),
         ('Доcтуп', {
             'fields': ('is_staff', 'is_superuser', 'is_active')
