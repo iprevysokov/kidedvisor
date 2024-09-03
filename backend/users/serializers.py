@@ -63,6 +63,5 @@ class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        token["id"] = user.id
-        token["role"] = RolesUser.objects.get(user=User.objects.get(id=user.id))
+        token["role"] = RolesUser.objects.get(user=User.objects.get(id=user.id)).role
         return token
