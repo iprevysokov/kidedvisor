@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import '../AddSection/AddSection.scss'
 import Input from '../Input/Input';
