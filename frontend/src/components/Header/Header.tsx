@@ -6,6 +6,8 @@ import burgerImage from '../../images/burger.svg';
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/src/utils/redux/store";
 import { switchBurgerMenu } from "@/src/utils/redux/slices/appSlice";
+import close_afford from '../../images/close_aff.svg';
+import back_afford from '../../images/back_aff.svg';
 
 export default function Header() {
   const { burgerMenuOpened } = useAppSelector(state => state.appSlice)
@@ -27,6 +29,14 @@ export default function Header() {
           />
         </button>
       )}
+      <div className='afford'>
+            <button>
+                <Image className='back_afford' alt='назад' src={back_afford.src} width={14} height={14}/>
+            </button>
+            <button>
+                <Image className='close_afford' alt='закрыть' src={close_afford.src} width={14} height={14}/>
+            </button>
+      </div>
       <div>
         <Image
           className="header__logo"
