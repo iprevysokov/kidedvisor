@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/src/utils/redux/store";
 import { switchBurgerMenu } from "@/src/utils/redux/slices/appSlice";
 import mockAvatar from '../../images/mockAvatar.svg';
 import rightArrow from '../../images/rightArrow.svg';
+import ErrorSplashPage from '../../components/ErrorSplashPage/ErrorSplashPage';
 import Link from 'next/link';
 export default function BurgerMenu() {
     const dispatch = useAppDispatch();
@@ -60,7 +61,7 @@ export default function BurgerMenu() {
                     <Link href={"/auth"} className='link'>Вход</Link>
                 </li>
                 <li className='links__item'>
-                    <Link href={"#"} className='link'>Регистрация</Link>
+                    <Link href={"/splash"} className='link'>Регистрация</Link>
                 </li>
             </ul>
         </section>
