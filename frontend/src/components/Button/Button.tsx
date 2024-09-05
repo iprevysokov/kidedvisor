@@ -6,9 +6,10 @@ interface props {
     disabled?: boolean;
     onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
     additionalClass?: string;
-    type?: 'submit' | 'button'
+    type?: 'submit' | 'button';
+    outlined?: boolean;
 }
 
-export default function Button({ title, disabled, onClick, additionalClass, type = 'button' }: props) {
-    return <button className={`auth_button ${additionalClass}`} disabled={disabled} onClick={onClick} type={type}>{title}</button>
+export default function Button({ title, disabled, onClick, additionalClass, type = 'button', outlined = false }: props) {
+    return <button className={`${additionalClass} auth_button auth_button_${outlined ? 'outlined' : 'default'}`} disabled={disabled} onClick={onClick} type={type}>{title}</button>
 }

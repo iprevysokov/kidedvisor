@@ -15,6 +15,7 @@ import AuthWith_Menu from '../AuthWith_Menu/AuthWIth_Menu';
 import logo from "../../images/Kidedvisor.svg";
 import { useAppDispatch } from '@/src/utils/redux/store';
 import { openPopup } from '@/src/utils/redux/slices/appSlice';
+import DefaultPopupElement from '../DefaultPopupElement/DefaultPopupElement';
 
 enum AuthState {
     TEL,
@@ -36,11 +37,11 @@ export default function AuthPage() {
     }
 
     function onSendCodeClick() {
-        dispatch(openPopup(<div className='default_popup'>
-            <h2 className='default_popup__heading'>Проверьте почту</h2>
-            <p className='default_popup__info'>Пройдите по ссылке в почте для завершения регистрации</p>
-            <Button title={'Изменить почту'} />
-        </div>))
+        dispatch(openPopup(
+            <DefaultPopupElement heading='Проверьте почту' description='Пройдите по ссылке в почте для завершения регистрации'>
+                <Button title={'Изменить почту'} outlined />
+            </DefaultPopupElement>
+        ))
     }
 
     useEffect(() => {
@@ -101,11 +102,11 @@ export default function AuthPage() {
                     )}
                     {authState == AuthState.EMAIL && (
                         <>
-                            <h2 className={'authPage__title'}>Получите код на ваш email</h2>
+                            <h2 className={'authPage__title'}>Получите ссылку для входа<br /> на ваш email</h2>
                             <p className={'authPage__info'}>Введите адрес электронной почты, мы отправим<br />
                                 на нее код для подтверждения регистрации</p>
                             <Input placeholder='E-mail' type='email' {...register('email', { required: { value: true, message: defaultRequiredMessage } })} />
-                            <Button onClick={onSendCodeClick} title='Выслать код' additionalClass='authPage__button' disabled={Boolean(errors.email)} />
+                            <Button onClick={onSendCodeClick} title='Отправить ссылку' additionalClass='authPage__button' disabled={Boolean(errors.email)} />
                         </>
                     )}
                 </form>

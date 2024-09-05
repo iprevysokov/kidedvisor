@@ -26,30 +26,3 @@
         }
     }
 }
-
-
-.default_popup {
-    z-index: 2;
-    width: calc(100% - 32px);
-    height: auto;
-    margin: auto;
-    background-color: white;
-    border-radius: 24px;
-    padding: 24px;
-
-    &__heading {
-        font-style: normal;
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 32px;
-        align-items: center;
-        color: #1D1B20;
-    }
-
-    &__info {
-        font-size: 14px;
-        line-height: 20px;
-        letter-spacing: 0.25px;
-        color: #49454F;
-    }
-}
