@@ -54,7 +54,7 @@ export default function AuthPage() {
 
     return (
         <>
-            <header className='header'>
+            <header className='auth_header'>
                 <div className="top-container">
                     <button onClick={() => router.push('/')}>
                         <Image
