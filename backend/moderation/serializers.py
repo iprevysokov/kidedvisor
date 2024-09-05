@@ -18,7 +18,7 @@ class HelpRequestSerializer(serializers.ModelSerializer):
         read_only_fields = ["status", "created_at", "updated_at", "response_sent_at"]
 
     def update(self, instance, validated_data):
-        # При обновлении ответа статус меняется на "Завершено"
+        # При обновлении ответа статус меняется на "Рассмотрение заявки"
         if "response" in validated_data and validated_data["response"]:
-            instance.status = "completed"
+            instance.status = "in_moderation"
         return super().update(instance, validated_data)

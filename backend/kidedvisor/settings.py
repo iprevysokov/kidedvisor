@@ -33,6 +33,8 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
     'moderation.apps.ModerationConfig',
+    
+    'django_filters'
 
 ]
 

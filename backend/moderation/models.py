@@ -23,7 +23,9 @@ class HelpRequest(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
-    response_sent_at = models.DateTimeField(verbose_name="Дата отправки ответа", blank=True, null=True)
+    response_sent_at = models.DateTimeField(
+        verbose_name="Дата отправки ответа", blank=True, null=True
+    )
 
     def save(self, *args, **kwargs):
         # При сохранении статуса "На очереди", изменяем статус на "На модерации"
@@ -37,4 +39,4 @@ class HelpRequest(models.Model):
         ordering = ("id",)
 
     def __str__(self):
-        return f"{self.text[:30]} - {self.get_status_display()}"
+        return f"{self.user} - {self.get_status_display()}"
