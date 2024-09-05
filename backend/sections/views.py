@@ -1,20 +1,19 @@
-from django.shortcuts import render
-from .models import Category, Section
-from rest_framework import viewsets, permissions, status, mixins
+from .models import Section
+from rest_framework import viewsets, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from .serializers import SectionSerializer
 from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
 
-class SectionViewSet(mixins.UpdateModelMixin,
-                  mixins.DestroyModelMixin,
-                  viewsets.GenericViewSet):
+
+class SectionViewSet(mixins.UpdateModelMixin, 
+                     mixins.DestroyModelMixin,
+                     viewsets.GenericViewSet):
 
     queryset = Section.objects.all()
     serializer_class = SectionSerializer
 
     http_method_names = ['get', 'patch', 'delete', 'post']
-    
 
     @action(detail=False, methods=['post'])
     def register_section(self, request):
@@ -27,7 +26,8 @@ class SectionViewSet(mixins.UpdateModelMixin,
         """
         Общий статический метод для регистрации секции.
 
-        Если секция с данным именем уже существует,возвращается сообщение об ошибке.
+        Если секция с данным именем уже существует,
+        возвращается сообщение об ошибке.
 
         Если секция не существует, создается новая секция.
         Возвращает Response с сообщением об успешной регистрации или ошибке.
@@ -55,7 +55,6 @@ class SectionViewSet(mixins.UpdateModelMixin,
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED
             )
-
 
     @action(detail=False, methods=['get'])
     def get_section_info(self, request):

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from sections.models import Category, Section
+from sections.models import Section
 
 
 class SectionSerializer(serializers.ModelSerializer):
@@ -10,20 +10,18 @@ class SectionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Section
-        fields = ( 
+        fields = (
             'category_name',
             'type_name',
             'name',
             'address',
             'age_s',
             'age_f',
-           # 'phone_number',
-           # 'time_s',
-           # 'time_f',
-           # 'subscription',
-           # 'schedule',
-           # 'description',
-           # 'image'
+            'email',
+            'phone_number',
+            'subscription',
+            'schedule',
+            'description',
         )
 
     def validate(self, data):
@@ -43,6 +41,6 @@ class SectionSerializer(serializers.ModelSerializer):
         Создает секцию с использованием метода create_section.
 
         """
-        Section = Section.objects.register_section(**validated_data)
+        section = Section.objects.create(**validated_data)
 
-        return Section
+        return section
