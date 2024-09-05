@@ -1,14 +1,24 @@
+$mainColor: #0085FF;
+
 .auth_button {
     border: none;
-    padding: 0;
-    background-color: #0085FF;
     border-radius: 50px;
-    width: 328px;
-    height: 48px;
+    width: 100%;
+
     font-family: var(--font-inter), sans-serif;
-    color: white;
+
     font-size: 16px;
     cursor: pointer;
+    &_default {
+        padding: 14px 0;
+        background-color: $mainColor;
+        color: white;
+    }
+    &_outlined {
+        color: $mainColor;
+        border: 2px solid $mainColor;
+        padding: 8px 0;
+    }
     &:disabled {
         background-color: #C7C7C7;
     }
