@@ -1,3 +1,4 @@
+import os
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils import timezone
@@ -120,6 +121,23 @@ class User(AbstractUser):
             f'Пользователь: {self.email}'
         )
 
+    def save(self, *args, **kwargs):
+        """
+        Расширение метода сохранения.
+        Проверяем есть ли автарка у пользователя.
+        Если она есть то при добавлении новой аватарки удаляем старую.
+        """
+
+        old_image = None
+
+        if self.pk:
+            old_image = User.objects.get(pk=self.pk).image
+
+        super().save(*args, **kwargs)
+
+        if old_image and old_image != self.image:
+            if os.path.isfile(old_image.path):
+                os.remove(old_image.path)
 
 class RolesUser(models.Model):
     """Модель ролей пользователя."""
