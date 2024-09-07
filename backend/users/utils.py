@@ -26,9 +26,8 @@ def send_email_for_user_login(
     )
 
 
-def create_token_from_user(user):
+def create_token_for_role(user, role, refresh_token):
     refresh = RefreshToken.for_user(user)
-    role = RolesUser.objects.get(user=user).role
     refresh['role'] = role
     return {
         'refresh': str(refresh),
@@ -36,14 +35,24 @@ def create_token_from_user(user):
     }
 
 
-def revoke_check(refresh, user):
+def revoke_and_create_new_token(refresh_token, user, new_role):
     try:
-        refresh = RefreshToken(refresh)
+        refresh = RefreshToken(refresh_token)
         token_role = refresh.get('role')
-        if token_role != RolesUser.object.get(user=user).role:
+        if token_role != new_role:
             refresh.blacklist()
-            raise InvalidToken({"detail": "Role mismatch. Token has been revoked."})
-        new_access_token = refresh.access_token
-        return {'access': str(new_access_token),}
+
+            new_refresh = RefreshToken.for_user(user)
+            new_refresh['role'] = new_role
+
+            return {
+                'refresh': str(new_refresh),
+                'access': str(new_refresh.access_token),
+            }
+        else:
+            new_access_token = refresh.access_token
+            return {
+                'access': str(new_access_token),
+            }
     except TokenError as e:
-        raise InvalidToken({"detail": "Invalid refresh token"})
+        raise InvalidToken({'detail': 'Invalid refresh token'})

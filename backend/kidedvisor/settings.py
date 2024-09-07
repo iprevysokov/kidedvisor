@@ -44,8 +44,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = BASE_DIR / "email"
 ROOT_URLCONF = 'kidedvisor.urls'
 
 TEMPLATES = [
@@ -132,8 +130,8 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # срок жизни токена
     'AUTH_HEADER_TYPES': ('Bearer',),
-    "TOKEN_OBTAIN_SERIALIZER": "users.serializers.UserTokenObtainPairSerializer",
-    "TOKEN_REFRESH_SERIALIZER": "users.serializers.UserTokenRefreshSerializer",
+    'TOKEN_OBTAIN_SERIALIZER': 'users.serializers.UserTokenObtainPairSerializer',
+    'TOKEN_REFRESH_SERIALIZER': 'users.serializers.UserTokenRefreshSerializer',
 }
 
 if os.getenv('SEND_EMAILS', default='False') == 'False':

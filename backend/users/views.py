@@ -9,7 +9,7 @@ from rest_framework.views import APIView
 from .models import User, RolesUser
 from .serializers import UserSerializer, UserTokenObtainPairSerializer
 from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
-from .utils import send_email_for_user_login, create_token_from_user
+from .utils import send_email_for_user_login, create_token_for_role
 
 
 class UserViewSet(mixins.UpdateModelMixin,
@@ -81,8 +81,7 @@ class UserViewSet(mixins.UpdateModelMixin,
                 )
 
             RolesUser.objects.create(user=user, role=role)
-            # refresh, access = create_token_from_user(user=user)
-            refresh, access = "token1", "token2"
+            refresh, access = create_token_for_role(user=user, role=role)
             send_email_for_user_login(user, message=f"{refresh}, {access}")
             return Response(
                 {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
@@ -92,10 +91,10 @@ class UserViewSet(mixins.UpdateModelMixin,
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save_with_role(role)
-        tokens = create_token_from_user(user)
+        tokens = create_token_for_role(user=user, role=role)
         refresh = tokens['refresh']
         access = tokens['access']
-        send_email_for_user_login(user)
+        send_email_for_user_login(user, message=f"{refresh}, {access}")
         return Response(
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED
