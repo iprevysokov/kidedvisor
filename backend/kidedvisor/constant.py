@@ -14,3 +14,6 @@ DEFAULT_EMPTY_VALUE = '-Не задано-'
 SUCCESSFUL_REGISTRATION_MESSAGE = (
     'Вы успешно зарегистрировались. Вам направлено письмо на email'
     )
+SUCCESSFUL_REGISTRATION_MESSAGE_SECTION = (
+    'Вы успешно зарегистрировали секцию. Секция отправлена на модерацию'
+    )

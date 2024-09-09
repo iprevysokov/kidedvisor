@@ -26,7 +26,6 @@ class Category(models.Model):
     """Направления, к которым относятся секции"""
     category_name = models.CharField(max_length=150, db_index=True,
                                      verbose_name='Направление')
-#    type_name = models.CharField(max_length=150, db_index=True, verbose_name='Вид деятельности')
 
     class Meta:
         ordering = ('category_name',)
@@ -41,12 +40,6 @@ class Days(models.Model):
     day = models.CharField(max_length=8)
 
 
-# class Image(models.Model):
-#     name = models.CharField(max_length=255)
-#     # section = models.ForeignKey(Section, on_delete=models.CASCADE)
-#     image = models.ImageField(upload_to='section_photo/')
-#     default = models.BooleanField(default=False)
-
 #    """Модель абонемента"""
 # class subscription_type(models.Model):
 #    subscription_type = models.CharField(max_length=15)
@@ -54,10 +47,14 @@ class Days(models.Model):
 #    """Модель абонемента"""
 # class Subscription(models.Model):
 #    """Абонементы"""
-#    subscription_name = models.CharField(max_length=150, db_index=True, verbose_name='Название абонемента', blank=True, null=True)
+#    subscription_name = models.CharField(max_length=150, db_index=True,
+# verbose_name='Название абонемента', blank=True, null=True)
 #    subscription_type = models.CharField(max_length=1, choices=S_type)
-#    subscription_price = models.DecimalField(max_digits=6, decimal_places=0, verbose_name='Стоимость')
-#    subscription_quantity = models.DecimalField(max_digits=2, decimal_places=0, verbose_name='Количество занятий в абонементе')
+#    subscription_price = models.DecimalField(max_digits=6, decimal_places=0,
+# verbose_name='Стоимость')
+#    subscription_quantity = models.DecimalField(max_digits=2,
+# decimal_places=0,
+#  verbose_name='Количество занятий в абонементе')
 
 #    class Meta:
 #        ordering = ('subscription_name',)
@@ -109,9 +106,10 @@ class Section(models.Model):
                                 verbose_name='Расписание', blank=True)
     description = models.CharField(max_length=1000, db_index=True,
                                    verbose_name='Описание', blank=True)
-    image = models.ImageField(upload_to='section_photo/',
-                              blank=True, null=True,
-                              verbose_name='Фото')
+    image = models.FileField(verbose_name='Главное фото', blank=True)
+    # models.ImageField(upload_to='section_photo/',
+    #                          blank=True, null=True,
+    #                          verbose_name='Фото')
     # models.ForeignKey(Image, on_delete=models.CASCADE,
     #                          verbose_name='Загрузите фото')
 
@@ -122,3 +120,13 @@ class Section(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SectionImage(models.Model):
+    section_image = models.ForeignKey(Section, default=None,
+                                      on_delete=models.CASCADE,
+                                      verbose_name='Фотографии',)
+    images = models.FileField(upload_to='images/')
+
+    def __str__(self):
+        return self.section_image.name

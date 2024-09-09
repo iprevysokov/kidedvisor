@@ -3,7 +3,7 @@ from rest_framework import viewsets, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from .serializers import SectionSerializer
-from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
+from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE_SECTION
 
 
 class SectionViewSet(mixins.UpdateModelMixin, 
@@ -44,7 +44,7 @@ class SectionViewSet(mixins.UpdateModelMixin,
 
             Section.objects.create(section=section)
             return Response(
-                {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
+                {'message': SUCCESSFUL_REGISTRATION_MESSAGE_SECTION},
                 status=status.HTTP_200_OK
                 )
 
@@ -52,7 +52,7 @@ class SectionViewSet(mixins.UpdateModelMixin,
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(
-            {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
+            {'message': SUCCESSFUL_REGISTRATION_MESSAGE_SECTION},
             status=status.HTTP_201_CREATED
             )
 

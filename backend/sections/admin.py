@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Section
+from .models import Category, Section, SectionImage
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -14,9 +14,19 @@ admin.site.register(Category, CategoryAdmin)
 # admin.site.register(Subscription, SubscriptionAdmin)
 
 
+class SectionImagesAdmin(admin.StackedInline):
+    model = SectionImage
+
+
+@admin.register(Section)
 class SectionAdmin(admin.ModelAdmin):
+    inlines = [SectionImagesAdmin]
     list_display = ['name', 'address', 'age_s', 'age_f', 'id']
-    list_filter = ['name', 'address', 'age_s', 'age_f']
+
+    class Meta:
+        model = Section
 
 
-admin.site.register(Section, SectionAdmin)
+@admin.register(SectionImage)
+class SectionImagesAdmin(admin.ModelAdmin):
+    pass

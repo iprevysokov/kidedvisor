@@ -22,6 +22,7 @@ class SectionSerializer(serializers.ModelSerializer):
             'subscription',
             'schedule',
             'description',
+            'image',
         )
 
     def validate(self, data):
