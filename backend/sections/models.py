@@ -84,7 +84,7 @@ class Section(models.Model):
                                 verbose_name='Возраст до',
                                 validators=[MaxValueValidator(Decimal('99')),
                                             MinValueValidator(Decimal('0'))])
-    phone_number = PhoneNumberField('Контакты', blank=True, null=True)
+    phone_number = PhoneNumberField('Номер телефона для связи', blank=True, null=True)
     email = models.EmailField('Электронная почта',
                               max_length=MAX_LENGTH_EMAIL_FIELD,
                               )
@@ -92,8 +92,16 @@ class Section(models.Model):
                               blank=True, null=True)
     time_f = models.TimeField(verbose_name='Время работы по',
                               blank=True, null=True)
-    days = models.CharField(max_length=200, db_index=True,
-                            verbose_name='Рабочие дни', blank=True)
+    work_day_mon = models.BooleanField(verbose_name="Пн", blank=True)
+    work_day_tue = models.BooleanField(verbose_name="Вт", blank=True)
+    work_day_wed = models.BooleanField(verbose_name="Ср", blank=True)
+    work_day_thu = models.BooleanField(verbose_name="Чт", blank=True)
+    work_day_fri = models.BooleanField(verbose_name="Пт", blank=True)
+    work_day_sat = models.BooleanField(verbose_name="Сб", blank=True)
+    work_day_sun = models.BooleanField(verbose_name="Вс", blank=True)
+
+    # days = models.CharField(max_length=200, db_index=True,
+    #                         verbose_name='Рабочие дни', blank=True)
     # не сделан множественный выбор
     # models.ManyToManyField(Days)
     # models.CharField(max_length=1, choices=DAYS_OF_WEEK)
