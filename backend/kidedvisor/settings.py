@@ -32,6 +32,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
 
     'users.apps.UsersConfig',
+    'moderation.apps.ModerationConfig',
+    
+    'django_filters'
 
 ]
 
@@ -123,7 +126,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        
     ],
 }
 
@@ -133,6 +139,7 @@ SIMPLE_JWT = {
     'TOKEN_OBTAIN_SERIALIZER': 'users.serializers.UserTokenObtainPairSerializer',
     'TOKEN_REFRESH_SERIALIZER': 'users.serializers.UserTokenRefreshSerializer',
 }
+
 
 if os.getenv('SEND_EMAILS', default='False') == 'False':
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'

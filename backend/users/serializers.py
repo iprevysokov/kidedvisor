@@ -28,10 +28,14 @@ class UserSerializer(serializers.ModelSerializer):
         здесь оно проверяется на наличие.
         """
 
-        if not data['phone_number']:
-            raise serializers.ValidationError(
-                'Номер телефона обязательное поле.'
-            )
+        request = self.context.get('request')
+
+        if request.method == 'POST':
+
+            if not data['phone_number']:
+                raise serializers.ValidationError(
+                    'Номер телефона обязательное поле.'
+                )
 
         return data
 

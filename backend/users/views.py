@@ -88,7 +88,7 @@ class UserViewSet(mixins.UpdateModelMixin,
                 status=status.HTTP_200_OK
             )
 
-        serializer = UserSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
         user = serializer.save_with_role(role)
         tokens = create_token_for_role(user=user, role=role)
