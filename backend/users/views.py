@@ -93,7 +93,6 @@ class UserViewSet(mixins.UpdateModelMixin,
         serializer.is_valid(raise_exception=True)
         user = serializer.save_with_role(role)
         tokens = create_token_for_role(user=user, role=role)
-        refresh = tokens['refresh']
         access = tokens['access']
         send_email_for_user_login(user, token=access, redirect_url=redirect_url)
         return Response(
@@ -119,7 +118,7 @@ class RefreshAccessTokenView(APIView):
                 new_access_token = refresh.access_token
                 tokens = {'access': str(new_access_token), }
                 return Response(tokens, status=status.HTTP_200_OK)
-            except TokenError as e:
+            except TokenError:
                 raise InvalidToken({"detail": "Invalid refresh token"})
             except InvalidToken as e:
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)

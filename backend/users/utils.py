@@ -26,12 +26,14 @@ def send_email_for_user_login(
     )
 
 
-def create_token_for_role(user, role, refresh_token):
+def create_token_for_role(user, role):
     refresh = RefreshToken.for_user(user)
     refresh['role'] = role
+    access_token = refresh.access_token
+    access_token['role'] = role
     return {
         'refresh': str(refresh),
-        'access': str(refresh.access_token),
+        'access': str(access_token),
     }
 
 
@@ -54,5 +56,5 @@ def revoke_and_create_new_token(refresh_token, user, new_role):
             return {
                 'access': str(new_access_token),
             }
-    except TokenError as e:
+    except TokenError:
         raise InvalidToken({'detail': 'Invalid refresh token'})
