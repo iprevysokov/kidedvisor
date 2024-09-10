@@ -2,12 +2,11 @@ from django.db import transaction
 from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework.views import APIView
 from .models import User, RolesUser
-from .serializers import UserSerializer, UserTokenObtainPairSerializer
+from .serializers import UserSerializer
 from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
 from .utils import send_email_for_user_login, create_token_for_role
 
@@ -72,6 +71,8 @@ class UserViewSet(mixins.UpdateModelMixin,
         """
 
         user = User.objects.filter(email=request.data['email']).first()
+        
+        redirect_url = request.data.get('redirect_url', '')
 
         if user:
             if RolesUser.objects.filter(user=user, role=role).exists():
@@ -82,7 +83,7 @@ class UserViewSet(mixins.UpdateModelMixin,
 
             RolesUser.objects.create(user=user, role=role)
             refresh, access = create_token_for_role(user=user, role=role)
-            send_email_for_user_login(user, message=f"{refresh}, {access}")
+            send_email_for_user_login(user, token=access, redirect_url=redirect_url)
             return Response(
                 {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
                 status=status.HTTP_200_OK
@@ -94,7 +95,7 @@ class UserViewSet(mixins.UpdateModelMixin,
         tokens = create_token_for_role(user=user, role=role)
         refresh = tokens['refresh']
         access = tokens['access']
-        send_email_for_user_login(user, token=access)
+        send_email_for_user_login(user, token=access, redirect_url=redirect_url)
         return Response(
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED
