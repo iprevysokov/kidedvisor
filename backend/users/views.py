@@ -2,11 +2,14 @@ from django.db import transaction
 from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
-
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
+from rest_framework.views import APIView
 from .models import User, RolesUser
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserTokenObtainPairSerializer
 from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
-from .utils import send_email_for_user_login
+from .utils import send_email_for_user_login, create_token_for_role
 
 
 class UserViewSet(mixins.UpdateModelMixin,
@@ -78,20 +81,24 @@ class UserViewSet(mixins.UpdateModelMixin,
                 )
 
             RolesUser.objects.create(user=user, role=role)
-            send_email_for_user_login(user)
+            refresh, access = create_token_for_role(user=user, role=role)
+            send_email_for_user_login(user, message=f"{refresh}, {access}")
             return Response(
                 {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
                 status=status.HTTP_200_OK
-                )
+            )
 
         serializer = UserSerializer(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
         user = serializer.save_with_role(role)
-        send_email_for_user_login(user)
+        tokens = create_token_for_role(user=user, role=role)
+        refresh = tokens['refresh']
+        access = tokens['access']
+        send_email_for_user_login(user, message=f"{refresh}, {access}")
         return Response(
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED
-            )
+        )
 
     @action(detail=False, methods=['get'])
     def get_me(self, request):
@@ -100,3 +107,19 @@ class UserViewSet(mixins.UpdateModelMixin,
         user = User.objects.get(id=request.user.id)
         serializer = self.get_serializer(user)
         return Response(serializer.data)
+
+
+class RefreshAccessTokenView(APIView):
+    def post(self, request, *args, **kwargs):
+        refresh_token = request.data.get("refresh_token")
+        if refresh_token:
+            try:
+                refresh = RefreshToken(refresh_token)
+                new_access_token = refresh.access_token
+                tokens = {'access': str(new_access_token), }
+                return Response(tokens, status=status.HTTP_200_OK)
+            except TokenError as e:
+                raise InvalidToken({"detail": "Invalid refresh token"})
+            except InvalidToken as e:
+                return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Refresh token not provided'}, status=status.HTTP_400_BAD_REQUEST)
