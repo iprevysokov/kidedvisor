@@ -84,7 +84,8 @@ class Section(models.Model):
                                 verbose_name='Возраст до',
                                 validators=[MaxValueValidator(Decimal('99')),
                                             MinValueValidator(Decimal('0'))])
-    phone_number = PhoneNumberField('Номер телефона для связи', blank=True, null=True)
+    phone_number = PhoneNumberField('Номер телефона для связи',
+                                    blank=True, null=True)
     email = models.EmailField('Электронная почта',
                               max_length=MAX_LENGTH_EMAIL_FIELD,
                               )
@@ -100,12 +101,6 @@ class Section(models.Model):
     work_day_sat = models.BooleanField(verbose_name="Сб", blank=True)
     work_day_sun = models.BooleanField(verbose_name="Вс", blank=True)
 
-    # days = models.CharField(max_length=200, db_index=True,
-    #                         verbose_name='Рабочие дни', blank=True)
-    # не сделан множественный выбор
-    # models.ManyToManyField(Days)
-    # models.CharField(max_length=1, choices=DAYS_OF_WEEK)
-    # для выбора из перечисления
     subscription = models.CharField(max_length=500, db_index=True,
                                     verbose_name='Абонементы', blank=True)
     # models.ForeignKey(Subscription, on_delete=models.CASCADE,
@@ -115,11 +110,6 @@ class Section(models.Model):
     description = models.CharField(max_length=1000, db_index=True,
                                    verbose_name='Описание', blank=True)
     image = models.FileField(verbose_name='Главное фото', blank=True)
-    # models.ImageField(upload_to='section_photo/',
-    #                          blank=True, null=True,
-    #                          verbose_name='Фото')
-    # models.ForeignKey(Image, on_delete=models.CASCADE,
-    #                          verbose_name='Загрузите фото')
 
     class Meta:
         ordering = ('name',)
