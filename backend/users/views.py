@@ -94,7 +94,7 @@ class UserViewSet(mixins.UpdateModelMixin,
         tokens = create_token_for_role(user=user, role=role)
         refresh = tokens['refresh']
         access = tokens['access']
-        send_email_for_user_login(user, message=f"{refresh}, {access}")
+        send_email_for_user_login(user, token=access)
         return Response(
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED

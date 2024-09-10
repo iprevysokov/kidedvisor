@@ -5,12 +5,10 @@ from email.header import Header
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 
-from kidedvisor.constant import TEXT_ENTER_APP
-from users.models import User, RolesUser
-
+from kidedvisor.constant import TEXT_ENTER_APP, FRONTEND_ACCESS_URL
 
 def send_email_for_user_login(
-        user, message='url'
+        user, frontend_access_url=FRONTEND_ACCESS_URL, token='token', redirect_url='url_2'
 ):
     """
     Отправка письма пользователю.
@@ -18,6 +16,8 @@ def send_email_for_user_login(
     :param user: Экземпляр пользователя, которому отправляется письмо.
     :param message: Сообщение для входа в систему (передаем ссылку для аутентификации.)
     """
+
+    message = f'{frontend_access_url}?access_token={token}&redirect_url={redirect_url}'
     send_mail(
         subject=Header(TEXT_ENTER_APP, 'utf-8'),
         message=message,

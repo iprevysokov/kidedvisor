@@ -16,4 +16,9 @@ SUCCESSFUL_REGISTRATION_MESSAGE = (
     )
 
 # users utils
+
+# def send_email_for_user_login Отправка письма пользователю
 TEXT_ENTER_APP = 'Добро пожаловать в Kidedvisor'
+
+# ссылка для авторизации первичной регистрации пользователя в приложении по access_token
+FRONTEND_ACCESS_URL = 'http://localhost:3000'
