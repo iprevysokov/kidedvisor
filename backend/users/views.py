@@ -2,7 +2,7 @@ from django.db import transaction
 from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework.views import APIView
 from .models import User, RolesUser
@@ -82,8 +82,8 @@ class UserViewSet(mixins.UpdateModelMixin,
                 )
 
             RolesUser.objects.create(user=user, role=role)
-            refresh, access = create_token_for_role(user=user, role=role)
-            send_email_for_user_login(user, token=access, redirect_url=redirect_url)
+            access_token = create_token_for_role(user=user, role=role)
+            send_email_for_user_login(user, token=access_token, redirect_url=redirect_url)
             return Response(
                 {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
                 status=status.HTTP_200_OK
@@ -92,9 +92,8 @@ class UserViewSet(mixins.UpdateModelMixin,
         serializer = UserSerializer(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
         user = serializer.save_with_role(role)
-        tokens = create_token_for_role(user=user, role=role)
-        access = tokens['access']
-        send_email_for_user_login(user, token=access, redirect_url=redirect_url)
+        access_token = create_token_for_role(user=user, role=role)
+        send_email_for_user_login(user, token=access_token, redirect_url=redirect_url)
         return Response(
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
             status=status.HTTP_201_CREATED
@@ -107,6 +106,41 @@ class UserViewSet(mixins.UpdateModelMixin,
         user = User.objects.get(id=request.user.id)
         serializer = self.get_serializer(user)
         return Response(serializer.data)
+    
+
+class ExchangeTokenView(APIView):
+    """
+    Класс для передачи  новых  токенов после первичной аутентификации.
+    через ссылку отправленную на email.
+    """
+
+    permission_classes = (permissions.IsAuthenticated, )
+
+    def post(self, request):
+        """Метод для обмена access токена на новую пару refresh и access с заданной ролью."""
+
+        access_token_str = request.headers.get('Authorization').split()[1]
+
+        try:
+            access_token = AccessToken(access_token_str)
+            user_id = access_token['user_id']
+            user = User.objects.get(id=user_id)
+            role = access_token['role']
+
+        except TokenError as exc:
+            raise InvalidToken({'detail': str(exc)})
+        else:
+            refresh_token = RefreshToken.for_user(user)
+            refresh_token['role'] = role
+            new_access_token = refresh_token.access_token
+            new_access_token['role'] = role
+        
+        return Response(
+            {
+                'access' : str(new_access_token),
+                'refresh' : str(refresh_token)
+            }, status=status.HTTP_200_OK
+        )
 
 
 class RefreshAccessTokenView(APIView):
