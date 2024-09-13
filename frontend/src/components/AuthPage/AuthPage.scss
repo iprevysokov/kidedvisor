@@ -1,5 +1,5 @@
 .authPage {
-    margin-top: 53px;
+    margin-top: 33px;
     width: calc(100% - 32px);
     &__form {
         height: 100%;
@@ -43,6 +43,7 @@
 
 .auth_header {
     width: calc(100% - 32px);
+    max-width: 323px;
     display: flex;
     flex-direction: column;
     gap:36px;

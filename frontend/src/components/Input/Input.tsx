@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 import './Input.scss';
 
-interface props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
     placeholder: string;
     type?: 'text' | 'password' | 'tel' | 'email';
     additionalClass?: string;
 }
 
-export default function Input({ placeholder, type = 'text', additionalClass, ...props }: props) {
-    return (
-        <input
-            className={`input ${additionalClass}`}
-            type={type}
-            placeholder={placeholder}
-            {...props}
-        />
-    )
-}
+const Input = forwardRef<HTMLInputElement, Props>(
+    ({ placeholder, type = 'text', additionalClass, ...props }, ref) => {
+        return (
+            <input
+                className={`input ${additionalClass}`}
+                type={type}
+                placeholder={placeholder}
+                ref={ref}
+                {...props}  // Передаём все остальные пропсы
+            />
+        );
+    }
+);
+
+Input.displayName = 'Input';
+
+export default Input;

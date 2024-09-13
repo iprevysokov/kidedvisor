@@ -1,8 +1,9 @@
 import React, { MouseEvent, useEffect, useState } from 'react';
 import './AuthWith_Menu.scss';
 import Image from 'next/image';
-import vkLogo from '../../images/vk.svg';
-import yaLogo from '../../images/yandex.svg';
+import vkLogo from '../../images/logotypes/vk.svg';
+import yaLogo from '../../images/logotypes/yandex.svg';
+import Link from 'next/link';
 
 export default function AuthWith_Menu() {
     return (
