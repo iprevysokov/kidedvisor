@@ -1,4 +1,7 @@
+from django.shortcuts import get_object_or_404
+import jwt
 from django.db import transaction
+
 from rest_framework import viewsets, permissions, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -6,8 +9,8 @@ from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework.views import APIView
 from .models import User, RolesUser
-from .serializers import UserSerializer
-from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE
+from .serializers import UserSerializer, LoginSerializer
+from kidedvisor.constant import SUCCESSFUL_REGISTRATION_MESSAGE, INVALID_TOKEN_MESSAGE, FRONTEND_LOGIN_URL
 from .utils import send_email_for_user_login, create_token_for_role
 
 
@@ -110,7 +113,7 @@ class UserViewSet(mixins.UpdateModelMixin,
 
 class ExchangeTokenView(APIView):
     """
-    Класс для передачи  новых  токенов после первичной аутентификации.
+    Класс для передачи  новых пар токенов 'access_token' и 'refresh_token' после первичной аутентификации.
     через ссылку отправленную на email.
     """
 
@@ -137,23 +140,171 @@ class ExchangeTokenView(APIView):
         
         return Response(
             {
-                'access' : str(new_access_token),
-                'refresh' : str(refresh_token)
+                'access_token' : str(new_access_token),
+                'refresh_token' : str(refresh_token)
             }, status=status.HTTP_200_OK
         )
 
 
 class RefreshAccessTokenView(APIView):
+    """
+    Класс для обновления access токена.
+    """
     def post(self, request, *args, **kwargs):
-        refresh_token = request.data.get("refresh_token")
-        if refresh_token:
+        """
+        Метод для обновления access токена. При этом проверяется валидность refresh токена.
+        Если валиден, то обновляется access токен. Иначе возвращается сообщение об ошибке.
+        В теле запроса должен передаваться refresh токен, который был получен при первичной аутентификации.
+        """
+
+        refresh_token_str = request.data.get('refresh_token')
+        if not refresh_token_str:
+            return Response({
+                'detail': 'Токен отсутствует.',
+                'login_url': FRONTEND_LOGIN_URL,
+                },
+                status=status.HTTP_400_BAD_REQUEST)
+
+        decode_refresh_token = jwt.decode(
+            refresh_token_str,
+            options={'verify_signature': False},
+            algorithms=["HS256"]
+        )
+        user_id = decode_refresh_token.get('user_id')
+        user = User.objects.get(id=user_id)
+        role = decode_refresh_token.get('role')
+        redirect_url = request.data.get('redirect_url', '')
+        
+        try:
+            refresh_token = RefreshToken(refresh_token_str)
+
+        except TokenError:
+            access_token = create_token_for_role(user=user, role=role)
+            send_email_for_user_login(
+                user,
+                token=access_token,
+                redirect_url=redirect_url
+                )
+            raise InvalidToken({'detail': INVALID_TOKEN_MESSAGE})
+        else:
+            new_access_token = refresh_token.access_token
+            new_access_token['role'] = role
+
+            return Response(
+                {
+                    'access_token' : str(new_access_token),
+                }, status=status.HTTP_200_OK
+            )
+
+class CustomLoginView(APIView):
+    """
+    Кастомный логин для аутентификации пользователя.
+    """
+
+    def post(self, request, *args, **kwargs):
+        """
+        Метод для аутентификации пользователя.
+        Принимает на вход одно поле field после валидации в сериализаторе возвращает поле'phone_number' или 'email'.
+        Отправляет на почту ссылку для получения токена первичной аутентификации.
+        если в request.data передан redirect_url, то будет использован redirect_url для редиректа.
+        """
+
+
+        serializer = LoginSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        validated_data = serializer.validated_data
+
+        if 'phone_number' in validated_data and 'email' in validated_data:
+            return Response({'detail': 'Нельзя задать оба параметра одновременно.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if validated_data['phone_number']:
+            search_param = {'phone_number': validated_data['phone_number'] }
+            default_role = 'parent'
+
+        elif validated_data['email']:
+            search_param = {'email': validated_data['email']}
+            default_role = 'owner'
+
+        else:
+            return Response({'detail': 'Нет параметров для аутентификации.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        user = get_object_or_404(User, **search_param)
+
+        if RolesUser.filter(user=user, role='moderator').exists():
+            role = 'moderator'
+
+        else:
+            role = default_role
+
+            if not RolesUser.filter(user=user, role=role).exists():
+                return Response({'detail': 'У пользователя нет такой роли.'}, status=status.HTTP_403_FORBIDDEN)
+        
+        redirect_url = request.data.get('redirect_url', '')
+        access_token = create_token_for_role(user=user, role=role)
+        send_email_for_user_login(user, token=access_token, redirect_url=redirect_url)
+        return Response(
+            {'message': 'Письмо с ссылкой для входа отправлено на вашу почту.'},
+            status=status.HTTP_200_OK
+        )
+    
+class ChangeUserRoleView(APIView):
+    """ API для смены роли пользователя. Используется метод PUT для замены роли."""
+
+    permission_classes = [permissions.IsAuthenticated]
+
+    def put(self, request, *args, **kwargs):
+        """Метод для смены роли пользователя."""
+        
+    # Access Token уже проверен через permissions.IsAuthenticated
+        auth_header = request.headers.get('Authorization')
+        access_token_str = auth_header.split()[1]
+        try:
+            # Декодируем Access Token
+            access_token = AccessToken(access_token_str)
+            current_role = access_token.get('role')
+        except Exception as exc:
+            return Response({"detail": f"Ошибка валидации токена: {str(exc)}"}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Получаем пользователя
+        user = request.user
+
+        # Получаем список всех ролей пользователя
+        check_rolle_user = list(RolesUser.objects.filter(user=user).values_list('role', flat=True))
+
+        if current_role in check_rolle_user:
+            check_rolle_user.remove(current_role)  # Удаляем текущую роль
+
+            # Проверяем, что у пользователя осталась хотя бы одна роль
+            if len(check_rolle_user) != 1:
+                return Response({'detail': 'У пользователя нет доступных ролей для смены.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            role = check_rolle_user[0]  # Выбираем единственную оставшуюся роль
+
+            # Проверяем наличие refresh_token в теле запроса
+            refresh_token = request.data.get('refresh_token')
+            if not refresh_token:
+                return Response({'detail': 'Refresh token отсутствует.'}, status=status.HTTP_400_BAD_REQUEST)
+
             try:
-                refresh = RefreshToken(refresh_token)
-                new_access_token = refresh.access_token
-                tokens = {'access': str(new_access_token), }
-                return Response(tokens, status=status.HTTP_200_OK)
-            except TokenError:
-                raise InvalidToken({"detail": "Invalid refresh token"})
-            except InvalidToken as e:
-                return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error': 'Refresh token not provided'}, status=status.HTTP_400_BAD_REQUEST)
+                # Отзываем старый Refresh Token
+                token = RefreshToken(refresh_token)
+                token.blacklist()
+            except Exception as exc:
+                return Response({'detail': f'Ошибка при отзыве токена: {str(exc)}'}, status=status.HTTP_400_BAD_REQUEST)
+
+            # Генерация новой пары токенов (Access и Refresh)
+            new_refresh_token = RefreshToken.for_user(user)
+            new_refresh_token['role'] = role  # Добавляем новую роль в Refresh Token
+            new_access_token = new_refresh_token.access_token
+            new_access_token['role'] = role  # Добавляем новую роль в Access Token
+
+            # Возвращаем новые токены
+            return Response({
+                'message': 'Роль успешно изменена.',
+                'access_token': str(new_access_token),
+                'refresh_token': str(new_refresh_token)
+            }, status=status.HTTP_200_OK)
+
+        # Если текущая роль не найдена в списке ролей пользователя
+        return Response({'detail': 'Текущая роль не найдена у пользователя.'}, status=status.HTTP_403_FORBIDDEN)
+                

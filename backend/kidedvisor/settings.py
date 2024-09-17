@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
 
     'users.apps.UsersConfig',
     'moderation.apps.ModerationConfig',
@@ -134,10 +135,14 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # срок жизни токена
+   
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # Время жизни Access токена
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Время жизни Refresh токена
+    'ROTATE_REFRESH_TOKENS': True,  # Включает ротацию Refresh токенов при каждом обновлении
+    'BLACKLIST_AFTER_ROTATION': True,  # Добавляет старый Refresh токен в черный список
     'AUTH_HEADER_TYPES': ('Bearer',),
-    'TOKEN_OBTAIN_SERIALIZER': 'users.serializers.UserTokenObtainPairSerializer',
-    'TOKEN_REFRESH_SERIALIZER': 'users.serializers.UserTokenRefreshSerializer',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_BLACKLIST_ENABLED': True,  # Включаем поддержку черного списка
 }
 
 

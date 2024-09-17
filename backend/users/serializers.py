@@ -1,6 +1,8 @@
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError as DjangoValidationError
 from rest_framework import serializers
 from users.models import User, RolesUser
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from phonenumbers import NumberParseException, is_valid_number, parse as parse_phone_number
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -63,9 +65,40 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        token["role"] = RolesUser.objects.get(user=User.objects.get(id=user.id)).role
-        return token
+class LoginSerializer(serializers.Serializer):
+    field = serializers.CharField()
+
+    def validate(self, data):
+        validate_field = data.get('field')
+
+        if not validate_field or len(validate_field) == 0:
+            raise serializers.ValidationError('Поле не может быть пустым.')
+
+        # Проверка на номер телефона
+        elif validate_field.startswith('+'):
+            try:
+                # Парсим номер телефона, указываем код страны (по умолчанию Россия: 'RU')
+                phone_number = parse_phone_number(validate_field, 'RU')
+                if is_valid_number(phone_number):  # Проверка валидности номера
+                    data['phone_number'] = validate_field
+                else:
+                    raise serializers.ValidationError('Неверный номер телефона.')
+            except NumberParseException:
+                raise serializers.ValidationError('Неверный формат номера телефона.')
+
+        # Проверка на email
+        elif '@' in validate_field:
+            try:
+                validate_email(validate_field)
+                data['email'] = validate_field
+            except DjangoValidationError:
+                raise serializers.ValidationError('Неверный формат email.')
+
+        # Если данные не подходят ни под email, ни под телефон
+        else:
+            raise serializers.ValidationError('Введите корректные данные.')
+
+        # Удаляем поле 'field' из data
+        data.pop('field', None)
+
+        return data

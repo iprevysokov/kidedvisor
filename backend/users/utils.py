@@ -1,9 +1,9 @@
+from datetime import timedelta
 from django.conf import settings
 from django.core.mail import send_mail
 from email.header import Header
 
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 
 from kidedvisor.constant import TEXT_ENTER_APP, FRONTEND_ACCESS_URL
 
@@ -31,28 +31,6 @@ def create_token_for_role(user, role):
     refresh = RefreshToken.for_user(user)
     access_token = refresh.access_token
     access_token['role'] = role  # Добавляем роль в access токен
+    access_token.set_exp(lifetime=timedelta(minutes=10)) # Устанавливаем время жизни первичного access токена
 
     return str(access_token)
-
-
-def revoke_and_create_new_token(refresh_token, user, new_role):
-    try:
-        refresh = RefreshToken(refresh_token)
-        token_role = refresh.get('role')
-        if token_role != new_role:
-            refresh.blacklist()
-
-            new_refresh = RefreshToken.for_user(user)
-            new_refresh['role'] = new_role
-
-            return {
-                'refresh': str(new_refresh),
-                'access': str(new_refresh.access_token),
-            }
-        else:
-            new_access_token = refresh.access_token
-            return {
-                'access': str(new_access_token),
-            }
-    except TokenError:
-        raise InvalidToken({'detail': 'Invalid refresh token'})
