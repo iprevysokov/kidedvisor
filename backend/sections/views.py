@@ -23,7 +23,9 @@ class SectionViewSet(mixins.UpdateModelMixin,
     
     # def upload_image(request, section):
     #     "Загрузка фото к секции"
-
+    #     if request == "POST":
+    #         image = request.
+        
         
 
     @staticmethod

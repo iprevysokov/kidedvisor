@@ -10,6 +10,15 @@ from kidedvisor.constant import MAX_LENGTH_EMAIL_FIELD
 #    ('1', 'Групповой'),
 # )
 
+"""Сортировка фото"""
+main_image = (
+   ('0', 'Главная'),
+   ('1', '1'),
+   ('2', '2'),
+   ('3', '3'),
+   ('4', '4'),
+)
+
 
 class Category(models.Model):
     """Направления, к которым относятся секции"""
@@ -94,7 +103,7 @@ class Section(models.Model):
                                 verbose_name='Расписание', blank=True)
     description = models.CharField(max_length=1000, db_index=True,
                                    verbose_name='Описание', blank=True)
-    image = models.FileField(verbose_name='Главное фото', blank=True)
+    #image = models.FileField(verbose_name='Главное фото', blank=True)
 
     class Meta:
         ordering = ('name',)
@@ -110,6 +119,8 @@ class SectionImage(models.Model):
                                       on_delete=models.CASCADE,
                                       verbose_name='Фотографии',)
     images = models.FileField(upload_to='images/')
+    # order = models.CharField(max_length=100,
+    #                          choices=main_image, unique=True)
 
     def __str__(self):
         return self.section_image.name
