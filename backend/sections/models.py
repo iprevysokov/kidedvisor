@@ -4,17 +4,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MaxValueValidator, MinValueValidator
 from kidedvisor.constant import MAX_LENGTH_EMAIL_FIELD
 
-
-DAYS_OF_WEEK = (
-    ('0', 'Понедельник'),
-    ('1', 'Вторник'),
-    ('2', 'Среда'),
-    ('3', 'Четверг'),
-    ('4', 'Пятница'),
-    ('5', 'Суббота'),
-    ('6', 'Воскресенье'),
-)
-
 # """Модель абонемента"""
 # S_type = (
 #    ('0', 'Индивидуальный'),
@@ -34,10 +23,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category_name
-
-
-class Days(models.Model):
-    day = models.CharField(max_length=8)
 
 
 #    """Модель абонемента"""

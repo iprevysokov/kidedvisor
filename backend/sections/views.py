@@ -20,6 +20,11 @@ class SectionViewSet(mixins.UpdateModelMixin,
         """Регистрация секции в системе."""
 
         return self._register_section(self, request=request)
+    
+    # def upload_image(request, section):
+    #     "Загрузка фото к секции"
+
+        
 
     @staticmethod
     def _register_section(self, request):
