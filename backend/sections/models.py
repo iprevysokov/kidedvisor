@@ -103,7 +103,6 @@ class Section(models.Model):
                                 verbose_name='Расписание', blank=True)
     description = models.CharField(max_length=1000, db_index=True,
                                    verbose_name='Описание', blank=True)
-    #image = models.FileField(verbose_name='Главное фото', blank=True)
 
     class Meta:
         ordering = ('name',)
@@ -121,7 +120,8 @@ class SectionImage(models.Model):
     images = models.FileField(upload_to='images/',
                               verbose_name='Фотография',)
     order = models.CharField(max_length=100, blank=True,
-                             choices=CHOICES, unique=True)
+                             choices=CHOICES, unique=True,
+                             verbose_name='Порядок фото',)
 
     def __str__(self):
         return self.section_image.name
