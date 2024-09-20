@@ -3,7 +3,7 @@ import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { ISectionCard } from '@/src/utils/types';
-import mockImage from '../../images/mockSectionImage.png';
+import mockImage from '../../images/test.jpg';
 import SectionCard from '../SectionCard/SectionCard';
 import './SliderSection.scss';
 

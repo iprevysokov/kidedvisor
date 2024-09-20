@@ -4,7 +4,7 @@ import "./MainPage.scss";
 import Image from "next/image";
 import filterImage from "../../images/filterIcon.svg";
 import searchImage from "../../images/searchIcon.svg";
-import mockBigCardImage from "../../images/musicSection.png";
+import mockBigCardImage from "../../images/test.jpg";
 import mockBigCardLogo from "../../images/bigCardLogo.svg";
 import SliderSection from "../SliderSection/SliderSection";
 
@@ -19,7 +19,7 @@ export default function MainPage() {
       <label className="search">
         <input
           className="search__input"
-          placeholder="Направление, секция, знание"
+          placeholder="Название секции"
         />
         <button className="search__button">
           <Image
@@ -40,12 +40,13 @@ export default function MainPage() {
         </button>
       </label>
       <section className="big-card">
+        <p className="big-card__overlay-label">Наш выбор</p>
         <Image
           className="big-card__background-image"
           src={mockBigCardImage.src}
           alt="Задний фон секции"
-          width={360}
-          height={212}
+          width={1920}
+          height={1080}
         />
         <div className="big-card__container">
           <Image
