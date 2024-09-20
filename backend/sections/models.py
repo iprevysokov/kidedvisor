@@ -11,13 +11,13 @@ from kidedvisor.constant import MAX_LENGTH_EMAIL_FIELD
 # )
 
 """Сортировка фото"""
-main_image = (
-   ('0', 'Главная'),
-   ('1', '1'),
-   ('2', '2'),
-   ('3', '3'),
-   ('4', '4'),
-)
+CHOICES = (
+        ('Main', 'Главное'),
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+    )
 
 
 class Category(models.Model):
@@ -118,9 +118,10 @@ class SectionImage(models.Model):
     section_image = models.ForeignKey(Section, default=None,
                                       on_delete=models.CASCADE,
                                       verbose_name='Фотографии',)
-    images = models.FileField(upload_to='images/')
-    # order = models.CharField(max_length=100,
-    #                          choices=main_image, unique=True)
+    images = models.FileField(upload_to='images/',
+                              verbose_name='Фотография',)
+    order = models.CharField(max_length=100, blank=True,
+                             choices=CHOICES, unique=True)
 
     def __str__(self):
         return self.section_image.name

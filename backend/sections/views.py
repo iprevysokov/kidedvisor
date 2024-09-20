@@ -1,4 +1,4 @@
-from .models import Section
+from .models import Section, SectionImage
 from rest_framework import viewsets, status, mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action

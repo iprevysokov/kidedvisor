@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from sections.models import Section
+from sections.models import Section, SectionImage
 
 
 class SectionSerializer(serializers.ModelSerializer):
@@ -30,6 +30,13 @@ class SectionSerializer(serializers.ModelSerializer):
             'schedule',
             'description',
             'image',
+        )
+
+        model = SectionImage
+        fields = (
+             'section_image',
+             'images',
+             'order',
         )
 
     def validate(self, data):
