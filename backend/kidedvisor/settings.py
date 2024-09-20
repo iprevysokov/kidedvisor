@@ -34,7 +34,7 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
     'moderation.apps.ModerationConfig',
-    
+
     'django_filters'
 
 ]
@@ -130,26 +130,27 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        
+
     ],
 }
 
 SIMPLE_JWT = {
-   
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),  # Время жизни Access токена
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Время жизни Refresh токена
-    'ROTATE_REFRESH_TOKENS': True,  # Включает ротацию Refresh токенов при каждом обновлении
-    'BLACKLIST_AFTER_ROTATION': True,  # Добавляет старый Refresh токен в черный список
-    'AUTH_HEADER_TYPES': ('Bearer',),
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_BLACKLIST_ENABLED': True,  # Включаем поддержку черного списка
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Время жизни access токена
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Время жизни refresh токена
+    'ROTATE_REFRESH_TOKENS': True,  # Refresh токен обновляется при его использовании
+    'BLACKLIST_AFTER_ROTATION': True,  # Черный список токенов после обновления
+    'AUTH_HEADER_TYPES': ('Bearer',),  # Тип токена в заголовке авторизации
+
+    # Кастомные сериализаторы для токенов
+    'TOKEN_OBTAIN_SERIALIZER': 'your_app_name.serializers.LoginSerializer',  # Кастомный сериализатор для логина
+    'TOKEN_REFRESH_SERIALIZER': 'your_app_name.serializers.CustomTokenRefreshSerializer',  # Кастомный сериализатор для обновления токенов
 }
 
 
 if os.getenv('SEND_EMAILS', default='False') == 'False':
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-    EMAIL_FILE_PATH = BASE_DIR / 'sent_emails' # путь к папке с письмами
-    
+    EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'  # путь к папке с письмами
+
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = os.getenv('EMAIL_HOST')
@@ -157,5 +158,5 @@ else:
     EMAIL_PORT = os.getenv('EMAIL_PORT')
     EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-    
+
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@kidedvisor.com')

@@ -139,6 +139,7 @@ class User(AbstractUser):
             if os.path.isfile(old_image.path):
                 os.remove(old_image.path)
 
+
 class RolesUser(models.Model):
     """Модель ролей пользователя."""
 

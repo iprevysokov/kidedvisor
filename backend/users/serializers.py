@@ -1,8 +1,12 @@
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError as DjangoValidationError
 from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenRefreshSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
 from users.models import User, RolesUser
-from phonenumbers import NumberParseException, is_valid_number, parse as parse_phone_number
+from phonenumbers import (
+    NumberParseException, is_valid_number, parse as parse_phone_number
+    )
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -66,7 +70,14 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.Serializer):
-    field = serializers.CharField()
+    field = serializers.CharField(
+        required=True,
+        allow_blank=False,
+        error_messages={
+            'required': 'Это поле обязательно для заполнения.',
+            'blank': 'Поле не может быть пустым.',
+        }
+        )
 
     def validate(self, data):
         validate_field = data.get('field')
@@ -75,30 +86,64 @@ class LoginSerializer(serializers.Serializer):
             raise serializers.ValidationError('Поле не может быть пустым.')
 
         # Проверка на номер телефона
-        elif validate_field.startswith('+'):
+        if validate_field.startswith('+'):
             try:
-                # Парсим номер телефона, указываем код страны (по умолчанию Россия: 'RU')
+                # Проверка номера телефона
                 phone_number = parse_phone_number(validate_field, 'RU')
-                if is_valid_number(phone_number):  # Проверка валидности номера
-                    data['phone_number'] = validate_field
+                if is_valid_number(phone_number):
+                    user = User.objects.get(phone_number=validate_field)
+                    role = 'parent'
                 else:
-                    raise serializers.ValidationError('Неверный номер телефона.')
-            except NumberParseException:
-                raise serializers.ValidationError('Неверный формат номера телефона.')
+                    raise serializers.ValidationError(
+                        'Неверный номер телефона.'
+                        )
+            except (NumberParseException, User.DoesNotExist):
+                raise serializers.ValidationError(
+                    'Пользователь с таким номером телефона не найден.'
+                    )
 
         # Проверка на email
         elif '@' in validate_field:
             try:
                 validate_email(validate_field)
-                data['email'] = validate_field
-            except DjangoValidationError:
-                raise serializers.ValidationError('Неверный формат email.')
+                user = User.objects.get(email=validate_field)
+                role = 'owner'
+            except (DjangoValidationError, User.DoesNotExist):
+                raise serializers.ValidationError(
+                    'Пользователь с таким email не найден.'
+                    )
 
-        # Если данные не подходят ни под email, ни под телефон
-        else:
-            raise serializers.ValidationError('Введите корректные данные.')
+        # Проверка на роль модератора
+        if RolesUser.objects.filter(user=user, role='moderator').exists():
+            if RolesUser.objects.filter(user=user).count() > 1:
+                raise serializers.ValidationError(
+                    'Модератор не может иметь другие роли.'
+                    )
+            role = 'moderator'
 
-        # Удаляем поле 'field' из data
         data.pop('field', None)
+        data['user'] = user
+        data['role'] = role
+        return data
 
+
+class CustomTokenRefreshSerializer(TokenRefreshSerializer):
+    """Сериализатор для обновления токена."""
+
+    def validate(self, attrs):
+        # Получаем результат от родительского метода
+        data = super().validate(attrs)
+
+        # Получаем refresh_token из запроса
+        refresh_token_str = attrs.get('refresh')
+        refresh_token = RefreshToken(refresh_token_str)
+
+        # Сохраняем роль в новом access токене
+        access_token = refresh_token.access_token
+        access_token['role'] = refresh_token.get('role', None)
+
+        # Обновляем данные новым access токеном с ролью
+        data['access'] = str(access_token)
+        data['refresh'] = str(refresh_token)
+        # Возвращаем обновленные данные
         return data
