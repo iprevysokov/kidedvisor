@@ -1,0 +1,44 @@
+$mainColor: #0085FF;
+
+.add_photo {
+    &_container{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start
+    }
+    &_title{
+        font-size: 32px;
+        font-weight: 500;
+        color: black;
+    }
+    &_input{
+        margin-top: 16px;
+        width: 330px;
+        height: 170px;
+        background-image: url(../../images/addphotoicon.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    &_input::file-selector-button{
+        display: none;
+    }
+    &_button{
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+    &_button span{
+        font-size: 18px;
+        font-weight: 500;
+        color: $mainColor;
+    }
+}
+
+.button {
+    margin-top: 296px;
+}
+
+input[type='file']{
+    color: transparent;
+}

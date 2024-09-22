@@ -1,0 +1,78 @@
+$mainColor: #0085FF;
+
+input[type='file']{
+    color: transparent;
+}
+.all_info {
+    &_photo_title {
+        font-weight: 500;
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    &_photo_input {
+        width: 330px;
+        height: 210px;
+        border-radius: 16px;
+        background-image: url(../../images/addphotoicon.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &_photo_input::file-selector-button{
+        display: none;
+    }
+
+    &_photo_container{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start
+    }
+    &_photo_button{
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: $mainColor;
+        font-weight: 500;
+        font-size: 18px;
+    }
+}
+
+.input {
+    &_label_container {
+        margin-top: 16px;
+        margin-bottom: 8px;
+    }
+}
+
+.textarea_season_ticket{
+        width: 330px;
+        height: 90px;
+        border: #222020 solid 1px;
+        border-radius: 16px;
+        padding: 16px;
+        resize: none;
+}
+
+.textarea_shedule {
+        width: 330px;
+        height: 225px;
+        border: #222020 solid 1px;
+        border-radius: 16px;
+        padding: 16px;
+        resize: none;
+}
+.textarea_desc {
+        width: 330px;
+        height: 183px;
+        border: #222020 solid 1px;
+        border-radius: 16px;
+        padding: 16px;
+        resize: none;
+}
+
+.button {
+    margin-top: 26px;
+    width: 330px;
+}

@@ -1,6 +1,10 @@
+'use client'
 import React from "react";
 import './SectionParams.scss';
 import Input from "../Input/Input";
+import Location from "../Map/Location";
+import Button from "../Button/Button";
+//import Map from '../Map/Map';
 
 export default function SectionParams() {
     return (
@@ -30,9 +34,13 @@ export default function SectionParams() {
                     <Input additionalClass="dir_input" placeholder="Введите адрес"/>
                     <div className="section_params_label">
                         <span>Уточните место на карте</span>
+                    </div>  
+                    <div className="location">
+                        <Location />
                     </div>
                 </div>
             </div>
+            <Button title="Далее" additionalClass="button"/>
         </div>
     )
 }

@@ -2,7 +2,7 @@
 import React, { ReactNode } from 'react';
 import Image from 'next/image';
 import '../ErrorSplashPage/ErrorSplashPage.scss';
-import close_afford from '../../images/close_aff.svg'
+import close_afford from '../../images/close_aff.svg';
 import { useRouter } from 'next/navigation';
 
 interface props {

@@ -13,7 +13,7 @@ export default function AddSection() {
                     <div className='input_label_container'>
                         <span className='input_label'>Название секции</span>
                     </div>
-                        <Input additionalClass='input_name' placeholder='Например, «Радуга»' type='text'/>
+                    <Input additionalClass='input_name' placeholder='Например, «Радуга»' type='text'/>
                 </div>
                 <div className='section_desc_container'>
                 <div className='input_label_container'>
