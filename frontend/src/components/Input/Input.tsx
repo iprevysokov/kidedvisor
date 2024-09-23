@@ -2,7 +2,7 @@ import React, { forwardRef, InputHTMLAttributes } from 'react';
 import './Input.scss';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-    placeholder: string;
+    placeholder?: string;
     type?: 'text' | 'password' | 'tel' | 'email' | 'file';
     additionalClass?: string;
 }
