@@ -137,13 +137,13 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Время жизни access токена
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Время жизни refresh токена
-    'ROTATE_REFRESH_TOKENS': True,  # Refresh токен обновляется при его использовании
-    'BLACKLIST_AFTER_ROTATION': True,  # Черный список токенов после обновления
+    'ROTATE_REFRESH_TOKENS': False,  # Refresh токен обновляется при его использовании
+    'BLACKLIST_AFTER_ROTATION': False,  # Черный список токенов после обновления
     'AUTH_HEADER_TYPES': ('Bearer',),  # Тип токена в заголовке авторизации
 
     # Кастомные сериализаторы для токенов
-    'TOKEN_OBTAIN_SERIALIZER': 'your_app_name.serializers.LoginSerializer',  # Кастомный сериализатор для логина
-    'TOKEN_REFRESH_SERIALIZER': 'your_app_name.serializers.CustomTokenRefreshSerializer',  # Кастомный сериализатор для обновления токенов
+    'TOKEN_OBTAIN_SERIALIZER': 'users.serializers.LoginSerializer',  # Кастомный сериализатор для логина
+    'TOKEN_REFRESH_SERIALIZER': 'users.serializers.CustomTokenRefreshSerializer',  # Кастомный сериализатор для обновления токенов
 }
 
 

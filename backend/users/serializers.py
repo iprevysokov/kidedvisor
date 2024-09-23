@@ -144,6 +144,6 @@ class CustomTokenRefreshSerializer(TokenRefreshSerializer):
 
         # Обновляем данные новым access токеном с ролью
         data['access'] = str(access_token)
-        data['refresh'] = str(refresh_token)
+
         # Возвращаем обновленные данные
         return data

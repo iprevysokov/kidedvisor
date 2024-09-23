@@ -11,8 +11,12 @@ from .models import User, RolesUser
 from .serializers import (UserSerializer, LoginSerializer,
                           CustomTokenRefreshSerializer)
 from kidedvisor.constant import (SUCCESSFUL_REGISTRATION_MESSAGE,
+                                 SUCCESSFUL_LOGIN_MESSAGE,
                                  FRONTEND_LOGIN_URL, NOT_VALID_TOKEN_MESSAGE)
 from .utils import send_email_for_user_login, create_token_for_role
+
+# from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken
+# import jwt
 
 
 class UserViewSet(mixins.UpdateModelMixin,
@@ -106,7 +110,10 @@ class UserViewSet(mixins.UpdateModelMixin,
             user, token=access_token, redirect_url=redirect_url
             )
         return Response(
-            {'message': SUCCESSFUL_REGISTRATION_MESSAGE},
+            {
+                'message': SUCCESSFUL_REGISTRATION_MESSAGE,
+                'access_token': access_token
+                },
             status=status.HTTP_201_CREATED
         )
 
@@ -152,8 +159,8 @@ class ExchangeTokenView(APIView):
 
         return Response(
             {
-                'access_token': str(new_access_token),
-                'refresh_token': str(refresh_token)
+                'access': str(new_access_token),
+                'refresh': str(refresh_token)
             }, status=status.HTTP_200_OK
         )
 
@@ -196,15 +203,16 @@ class CustomLoginView(APIView):
         user = validated_data['user']
         role = validated_data['role']
 
-        # Генерация токенов с ролью
-        refresh = RefreshToken.for_user(user)
-        refresh['role'] = role
-        access_token = refresh.access_token
-        access_token['role'] = role
+        redirect_url = request.data.get('redirect_url', '')
+        access_token = create_token_for_role(user=user, role=role)
+        send_email_for_user_login(
+            user, token=access_token, redirect_url=redirect_url
+            )
 
         return Response({
-            'refresh': str(refresh),
-            'access': str(access_token),
+            'message': SUCCESSFUL_LOGIN_MESSAGE,
+            'access_token': str(access_token),
+            'role': role
         }, status=status.HTTP_200_OK)
 
 
@@ -260,7 +268,7 @@ class ChangeUserRoleView(APIView):
             role = check_rolle_user[0]  # Выбираем единственную оставшуюся роль
 
             # Проверяем наличие refresh_token в теле запроса
-            refresh_token = request.data.get('refresh_token')
+            refresh_token = request.data.get('refresh')
             if not refresh_token:
                 return Response(
                     {'detail': 'Refresh token отсутствует.'},
@@ -288,8 +296,9 @@ class ChangeUserRoleView(APIView):
             # Возвращаем новые токены
             return Response({
                 'message': 'Роль успешно изменена.',
-                'access_token': str(new_access_token),
-                'refresh_token': str(new_refresh_token)
+                'access': str(new_access_token),
+                'refresh': str(new_refresh_token),
+                'role': role
             }, status=status.HTTP_200_OK)
 
         # Если текущая роль не найдена в списке ролей пользователя

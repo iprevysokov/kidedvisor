@@ -14,7 +14,17 @@ DEFAULT_EMPTY_VALUE = '-Не задано-'
 SUCCESSFUL_REGISTRATION_MESSAGE = (
     'Вы успешно зарегистрировались. Вам направлено письмо на email'
     )
-# Токены
+
+# CustomLoginView
+
+#  def post
+SUCCESSFUL_LOGIN_MESSAGE = (
+    'Вам направлено письмо на email с ссылкой для входа в систему'
+    )
+
+# class RefreshAccessTokenView
+
+# def post
 NOT_VALID_TOKEN_MESSAGE = '''
     Токен истек или недействителен.
     Пожалуйста, выполните повторный вход в систему.

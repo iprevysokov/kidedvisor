@@ -49,6 +49,6 @@ def create_token_for_role(user, role):
     access_token['role'] = role
 
     # Устанавливаем время жизни первичного access токена
-    access_token.set_exp(lifetime=timedelta(minutes=10))
+    access_token.set_exp(lifetime=timedelta(minutes=100))
 
     return str(access_token)
