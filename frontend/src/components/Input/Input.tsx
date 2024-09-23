@@ -3,7 +3,7 @@ import './Input.scss';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
     placeholder: string;
-    type?: 'text' | 'password' | 'tel' | 'email';
+    type?: 'text' | 'password' | 'tel' | 'email' | 'file';
     additionalClass?: string;
 }
 
