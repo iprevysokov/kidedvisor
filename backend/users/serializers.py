@@ -120,6 +120,15 @@ class LoginSerializer(serializers.Serializer):
                     'Модератор не может иметь другие роли.'
                     )
             role = 'moderator'
+        check_rolle_user = list(
+            RolesUser.objects.filter(user=user).values_list('role', flat=True)
+        )
+
+        if role not in check_rolle_user:
+            role_description = dict(RolesUser.ROLE_CHOICES).get(role)
+            raise serializers.ValidationError(
+                f'Пользователь не зарегтстрирован в роли: {role_description}.'
+                )
 
         data.pop('field', None)
         data['user'] = user

@@ -128,8 +128,9 @@ class UserViewSet(mixins.UpdateModelMixin,
 
 class ExchangeTokenView(APIView):
     """
-    Класс для передачи  новых пар токенов 'access_token' и 'refresh_token'
-    после первичной аутентификации.
+    Класс для передачи пользователю
+    новых пар токенов 'access_token' и 'refresh_token'
+    После первичной аутентификации,
     через ссылку отправленную на email.
     """
 
@@ -218,8 +219,10 @@ class CustomLoginView(APIView):
 
 class ChangeUserRoleView(APIView):
     """
-    API для смены роли пользователя. Используется метод PUT для замены роли.
-    Обязательно передаётся 'refresh_token' токен для изменения роли и доступа.
+    API для смены роли пользователя.
+    Доступно только авторизованным пользователям.
+    Используется метод PUT для замены роли.
+    Обязательно передаётся 'refresh' токен для изменения роли и доступа.
     """
 
     permission_classes = [permissions.IsAuthenticated]
@@ -293,12 +296,16 @@ class ChangeUserRoleView(APIView):
             # Добавляем новую роль в Access Token
             new_access_token['role'] = role
 
-            # Возвращаем новые токены
+            # Получаем описание роли
+            role_description = dict(RolesUser.ROLE_CHOICES).get(role)
+
+            # Возвращаем новые токены и сообщение об успешной смене роли
             return Response({
-                'message': 'Роль успешно изменена.',
+                'message': f'''
+                Роль успешно изменена. Новая роль: {role_description}.
+                ''',
                 'access': str(new_access_token),
                 'refresh': str(new_refresh_token),
-                'role': role
             }, status=status.HTTP_200_OK)
 
         # Если текущая роль не найдена в списке ролей пользователя

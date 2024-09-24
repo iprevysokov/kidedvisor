@@ -144,9 +144,9 @@ class RolesUser(models.Model):
     """Модель ролей пользователя."""
 
     ROLE_CHOICES = (
-        ('parent', 'Parent'),
-        ('owner', 'Section Owner'),
-        ('moderator', 'Moderator'),
+        ('parent', 'Роль родителя'),
+        ('owner', 'Владелец секции'),
+        ('moderator', 'Модератор'),
     )
 
     user = models.ForeignKey(
