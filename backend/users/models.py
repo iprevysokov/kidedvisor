@@ -34,7 +34,9 @@ class UserManager(BaseUserManager):
         if extra_fields.get("is_superuser") is not True and not phone_number:
             raise ValueError("Номер телефона обязательное поле.")
         user = self.model(
-            email=self.normalize_email(email), phone_number=phone_number, **extra_fields
+            email=self.normalize_email(email),
+            phone_number=phone_number,
+            **extra_fields
         )
         if password:
             user.set_password(password)
@@ -66,7 +68,10 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
-    STATUS_CHOICES = [("active", "Активен"), ("blocked", "Пользователь заблокирован")]
+    STATUS_CHOICES = [
+        ("active", "Активен"),
+        ("blocked", "Пользователь заблокирован")
+        ]
 
     username = None
 
@@ -114,7 +119,10 @@ class User(AbstractUser):
     )
 
     status = models.CharField(
-        max_length=20, choices=STATUS_CHOICES, default="active", verbose_name="Статус"
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default="active",
+        verbose_name="Статус"
     )
 
     objects = UserManager()
@@ -188,7 +196,10 @@ class RolesUser(models.Model):
         verbose_name_plural = "Роли пользователей"
         ordering = ("user",)
         constraints = [
-            models.UniqueConstraint(fields=["user", "role"], name="unique_user_role")
+            models.UniqueConstraint(
+                fields=["user", "role"],
+                name="unique_user_role"
+            )
         ]
 
     def __str__(self):
