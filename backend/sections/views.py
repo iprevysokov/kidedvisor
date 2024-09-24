@@ -20,13 +20,6 @@ class SectionViewSet(mixins.UpdateModelMixin,
         """Регистрация секции в системе."""
 
         return self._register_section(self, request=request)
-    
-    # def upload_image(request, section):
-    #     "Загрузка фото к секции"
-    #     if request == "POST":
-    #         image = request.
-        
-        
 
     @staticmethod
     def _register_section(self, request):
@@ -62,6 +55,21 @@ class SectionViewSet(mixins.UpdateModelMixin,
             {'message': SUCCESSFUL_REGISTRATION_MESSAGE_SECTION},
             status=status.HTTP_201_CREATED
             )
+    
+    @action(detail=False, methods=['post'])
+    def upload_image(request, section):
+        "Загрузка фото к секции"
+        section = Section.objects.all()
+        images = request.FILES.getlist('images')
+        # order = request.
+        # указываю порядок, далее какая-то проверка с порядком
+        if section:
+            if Section.objects.filter(section=section).exists():
+                return section.id
+            SectionImage.objects.create(images=images)
+            return Response('uspeh')
+        serializer = SectionSerializer(images=request.data)
+        serializer.save()
 
     @action(detail=False, methods=['get'])
     def get_section_info(self, request):
@@ -70,3 +78,14 @@ class SectionViewSet(mixins.UpdateModelMixin,
         section = Section.objects.get(id=request.section.id)
         serializer = self.get_serializer(section)
         return Response(serializer.data)
+
+    # @action(detail=False, methods=['get'])
+    # def get_section_info(self):
+    #     """Получение информации о секции."""
+    #     if self.request.method == 'GET':
+    #         queryset = Section.objects.all()
+    #         id = self.request.GET.get(id, None)
+    #         if id is not None:
+    #             queryset = queryset.filter(id=id)
+    #         return queryset
+

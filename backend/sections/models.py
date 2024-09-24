@@ -120,8 +120,15 @@ class SectionImage(models.Model):
     images = models.FileField(upload_to='images/',
                               verbose_name='Фотография',)
     order = models.CharField(max_length=100, blank=True,
-                             choices=CHOICES, unique=True,
+                             choices=CHOICES,
                              verbose_name='Порядок фото',)
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['section_image', 'order'],
+                name='unique_image',
+            ),]
 
     def __str__(self):
         return self.section_image.name
