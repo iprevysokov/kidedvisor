@@ -9,13 +9,16 @@ from .serializers import HelpRequestSerializer
 from django.core.mail import send_mail
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
+from users.models import User
+from users.serializers import UserSerializer
+from rest_framework.permissions import AllowAny
 
-
-class HelpRequestViewSet(viewsets.ModelViewSet): 
+class HelpRequestViewSet(viewsets.ModelViewSet):
     queryset = HelpRequest.objects.all()
     serializer_class = HelpRequestSerializer
-    permission_classes = [IsAuthenticated]
-    
+    permission_classes = [AllowAny]
+    # permission_classes = [IsAuthenticated]
+
     filter_backends = [
         DjangoFilterBackend,
         filters.OrderingFilter,
@@ -108,5 +111,95 @@ class HelpRequestViewSet(viewsets.ModelViewSet):
         except (BadHeaderError, SMTPException) as e:
             return Response(
                 {"detail": f"Ошибка при повторной отправке письма: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
+
+class UserModerationViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+    # permission_classes = [IsAuthenticated]
+
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    filterset_fields = ["status"]  # Фильтр по статусу
+    search_fields = ["email", "first_name", "last_name"]  # Поиск по email и имени
+
+    @action(detail=True, methods=["post"])
+    def block_user(self, request, pk=None):
+        user = self.get_object()
+        user.status = "blocked"
+        user.save()
+        return Response(
+            {"detail": "Пользователь заблокирован."}, status=status.HTTP_200_OK
+        )
+
+    @action(detail=True, methods=["post"])
+    def unblock_user(self, request, pk=None):
+        user = self.get_object()
+        if user.status == "blocked":
+            user.status = "active"
+            user.save()
+            return Response(
+                {"detail": "Пользователь разблокирован."}, status=status.HTTP_200_OK
+            )
+        return Response(
+            {"detail": "Пользователь не заблокирован."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    @action(detail=True, methods=["delete"])
+    def delete_user(self, request, pk=None):
+        user = self.get_object()
+        user.delete()
+        return Response(
+            {"detail": "Спасибо! Пользователь был удален по правам администратора."},
+            status=status.HTTP_200_OK,
+        )
+
+    @action(detail=True, methods=["post"])
+    def send_remark(self, request, pk=None):
+        user = self.get_object()
+        remark = request.data.get("remark")
+
+        # Проверка наличия текста замечания
+        if not remark:
+            return Response(
+                {"detail": "Замечание не может быть пустым."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # Формирование текста письма
+        email_message = f"""
+        Уважаемый(ая) {user.first_name},
+
+        Мы хотели бы сообщить вам следующее замечание:
+
+        "{remark}"
+
+        Если у вас есть вопросы или вы хотите обсудить это замечание, пожалуйста, свяжитесь с нами.
+
+        С уважением,
+        Ваша команда поддержки
+        """
+
+        # Попытка отправить письмо
+        try:
+            send_mail(
+                subject="Замечание от администрации",
+                message=email_message,
+                from_email="noreply@example.com",  # Укажите реальный адрес отправителя
+                recipient_list=[user.email],
+            )
+            return Response(
+                {"detail": "Замечание успешно отправлено."}, status=status.HTTP_200_OK
+            )
+        except (BadHeaderError, SMTPException) as e:
+            return Response(
+                {"detail": f"Ошибка при отправке письма: {str(e)}"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
