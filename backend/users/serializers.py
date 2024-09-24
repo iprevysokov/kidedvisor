@@ -15,15 +15,18 @@ class UserSerializer(serializers.ModelSerializer):
     Поддерживает запись, чтение и обновление данных пользователя.
     """
 
+    status = serializers.CharField(read_only=True)  # Статус только для чтения
+
     class Meta:
         model = User
         fields = (
-            'email',
-            'phone_number',
-            'first_name',
-            'middle_name',
-            'last_name',
-            'image',
+            "email",
+            "phone_number",
+            "first_name",
+            "middle_name",
+            "last_name",
+            "image",
+            "status",
         )
 
     def validate(self, data):
@@ -34,14 +37,12 @@ class UserSerializer(serializers.ModelSerializer):
         здесь оно проверяется на наличие.
         """
 
-        request = self.context.get('request')
+        request = self.context.get("request")
 
-        if request.method == 'POST':
+        if request.method == "POST":
 
-            if not data['phone_number']:
-                raise serializers.ValidationError(
-                    'Номер телефона обязательное поле.'
-                )
+            if not data["phone_number"]:
+                raise serializers.ValidationError("Номер телефона обязательное поле.")
 
         return data
 
