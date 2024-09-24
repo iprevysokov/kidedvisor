@@ -1,5 +1,6 @@
 # users models
 
+# Константы для модели пользователя
 MAX_LENGTH_EMAIL_FIELD = 254
 MAX_LENGTH_CHAR_FIELD = 150
 
@@ -34,9 +35,11 @@ NOT_VALID_TOKEN_MESSAGE = '''
 
 # def send_email_for_user_login Отправка письма пользователю
 TEXT_ENTER_APP = 'Добро пожаловать в Kidedvisor'
-
 # ссылка для авторизации.
 # При первичной регистрации пользователя в приложении по access_token
 FRONTEND_ACCESS_URL = 'http://localhost:3000'
 
 FRONTEND_LOGIN_URL = 'frontend/users/login/'
+
+# def create_token_for_role
+TOKEN_LIFETIME_MIN = 15
