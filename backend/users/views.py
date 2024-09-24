@@ -152,6 +152,7 @@ class ExchangeTokenView(APIView):
 
         except TokenError as exc:
             raise InvalidToken({'detail': str(exc)})
+
         else:
             refresh_token = RefreshToken.for_user(user)
             refresh_token['role'] = role
