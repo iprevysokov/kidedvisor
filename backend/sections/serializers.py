@@ -7,29 +7,29 @@ class SectionSerializer(serializers.ModelSerializer):
     Сериализатор для работы с секциями.
     Поддерживает запись, чтение и обновление данных о секциях.
     """
+    # images = [image_main, image_1, image_2, image_3, image_4]
 
     class Meta:
         model = Section
         fields = (
-            "category_name",
-            "type_name",
-            "name",
-            "address",
-            "age_s",
-            "age_f",
-            "work_day_mon",
-            "work_day_tue",
-            "work_day_wed",
-            "work_day_thu",
-            "work_day_fri",
-            "work_day_sat",
-            "work_day_sun",
-            "email",
-            "phone_number",
-            "subscription",
-            "schedule",
-            "description",
-            "image",
+            'category_name',
+            'type_name',
+            'name',
+            'address',
+            'age_s',
+            'age_f',
+            'work_day_mon',
+            'work_day_tue',
+            'work_day_wed',
+            'work_day_thu',
+            'work_day_fri',
+            'work_day_sat',
+            'work_day_sun',
+            'email',
+            'phone_number',
+            'subscription',
+            'schedule',
+            'description',
         )
 
         model = SectionImage

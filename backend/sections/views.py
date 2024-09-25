@@ -119,3 +119,14 @@ class SectionViewSet(
         section = Section.objects.get(id=request.section.id)
         serializer = self.get_serializer(section)
         return Response(serializer.data)
+
+    # @action(detail=False, methods=['get'])
+    # def get_section_info(self):
+    #     """Получение информации о секции."""
+    #     if self.request.method == 'GET':
+    #         queryset = Section.objects.all()
+    #         id = self.request.GET.get(id, None)
+    #         if id is not None:
+    #             queryset = queryset.filter(id=id)
+    #         return queryset
+
