@@ -7,7 +7,6 @@ class SectionSerializer(serializers.ModelSerializer):
     Сериализатор для работы с секциями.
     Поддерживает запись, чтение и обновление данных о секциях.
     """
-    # images = [image_main, image_1, image_2, image_3, image_4]
 
     class Meta:
         model = Section
@@ -58,6 +57,7 @@ class SectionSerializer(serializers.ModelSerializer):
 
         return section
 
+
 class SectionImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = SectionImage
@@ -69,6 +69,5 @@ class SectionImageSerializer(serializers.ModelSerializer):
         image_data = validated_data.pop('images')
         order = validated_data.pop('order')
         return SectionImage.objects.create(section_image=section_image, images=image_data, order=order)
-
 
 
