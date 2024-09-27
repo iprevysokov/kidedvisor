@@ -141,18 +141,11 @@ class SectionImage(models.Model):
         max_length=100,
         blank=True,
         choices=CHOICES,
+        unique=True,
         verbose_name="Порядок фото",
     )
 
     class Meta:
-
-        constraints = [
-            models.UniqueConstraint(
-                fields=['section_image', 'order'],
-                name='unique_image',
-            ),]
-
-    # class Meta:
         verbose_name = "Изображение секции"
         verbose_name_plural = "Изображения секций"
 

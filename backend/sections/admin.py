@@ -16,7 +16,7 @@ admin.site.register(Category, CategoryAdmin)
 
 class SectionImagesAdmin(admin.StackedInline):
     model = SectionImage
-    list_display = ['section_image', 'images', 'id', 'order']
+    list_display = ['section_image', 'images']
 
 
 @admin.register(Section)
