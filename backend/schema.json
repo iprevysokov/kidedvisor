@@ -1,0 +1,227 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "",
+    "version": ""
+  },
+  "paths": {
+    "/api/users/get_me/": {
+      "get": {
+        "operationId": "getMeUser",
+        "description": "Получение информации о пользователе.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/users/register_owner/": {
+      "post": {
+        "operationId": "registerOwnerUser",
+        "description": "Регистрация пользователя в системе в роле владельца секции 'owner'.",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/users/register_parent/": {
+      "post": {
+        "operationId": "registerParentUser",
+        "description": "Регистрация пользователя в системе в роли родителя ('parent').",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/users/{id}/": {
+      "patch": {
+        "operationId": "partialUpdateUser",
+        "description": "Представление для работы с пользователями.\nСоздание, чтение, обновление и удаление пользователей.\nДополнительная логика:\n- Присвоение ролей пользователю при регистрации.\n- Поддерживаемые роли: 'parent', 'owner'.\nДоступные HTTP методы: GET, PATCH, DELETE, POST.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this Пользователь.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "delete": {
+        "operationId": "destroyUser",
+        "description": "Представление для работы с пользователями.\nСоздание, чтение, обновление и удаление пользователей.\nДополнительная логика:\n- Присвоение ролей пользователю при регистрации.\n- Поддерживаемые роли: 'parent', 'owner'.\nДоступные HTTP методы: GET, PATCH, DELETE, POST.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this Пользователь.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          },
+          "phone_number": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 128
+          },
+          "first_name": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "middle_name": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "last_name": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "image": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
+          }
+        },
+        "required": [
+          "email",
+          "phone_number"
+        ]
+      }
+    }
+  }
+}
