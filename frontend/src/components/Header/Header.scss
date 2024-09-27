@@ -1,0 +1,24 @@
+.header {
+  padding: 0 16px;
+  height: 109px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  &__logo {
+    margin-top: auto;
+    margin-bottom: 10px;
+    width: 266px;
+  }
+}
+
+.afford {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 250px;
+  margin-left: auto;
+  margin-right: 0;
+}

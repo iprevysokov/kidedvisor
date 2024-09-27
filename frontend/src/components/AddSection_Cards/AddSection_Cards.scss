@@ -1,0 +1,45 @@
+.cards {
+    width: 360px;
+    font-family: 'Inter', sans-serif;
+    &_container {
+    }
+    &_title {
+        font-size: 32px;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+    &_items {
+        display: flex;
+        flex-wrap: wrap;
+    };
+    &_button {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+        margin-top: 13px;
+        margin-left: 13px;
+    }
+}
+
+.btn_icon_title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #0085FF;
+}
+
+#card {
+    width: 160px;
+    height: 156px;
+    border: 1px black solid;
+    border-radius: 16px;
+}
+
+.delete_btn {
+    margin-left: 124px;
+    margin-top: 8px;
+}
+
+.button {
+    margin-top: 656px;
+}

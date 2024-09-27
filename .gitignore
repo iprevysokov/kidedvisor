@@ -168,3 +168,5 @@ sent_emails/
 # Игнорировать все файлы в директориях `migrations`, кроме `__init__.py`
 **/migrations/*
 !**/migrations/__init__.py
+media/
+.vscode

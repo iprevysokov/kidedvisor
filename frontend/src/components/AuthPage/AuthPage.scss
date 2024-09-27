@@ -1,0 +1,50 @@
+.authPage {
+    margin-top: 33px;
+    width: calc(100% - 32px);
+    &__form {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    &__button {
+        margin: auto;
+        margin-bottom: 40px;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    &__info {
+        margin-top: 4px;
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 16px;
+    }
+
+}
+
+
+
+.top-container {
+    padding-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 2px 0;
+
+    &__item {
+        margin-right: 10px;
+    }
+}
+
+.auth_header {
+    width: calc(100% - 32px);
+    max-width: 323px;
+    display: flex;
+    flex-direction: column;
+    gap:36px;
+}

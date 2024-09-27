@@ -1,0 +1,152 @@
+@import "../../styles/variables.scss";
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tag-container {
+  margin-top: 16px;
+  display: flex;
+  width: calc(100% - 32px);
+  justify-content: space-between;
+}
+
+.search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  width: calc(100% - 32px);
+  height: 56px;
+  border: 2px solid $grayColor;
+  border-radius: 35px/30px;
+  padding: 0 14px;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    background: none;
+    outline: none;
+
+    color: $grayColor;
+    caret-color: $darkBlueColor;
+
+    font-family: var(--font-inter);
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__button {
+    border: none;
+    background: none;
+
+    padding: 0;
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    & img {
+      width: 25px;
+    }
+  }
+}
+
+.big-card {
+  margin-top: 24px;
+  position: relative;
+  width: calc(100% - 36px);
+  display: flex;
+  align-items: stretch;
+  border-radius: 14px;
+  overflow: hidden;
+
+  &__overlay-label {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: #0067C5;
+    background-color: rgba(255, 255, 255, 0.87);
+    padding: 5px;
+    border-radius: 0 0 0 9px;
+  }
+
+  &__container {
+    padding: 20px 0;
+    padding-left: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(90deg,
+        rgba(0, 0, 0, 0.6) 59.19%,
+        rgba(0, 0, 0, 0) 81.92%);
+    border-radius: 0px 8px 8px 0px;
+  }
+
+  &__background-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -2;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__logo {
+    width: 133px;
+    height: 37px;
+  }
+
+  &__heading {
+    margin-top: 38px;
+    width: calc(100% + 4px);
+    color: white;
+    font-size: 18px;
+  }
+
+  &__button {
+    margin-top: 32px;
+    padding: 10px 24px;
+
+    border: none;
+    border-radius: 35px/30px;
+
+    background: none;
+    background-color: $darkBlueColor;
+
+    align-self: flex-start;
+
+    cursor: pointer;
+
+    color: white;
+    font-family: var(--font-inter);
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.sections {
+  margin-top: 16px;
+  width: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

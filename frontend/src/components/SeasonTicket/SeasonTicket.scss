@@ -1,0 +1,37 @@
+.season_ticket {
+    &_container {
+        display: block;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    &_title {
+        font-weight: 400;
+        font-size: 32px;
+    }
+    &_block {
+        margin-top: 16px;
+    }
+    &_label {
+        margin-top: 16px;
+        margin-bottom: 8px;
+        font-weight: 500;
+        font-size: 16px;
+    }
+}
+
+#desc_textarea {
+    height: 233px;
+    width: 330px;
+    border: 1px #222020 solid;
+    border-radius: 16px;
+    padding: 13px 15px;
+    resize: none;
+}
+
+#desc_textarea:focus {
+    outline: none;
+}
+
+.button {
+    margin-top: 250px;
+}

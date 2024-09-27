@@ -1,0 +1,53 @@
+.add_section {
+    &_container {
+        display: block;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+    &_title {
+        font-size: 32px;
+        font-weight: 500;
+    }
+    &_btn {
+        margin-top: 300px;
+    }
+}
+
+.section_name_container {
+    display: block;
+    margin-top: 16px;
+}
+
+.section_desc_container {
+    margin-top: 16px;
+}
+
+.input {
+    &_label_container {
+        margin-bottom: 8px;
+    }
+    &_label {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    &_name {
+        margin-top: 8px;
+    }
+    &_desc {
+        height: 112px;
+
+    }
+}
+
+#desc_textarea {
+    height: 112px;
+    width: 328px;
+    border: 1px #222020 solid;
+    border-radius: 16px;
+    padding: 13px 15px;
+    resize: none;
+}
+
+#desc_textarea:focus {
+    outline: none;
+}

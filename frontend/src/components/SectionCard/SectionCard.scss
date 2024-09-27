@@ -1,0 +1,24 @@
+@import '../../styles/variables.scss';
+
+.SectionCard {
+    position: relative;
+    &__image {
+        border-radius: 9px;
+    }
+    &__rating {
+        position: absolute;
+        right: 5px;
+        top:8px;
+        font-size: 13px;
+        color: white;
+        border-color: $darkBlueColor;
+        padding: 2px;
+        background-color: $darkBlueColor;
+        border-radius: 6px;
+    }
+    &__name {
+        margin-top: 4px;
+        font-size: 10px;
+        font-weight: 400;
+    }
+}

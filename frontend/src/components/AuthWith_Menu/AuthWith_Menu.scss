@@ -1,0 +1,38 @@
+
+.authWith_menu_ul {
+    margin-top: auto;
+    margin-bottom: 0;
+    display: block;
+    flex-wrap: wrap;
+    text-align: center;
+    background-color: white;
+    border-radius: 14px 14px 0 0;
+    padding-bottom: 46px;
+    z-index: 2;
+    transition: all 0.3s;
+    width: 100%;
+    transform: translateY(100%);
+}
+
+a {
+    color: black;
+}
+
+#auth_vk {
+    margin-top: 32px;
+}
+
+.auth_vk_img,
+.auth_ya_img {
+    vertical-align: middle;
+}
+
+#auth_hr {
+    margin-top: 16px;
+    height: 1px;
+    background-color: #C7C7C7;
+}
+
+#auth_yandex {
+    margin-top: 16px;
+}
