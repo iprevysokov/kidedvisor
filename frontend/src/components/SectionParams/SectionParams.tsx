@@ -6,7 +6,11 @@ import Location from "../Map/Location";
 import Button from "../Button/Button";
 //import Map from '../Map/Map';
 
-export default function SectionParams() {
+interface props {
+    onNextClick: () => void;
+}
+
+export default function SectionParams({ onNextClick }: props) {
     return (
         <div className="section_params">
             <div className="section_params_container">
@@ -15,32 +19,32 @@ export default function SectionParams() {
                     <div className="section_params_label">
                         <span>Направление</span>
                     </div>
-                    <Input additionalClass="dir_input" placeholder="Например, спорт"/>
+                    <Input additionalClass="dir_input" placeholder="Например, спорт" />
                     <div className="section_params_label">
                         <span>Вид деятельности</span>
                     </div>
-                    <Input additionalClass="dir_input" placeholder="Например, футбол"/>
+                    <Input additionalClass="dir_input" placeholder="Например, футбол" />
                     <div className="section_params_label">
                         <span>Вид деятельности</span>
                     </div>
-                    <Input additionalClass="dir_input" placeholder="Например, футбол"/>
+                    <Input additionalClass="dir_input" placeholder="Например, футбол" />
                     <div className="section_params_label">
                         <span>Возраст</span>
                     </div>
-                    <Input additionalClass="dir_input" placeholder="Введите возраст"/>
+                    <Input additionalClass="dir_input" placeholder="Введите возраст" />
                     <div className="section_params_label">
                         <span>Адрес</span>
                     </div>
-                    <Input additionalClass="dir_input" placeholder="Введите адрес"/>
+                    <Input additionalClass="dir_input" placeholder="Введите адрес" />
                     <div className="section_params_label">
                         <span>Уточните место на карте</span>
-                    </div>  
+                    </div>
                     <div className="location">
                         <Location />
                     </div>
                 </div>
             </div>
-            <Button title="Далее" additionalClass="button"/>
+            <Button title="Далее" additionalClass="button" onClick={onNextClick} />
         </div>
     )
 }

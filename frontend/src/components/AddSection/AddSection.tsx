@@ -4,7 +4,11 @@ import '../AddSection/AddSection.scss'
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 
-export default function AddSection() {
+interface props {
+    onNextClick: () => void;
+}
+
+export default function AddSection({ onNextClick }: props) {
     return (
         <div className='add_section'>
             <div className='add_section_container'>
@@ -13,16 +17,16 @@ export default function AddSection() {
                     <div className='input_label_container'>
                         <span className='input_label'>Название секции</span>
                     </div>
-                    <Input additionalClass='input_name' placeholder='Например, «Радуга»' type='text'/>
+                    <Input additionalClass='input_name' placeholder='Например, «Радуга»' type='text' />
                 </div>
                 <div className='section_desc_container'>
-                <div className='input_label_container'>
+                    <div className='input_label_container'>
                         <span className='input_label'>Описание секции</span>
-                </div>
-                <textarea name='desc' id="desc_textarea" placeholder='Введите описание'></textarea>
+                    </div>
+                    <textarea name='desc' id="desc_textarea" placeholder='Введите описание'></textarea>
                 </div>
             </div>
-            <Button additionalClass='add_section_btn' title='Далее'/>
+            <Button additionalClass='add_section_btn' title='Далее' onClick={onNextClick} />
         </div>
     )
 }
