@@ -4,7 +4,6 @@ import './SectionParams.scss';
 import Input from "../Input/Input";
 import Location from "../Map/Location";
 import Button from "../Button/Button";
-//import Map from '../Map/Map';
 
 export default function SectionParams() {
     return (
