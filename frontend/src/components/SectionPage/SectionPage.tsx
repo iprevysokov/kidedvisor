@@ -15,6 +15,7 @@ import Arrow from '@/src/images/rightArrow.svg';
 import ArrowOpen from '@/src/images/arrow_open.svg';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import QuestionCircle from '@/src/images/question_circle.svg';
+import CardProgress from '../CardProgress/CardProgress';
 
 // Добавить карусель
 
@@ -138,6 +139,10 @@ export default function SectionPage() {
 
           </div>
         </div>
+
+        <CardProgress additionalClass='moderation' title='Находится на модерации'/>
+        <CardProgress additionalClass='success' title='Размещение на главном баннере'/>
+
         <div className='section_page_poster'>
             <div className='section_page_poster_settings'>
               <div className='section_page_poster_settings_container'>
