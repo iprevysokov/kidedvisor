@@ -11,7 +11,10 @@ import Card_2 from '@/src/images/sectionpage_carousel_2.svg';
 import Card_3 from '@/src/images/sectionpage_carousel_3.svg';
 import Star from '@/src/images/rating_star.svg';
 import Sneaker from '@/src/images/sneaker.svg';
-import Arrow from '@/src/images/rightArrow.svg'
+import Arrow from '@/src/images/rightArrow.svg';
+import ArrowOpen from '@/src/images/arrow_open.svg';
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
+import QuestionCircle from '@/src/images/question_circle.svg';
 
 // Добавить карусель
 
@@ -137,15 +140,48 @@ export default function SectionPage() {
         </div>
         <div className='section_page_poster'>
             <div className='section_page_poster_settings'>
-              <button className='section_page_poster_button'>
-                <span>Настроить афишу для секции</span>
-              </button>
-              <Image 
-                  src={Arrow.src}
-                  width={8}
-                  height={13}
-                  alt='Вид спорта'
-                />
+              <div className='section_page_poster_settings_container'>
+                <button className='section_page_poster_button'>
+                  <span>Настроить афишу для секции</span>
+                </button>
+                <button className='section_page_poster_arrow'>
+                  <Image 
+                      src={ArrowOpen.src}
+                      width={8}
+                      height={13}
+                      alt='Открыть'
+                    />  
+                </button>
+              </div>
+              <div className='open_settings_container'>
+                <div className='open_settings_container_banner'>
+                  <span className='open_settings_container_banner_title'>Разместить на главном баннере</span>
+                  <ToggleSwitch />
+                </div>
+                <div className='open_settings_container_carousel'>
+                  <span className='open_settings_container_carousel_title'>Разместить в карусели</span>
+                  <ToggleSwitch />
+                </div>
+                <div className='open_settings_container_search'>
+                  <span className='open_settings_container_search_title'>Баннер по результату поиска</span>
+                  <ToggleSwitch />
+                </div>
+                <div className='open_settings_container_question'>
+                  <span>Если возникли вопросы по рекламе, свяжитесь с нашим менеджером</span>
+                </div>
+
+                <div className='open_settings_container_send'>
+                  <button>
+                    <span>Отправить заявку</span>
+                  </button>
+                </div>
+                <div className='open_settings_container_contact'>
+                  <button>
+                    <span>Связаться с менеджером</span>
+                  </button>
+                </div>
+              
+              </div>
             </div>
         </div>
 

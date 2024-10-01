@@ -50,21 +50,33 @@
         margin-top: 16px;
         &_settings {
             width: 330px;
-            height: 60px;
+            //height: 60px;
             border: black 1px solid;
             border-radius: 16px;
             text-align: center;
             align-items: center;
-            display: flex; 
-            justify-content: center;
-            gap: 50px;
+            //display: flex; 
+            //justify-content: center;
+            //gap: 50px;
+            &_container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 50px;
+                text-align: center;
+            }
         }
         &_button {
-
+            font-weight: 500;
+            margin-top: 16px;
+        }
+        &_arrow {
+            margin-top: 16px;
+            padding-top: 15px;
         }
     }
     &_footer {
-        margin-top: 66px;
+        margin-top: 27px;
         &_container {
             display: block;
             flex-wrap: wrap;
@@ -124,4 +136,84 @@
 
 .right_item {
     display: block;
+}
+
+
+.open_settings_container {
+    padding-left: 14px;
+    div {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        width: 300px;
+        height: 44px;
+        border-radius: 12px;
+        margin: 0 auto;
+        font-size: 14px;
+        font-weight: 400;
+    }
+    &_banner {
+        margin-top: 15px !important;
+        padding-left: 12px;
+        padding-right: 8px;
+        background-color: #F6F6F6;
+        &_title {
+            white-space: nowrap;
+        }
+    }
+    &_carousel {
+        margin-top: 15px !important;
+        padding-left: 12px;
+        padding-right: 8px;
+        background-color: #F6F6F6;
+        align-items: center;
+        &_title {
+            white-space: nowrap;
+        }
+    }
+    &_search {
+        margin-top: 15px !important;
+        padding-left: 12px;
+        padding-right: 8px;
+        background-color: #F6F6F6;
+        &_title {
+            white-space: nowrap;
+        }
+    }
+    &_question {
+        margin-top: 7px !important;
+        color: #8A8A8E;
+        background-color: transparent !important;
+        position: relative; /* Родительский элемент */
+        padding-left: 30px; /* Отступ для текста, чтобы не перекрывался с иконкой */
+    }
+    &_question::before {
+        content: url(../../images/question_circle.svg);
+        position: absolute; /* Абсолютное позиционирование */
+        top: 0; /* Положение сверху */
+        left: 0; /* Положение слева */
+        width: 20px; /* Задайте нужный размер иконки */
+        height: 20px; /* Задайте нужный размер иконки */
+    }
+    &_send {
+        margin-top: 16px !important;
+        button {
+            width: 298px;
+            height: 48px;
+            background-color: #0085FF;
+            border-radius: 50px;
+            color: white;
+        }
+    }
+    &_contact {
+        margin-top: 16px !important;
+        margin-bottom: 17px !important;
+        button {
+            width: 298px;
+            height: 48px;
+            border: #0085FF 2px solid;
+            border-radius: 50px;
+            color: #0085FF;
+        }
+    }
 }
