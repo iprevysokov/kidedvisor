@@ -4,13 +4,14 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Image from "next/image";
 import Plus from '../../images/plusphoto_icon.svg'
-
+import Afford from "../Afford/Afford";
 
 //Добавить попап
 
 export default function AddSectionPhoto() {
     return (
         <div className="add_photo">
+            <Afford />
             <div className="add_photo_container">
                 <div className="add_photo_title">
                     Олимпийский

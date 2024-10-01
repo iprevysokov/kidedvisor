@@ -1,0 +1,21 @@
+.contact_us {
+    &_container span {
+        font-size: 32px;
+        font-weight: 500;
+    }
+    &_message {
+        margin-top: 13px;
+    }
+    &_textarea {
+        font-size: 16px;
+        width: 327px;
+        height: 200px;
+        border: #222020 solid 1px;
+        border-radius: 16px;
+        padding: 16px;
+        resize: none;
+    }
+    &_textarea:focus {
+        outline-width: 0;
+    }
+}

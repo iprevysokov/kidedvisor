@@ -3,7 +3,11 @@ $mainColor: #0085FF;
 input[type='file']{
     color: transparent;
 }
+
 .all_info {
+    &_container {
+        padding-left: 16px ;
+    }
     &_photo_title {
         font-weight: 500;
         font-size: 32px;

@@ -4,11 +4,13 @@ import Input from '../Input/Input';
 import Image from 'next/image';
 import Plus from '../../images/plusphoto_icon.svg';
 import Button from '../Button/Button';
+import Afford from '../Afford/Afford';
 
 
 export default function AddSection_All_Info() {
     return (
         <div className='all_info'>
+            <Afford />
             <div className='all_info_container'>
                 <div className="all_info_photo">
                     <div className="all_info_photo_container">
