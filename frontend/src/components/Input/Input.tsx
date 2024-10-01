@@ -5,18 +5,26 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     placeholder?: string;
     type?: 'text' | 'password' | 'tel' | 'email' | 'file';
     additionalClass?: string;
+    label?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-    ({ placeholder, type = 'text', additionalClass, ...props }, ref) => {
+    ({ placeholder, type = 'text', additionalClass, label, ...props }, ref) => {
         return (
-            <input
-                className={`input ${additionalClass}`}
-                type={type}
-                placeholder={placeholder}
-                ref={ref}
-                {...props}  // Передаём все остальные пропсы
-            />
+            <>
+                {label && (
+                    <div className="label">
+                        <span>{label}</span>
+                    </div>
+                )}
+                <input
+                    className={`input ${additionalClass}`}
+                    type={type}
+                    placeholder={placeholder}
+                    ref={ref}
+                    {...props}  // Передаём все остальные пропсы
+                />
+            </>
         );
     }
 );

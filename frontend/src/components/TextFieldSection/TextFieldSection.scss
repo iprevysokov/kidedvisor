@@ -1,4 +1,4 @@
-.season_ticket {
+.textfield_section {
     &_container {
         display: block;
         flex-wrap: nowrap;
@@ -7,11 +7,13 @@
     &_title {
         font-weight: 400;
         font-size: 32px;
+        max-width: 329px;
     }
     &_block {
         margin-top: 16px;
     }
     &_label {
+        max-width: 329px;
         margin-top: 16px;
         margin-bottom: 8px;
         font-weight: 500;
