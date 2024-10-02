@@ -3,18 +3,13 @@ from sections.models import Section, SectionImage
 
 
 class SectionSerializer(serializers.ModelSerializer):
-    """
-    Сериализатор для работы с секциями.
-    Поддерживает запись, чтение и обновление данных о секциях.
-    """
-    # images = [image_main, image_1, image_2, image_3, image_4]
-
     class Meta:
         model = Section
         fields = (
             'category_name',
             'type_name',
             'name',
+            'city',
             'address',
             'age_s',
             'age_f',
@@ -26,18 +21,20 @@ class SectionSerializer(serializers.ModelSerializer):
             'work_day_sat',
             'work_day_sun',
             'email',
+            'tg_contact',
+            'whatsapp',
             'phone_number',
             'subscription',
             'schedule',
             'description',
         )
 
-        model = SectionImage
-        fields = (
-            "section_image",
-            "images",
-            "order",
-        )
+        # model = SectionImage
+        # fields = (
+        #     "section_image",
+        #     "images",
+        #     "order",
+        # )
 
     def validate(self, data):
         """
@@ -45,7 +42,9 @@ class SectionSerializer(serializers.ModelSerializer):
         """
 
         if not data["name"]:
-            raise serializers.ValidationError("Наименование секции обязательное поле.")
+            raise serializers.ValidationError(
+                "Наименование секции обязательное поле."
+        )
 
         return data
 
@@ -58,7 +57,10 @@ class SectionSerializer(serializers.ModelSerializer):
 
         return section
 
+
 class SectionImageSerializer(serializers.ModelSerializer):
+    images = serializers.ImageField()
+
     class Meta:
         model = SectionImage
         fields = ('id', 'section_image', 'images', 'order')
@@ -69,6 +71,3 @@ class SectionImageSerializer(serializers.ModelSerializer):
         image_data = validated_data.pop('images')
         order = validated_data.pop('order')
         return SectionImage.objects.create(section_image=section_image, images=image_data, order=order)
-
-
-

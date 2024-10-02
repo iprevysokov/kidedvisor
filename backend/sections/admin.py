@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Section, SectionImage
+from .models import Category, Section, SectionImage, Cities
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -7,6 +7,13 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
+
+
+class CityAdmin(admin.ModelAdmin):
+    list_display = ['city', 'id']
+
+
+admin.site.register(Cities, CityAdmin)
 
 # class SubscriptionAdmin(admin.ModelAdmin):
 #    list_display = ['subscription_name']

@@ -36,6 +36,22 @@ class Category(models.Model):
         return self.category_name
 
 
+class Cities(models.Model):
+    """Города"""
+
+    city = models.CharField(
+        max_length=50, db_index=True, verbose_name="Город"
+    )
+
+    class Meta:
+        # ordering = ("city",)
+        verbose_name = "Город"
+        verbose_name_plural = "Города"
+
+    def __str__(self):
+        return self.city
+
+
 #    """Модель абонемента"""
 # class subscription_type(models.Model):
 #    subscription_type = models.CharField(max_length=15)
@@ -76,26 +92,45 @@ class Section(models.Model):
     name = models.CharField(
         max_length=200, db_index=True, verbose_name="Название секции"
     )
-    address = models.CharField(max_length=200, db_index=True, verbose_name="Адрес")
+    city = models.ForeignKey(
+        Cities, on_delete=models.CASCADE, verbose_name="Выберите город"
+    )
+    address = models.CharField(
+        max_length=200, db_index=True, verbose_name="Адрес"
+    )
     age_s = models.DecimalField(
         max_digits=2,
         decimal_places=0,
         verbose_name="Возраст от",
-        validators=[MaxValueValidator(Decimal("99")), MinValueValidator(Decimal("0"))],
+        validators=[MaxValueValidator(Decimal("99")),
+                    MinValueValidator(Decimal("0"))],
     )
     age_f = models.DecimalField(
         max_digits=2,
         decimal_places=0,
         verbose_name="Возраст до",
-        validators=[MaxValueValidator(Decimal("99")), MinValueValidator(Decimal("0"))],
+        validators=[MaxValueValidator(Decimal("99")),
+                    MinValueValidator(Decimal("0"))],
     )
-    phone_number = PhoneNumberField("Номер телефона для связи", blank=True, null=True)
+    phone_number = PhoneNumberField(
+        "Номер телефона для связи", blank=True, null=True
+    )
     email = models.EmailField(
         "Электронная почта",
         max_length=MAX_LENGTH_EMAIL_FIELD,
     )
-    time_s = models.TimeField(verbose_name="Время работы с", blank=True, null=True)
-    time_f = models.TimeField(verbose_name="Время работы по", blank=True, null=True)
+    tg_contact = models.CharField(
+        max_length=100, db_index=True, verbose_name="Телеграм", blank=True
+    )
+    whatsapp = PhoneNumberField(
+        "Номер телефона для связи в whatsapp", blank=True, null=True
+    )
+    time_s = models.TimeField(
+        verbose_name="Время работы с", blank=True, null=True
+    )
+    time_f = models.TimeField(
+        verbose_name="Время работы по", blank=True, null=True
+    )
     work_day_mon = models.BooleanField(verbose_name="Пн", blank=True)
     work_day_tue = models.BooleanField(verbose_name="Вт", blank=True)
     work_day_wed = models.BooleanField(verbose_name="Ср", blank=True)
@@ -146,6 +181,13 @@ class SectionImage(models.Model):
     )
 
     class Meta:
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=['section_image', 'order'],
+                name='unique_image',
+            ),]
+
         verbose_name = "Изображение секции"
         verbose_name_plural = "Изображения секций"
 

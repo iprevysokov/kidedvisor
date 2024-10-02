@@ -14,8 +14,14 @@ class SectionViewSet(
     queryset = Section.objects.all()
     serializer_class = SectionSerializer
     parser_classes = (MultiPartParser, FormParser)  # Для загрузки файлов
+    # lookup_field = 'id'
 
     http_method_names = ["get", "patch", "delete", "post"]
+
+    def get_serializer_class(self):
+        if self.action == 'upload_image':
+            return SectionImageSerializer
+        return super().get_serializer_class()
 
     @action(detail=False, methods=["post"])
     def register_section(self, request):
@@ -30,7 +36,8 @@ class SectionViewSet(
             section = self.get_object()  # Получаем объект секции
         except Section.DoesNotExist:
             return Response(
-                {"error": "Секция не найдена."}, status=status.HTTP_404_NOT_FOUND
+                {"error": "Секция не найдена."},
+                status=status.HTTP_404_NOT_FOUND
             )
 
         # Передаем section в контекст сериализатора как section_image
@@ -44,39 +51,6 @@ class SectionViewSet(
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(
-        detail=True, methods=["delete"], url_path="delete_image/(?P<image_id>[^/.]+)"
-    )
-    def delete_image(self, request, pk=None, image_id=None):
-        """Удаление изображения по id"""
-        try:
-            image = SectionImage.objects.get(id=image_id, section_image_id=pk)
-            image.delete()
-            return Response(
-                {"detail": "Изображение удалено"}, status=status.HTTP_204_NO_CONTENT
-            )
-        except SectionImage.DoesNotExist:
-            return Response(
-                {"detail": "Изображение не найдено"}, status=status.HTTP_404_NOT_FOUND
-            )
-
-    @action(detail=True, methods=["post"], url_path="update_image/(?P<image_id>[^/.]+)")
-    def update_image(self, request, pk=None, image_id=None):
-        """Замена изображения по его id"""
-        try:
-            image = SectionImage.objects.get(id=image_id, section_image_id=pk)
-            image.images.delete()  # Удаление старого изображения
-            serializer = SectionImageSerializer(
-                image, data=request.data, partial=True
-            )  # Используем SectionImageSerializer
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            return Response(serializer.data)
-        except SectionImage.DoesNotExist:
-            return Response(
-                {"detail": "Изображение не найдено"}, status=status.HTTP_404_NOT_FOUND
-            )
-
     @staticmethod
     def _register_section(self, request):
         """
@@ -89,7 +63,7 @@ class SectionViewSet(
         Возвращает Response с сообщением об успешной регистрации или ошибке.
         """
 
-        section = Section.objects.filter(name=request.data["name"]).first()
+        section = Section.objects.filter(name=request.data['name']).first()
 
         if section:
             if Section.objects.filter(section=section).exists():
@@ -112,21 +86,51 @@ class SectionViewSet(
             status=status.HTTP_201_CREATED,
         )
 
-    @action(detail=False, methods=["get"])
-    def get_section_info(self, request):
+    @action(detail=True, methods=["get"])
+    def get_section_info(self, request, pk=None):
         """Получение информации о секции."""
 
-        section = Section.objects.get(id=request.section.id)
+        try:
+            section = self.get_object()
+        except Section.DoesNotExist:
+            return Response({"error": "Section not found."},
+                            status=status.HTTP_404_NOT_FOUND)
+
         serializer = self.get_serializer(section)
         return Response(serializer.data)
 
-    # @action(detail=False, methods=['get'])
-    # def get_section_info(self):
-    #     """Получение информации о секции."""
-    #     if self.request.method == 'GET':
-    #         queryset = Section.objects.all()
-    #         id = self.request.GET.get(id, None)
-    #         if id is not None:
-    #             queryset = queryset.filter(id=id)
-    #         return queryset
+    @action(
+        detail=True, methods=["delete"], url_path="delete_image/(?P<image_id>[^/.]+)"
+    )
+    def delete_image(self, request, pk=None, image_id=None):
+        """Удаление изображения по id"""
+        try:
+            image = SectionImage.objects.get(id=image_id, section_image_id=pk)
+            image.delete()
+            return Response(
+                {"detail": "Изображение удалено"},
+                status=status.HTTP_204_NO_CONTENT
+            )
+        except SectionImage.DoesNotExist:
+            return Response(
+                {"detail": "Изображение не найдено"},
+                status=status.HTTP_404_NOT_FOUND
+            )
 
+    @action(detail=True, methods=["post"], url_path="update_image/(?P<image_id>[^/.]+)")
+    def update_image(self, request, pk=None, image_id=None):
+        """Замена изображения по его id"""
+        try:
+            image = SectionImage.objects.get(id=image_id, section_image_id=pk)
+            image.images.delete()  # Удаление старого изображения
+            serializer = SectionImageSerializer(
+                image, data=request.data, partial=True
+            )  # Используем SectionImageSerializer
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)
+        except SectionImage.DoesNotExist:
+            return Response(
+                {"detail": "Изображение не найдено"},
+                status=status.HTTP_404_NOT_FOUND
+            )
