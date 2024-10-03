@@ -20,14 +20,26 @@ enum FormState {
     allInfo,
 }
 
-interface IFormInput {
+export interface IAddSectionFormInput {
     sectionName: string;
     sectionDescription: string;
+    sectionDirection: string;
+    sectionType: string;
+    age: number;
+    sectionAdress: string;
+    workTime: string;
+    workDays: string;
+    contactNumber: string;
+    contactEmail: string;
+    contactWhatsApp: string;
+    website: string;
+    abonements: string;
+    timetable: string;
 }
 
 export default function Add() {
     const [formState, setFormState] = useState<FormState>(FormState.nameAndDescription);
-    const { register, handleSubmit, formState: { errors }, getValues } = useForm<IFormInput>();
+    const { register, handleSubmit, formState: { errors }, getValues, control, setValue, trigger } = useForm<IAddSectionFormInput>();
 
     function handleNextClick() {
         setFormState((prev) => prev += 1);
@@ -35,21 +47,27 @@ export default function Add() {
 
     return (
         <form>
-            {formState == FormState.nameAndDescription && <AddSection onNextClick={handleNextClick} />}
-            {formState == FormState.infoAndLocation && <SectionParams onNextClick={handleNextClick} heading={getValues('sectionName')} />}
-            {formState == FormState.workInfo && <SectionInfo onNextClick={handleNextClick} heading={getValues('sectionName')} />}
+            {formState == FormState.nameAndDescription && <AddSection onNextClick={handleNextClick} register={register} />}
+            {formState == FormState.infoAndLocation && <SectionParams onNextClick={handleNextClick} heading={getValues('sectionName')} register={register} />}
+            {formState == FormState.workInfo && <SectionInfo onNextClick={handleNextClick} heading={getValues('sectionName')} register={register} control={control} setValue={setValue} trigger={trigger} />}
             {formState == FormState.abonements &&
                 <TextFieldSection
                     onNextClick={handleNextClick}
                     heading="Абонемент"
                     description="Какие абонементы доступны"
-                    placeholder="Информация об абонементах" />}
+                    placeholder="Информация об абонементах"
+                    register={register('abonements')}
+                />
+            }
             {formState == FormState.timetable &&
                 <TextFieldSection
                     onNextClick={handleNextClick}
                     heading="Расписание"
                     description="Укажите информацию о расписании доступных групп"
-                    placeholder="Информация о расписании" />}
+                    placeholder="Информация о расписании"
+                    register={register('timetable')}
+                />
+            }
             {formState == FormState.mainPhoto && <AddSectionPhoto onNextClick={handleNextClick} />}
             {formState == FormState.photos && <AddSection_Cards onNextClick={handleNextClick} />}
             {formState == FormState.allInfo && <AddSection_All_Info onNextClick={handleNextClick} />}

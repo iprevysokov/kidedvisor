@@ -29,14 +29,14 @@ export default function Header() {
           />
         </button>
       )}
-      <div className='afford'>
+      {/* <div className='afford'>
             <button>
                 <Image className='back_afford' alt='назад' src={back_afford.src} width={14} height={14}/>
             </button>
             <button>
                 <Image className='close_afford' alt='закрыть' src={close_afford.src} width={14} height={14}/>
             </button>
-      </div>
+      </div> */}
       <div>
         <Image
           className="header__logo"
