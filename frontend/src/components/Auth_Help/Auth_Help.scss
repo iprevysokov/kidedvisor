@@ -1,0 +1,32 @@
+.auth_help {
+    display: column;
+    flex-wrap: wrap;
+    h1 {
+        font-size: 32px;
+        font-weight: 500;
+    }
+    h2 {
+        margin-top: 16px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    textarea {
+        margin-top: 8px;
+        width: 328px;
+        height: 112px;
+        resize: none;
+        border-radius: 16px;
+        border: 1px solid black;
+        padding: 16px;
+    }
+    textarea:focus {
+        border: 1px solid black;
+        overflow: hidden;
+        outline:none;
+    }
+}
+
+.btn {
+    width: 328px !important;
+    margin-top: 390px;
+}

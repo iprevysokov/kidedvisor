@@ -1,0 +1,21 @@
+.check_mail {
+    width: 328px;
+    height: 190px;
+    //border: 1px #111 solid;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 2px 6px 11px 0px rgba(0, 0, 0, 0.5);
+    h1 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    h2 {
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+.btn{
+    margin-top: 24px;
+}
