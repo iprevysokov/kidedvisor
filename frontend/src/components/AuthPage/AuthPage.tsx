@@ -1,23 +1,22 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react';
-import './AuthPage.scss';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-import AuthWith_Button from '../AuthWith_Button/AuthWith_Button';
-import { Controller, useForm } from 'react-hook-form';
 import { defaultRequiredMessage } from '@/src/utils/constants';
+import React, { useEffect, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import AuthWith_Button from '../AuthWith_Button/AuthWith_Button';
+import Button from '../Button/Button';
+import Input from '../Input/Input';
+import './AuthPage.scss';
 //import AuthWith_Menu from '../AuthWith_Menu/AuthWIth_Menu';
-import back_afford from '../../images/back_aff.svg';
-import close_afford from '../../images/close_aff.svg';
+import { closePopup, openPopup } from '@/src/utils/redux/slices/appSlice';
+import { useAppDispatch } from '@/src/utils/redux/store';
+import { formatPhoneNumber } from '@/src/utils/utils';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import AuthWith_Menu from '../AuthWith_Menu/AuthWIth_Menu';
+import back_afford from '../../images/back_aff.svg';
+import close_afford from '../../images/close_aff.svg';
 import logo from "../../images/Kidedvisor.svg";
-import { useAppDispatch } from '@/src/utils/redux/store';
-import { closePopup, openPopup } from '@/src/utils/redux/slices/appSlice';
+import AuthWith_Menu from '../AuthWith_Menu/AuthWIth_Menu';
 import DefaultPopupElement from '../DefaultPopupElement/DefaultPopupElement';
-import parsePhoneNumber from 'libphonenumber-js'
-import { formatPhoneNumber } from '@/src/utils/utils';
 
 
 enum AuthState {

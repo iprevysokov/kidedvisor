@@ -1,15 +1,19 @@
-import React from 'react';
-import './AddSection_All_Info.scss';
+import { IAddSectionFormInput } from '@/src/app/(customHeader)/section_owner/add/page';
 import Image from 'next/image';
+import { Controller, UseFormReturn } from 'react-hook-form';
 import Plus from '../../../images/plusphoto_icon.svg';
-import Input from '../../Input/Input';
 import Button from '../../Button/Button';
+import Input from '../../Input/Input';
+import './AddSection_All_Info.scss';
+import { handlePhoneChange } from '@/src/utils/utils';
+import { ChangeEvent } from 'react';
 
 interface props {
     onNextClick: () => void;
+    formMethods: UseFormReturn<IAddSectionFormInput>;
 }
 
-export default function AddSection_All_Info({ onNextClick }: props) {
+export default function AddSection_All_Info({ onNextClick, formMethods: { getValues, register, setValue, trigger, control } }: props) {
     return (
         <div className='all_info'>
             <div className='all_info_container'>
@@ -17,7 +21,7 @@ export default function AddSection_All_Info({ onNextClick }: props) {
                     <div className="all_info_photo_container">
 
                         <div className="all_info_photo_title">
-                            Олимпийский
+                            {getValues('sectionName')}
                         </div>
 
                         <Input additionalClass="all_info_photo_input" type="file" title="" />
@@ -30,62 +34,86 @@ export default function AddSection_All_Info({ onNextClick }: props) {
                         </label>
                     </div>
                 </div>
-                <div className='input_label_container'>
-                    <span className='input_label'>Название секции</span>
-                </div>
-                <Input additionalClass='input_name' placeholder='Например, «Радуга»' type='text' />
+                <Input additionalClass='input_name' placeholder='Например, «Радуга»' type='text' label='Название секции' {...register('sectionName', { required: true })} />
 
-                <div className='input_label_container'>
-                    <span className='input_label'>Направление</span>
-                </div>
-                <Input additionalClass='input_name' placeholder='Направление' type='text' />
+                <Input additionalClass="dir_input" placeholder="Например, спорт" label="Направление" {...register('sectionDirection', { required: true })} />
+                <Input additionalClass="dir_input" placeholder="Например, футбол" label="Вид деятельности" {...register('sectionType', { required: true })} />
+                <Input additionalClass="dir_input" placeholder="Введите возраст" label="Возраст" type="number" {...register('age', { required: true, max: 99, min: 0 })} />
+                <Input additionalClass="dir_input" placeholder="Введите адрес" label="Адрес" {...register('sectionAdress', { required: true })} />
+                <Input additionalClass="dir_input" placeholder="Например, с 9 до 18" label='Время работы' {...register('workTime', { required: true })} />
+                <Input additionalClass="dir_input" placeholder="Например, с Пн по Вс" label='Дни работы' {...register('workDays', { required: true })} />
+                <Controller
+                    name="contactNumber"
+                    control={control}
+                    rules={{
+                        required: { value: true, message: 'Телефон обязателен' },
+                        maxLength: 18,
+                    }}
+                    render={({ field }) => (
+                        <Input
+                            placeholder='+7 (999) 999-99-99'
+                            label='Номер телефона для связи'
+                            type='tel'
 
-                <div className='input_label_container'>
-                    <span className='input_label'>Вид деятельности</span>
-                </div>
-                <Input additionalClass='input_name' placeholder='Вид деятельности' type='text' />
+                            {...field}
 
-                <div className='input_label_container'>
-                    <span className='input_label'>Адрес</span>
-                </div>
-                <Input additionalClass='input_name' placeholder='Адрес' type='text' />
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => handlePhoneChange<IAddSectionFormInput>(
+                                e,
+                                // setContactNumber,  // Локальный сеттер состояния для номера телефона
+                                'contactNumber',  // Имя поля для формы
+                                setValue,  // Функция из useForm для установки значения
+                                trigger  // Функция из useForm для триггера валидации
+                            )}
+                        />
+                    )}
+                />
+                <Input additionalClass="dir_input" placeholder="section@mail.ru" label='Электронная почта' type='email' {...register('contactEmail', { required: true })} />
+                <Controller
+                    name="contactWhatsApp"
+                    control={control}
+                    rules={{
+                        required: { value: true, message: 'Телефон обязателен' },
+                        maxLength: 18,
+                    }}
+                    render={({ field }) => (
+                        <Input
+                            placeholder='+7 (999) 999-99-99'
+                            label='WhatsApp'
+                            type='tel'
 
-                <div className='input_label_container'>
-                    <span className='input_label'>Возраст</span>
-                </div>
-                <Input additionalClass='input_name' placeholder='Возраст' type='text' />
+                            {...field}
 
-                <div className='input_label_container'>
-                    <span className='input_label'>Контакты</span>
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => handlePhoneChange<IAddSectionFormInput>(
+                                e,
+                                // setContactNumber,  // Локальный сеттер состояния для номера телефона
+                                'contactWhatsApp',  // Имя поля для формы
+                                setValue,  // Функция из useForm для установки значения
+                                trigger  // Функция из useForm для триггера валидации
+                            )}
+                        />
+                    )}
+                />
+                <Input additionalClass="dir_input" placeholder="Olimpiyskii.ru" label='Веб-сайт' {...register('website', { required: true })} />
+                <div className="textfield_section_block">
+                    <div className="textfield_section_label">
+                        <span>{'Абонементы'}</span>
+                    </div>
+                    <textarea id="desc_textarea" placeholder={'Информация об абонементах'} {...register('abonements')} />
                 </div>
-                <Input additionalClass='input_name' placeholder='Контакты' type='text' />
-
-                <div className='input_label_container'>
-                    <span className='input_label'>Время работы</span>
+                <div className="textfield_section_block">
+                    <div className="textfield_section_label">
+                        <span>{'Расписание'}</span>
+                    </div>
+                    <textarea id="desc_textarea" placeholder={'Информация о расписании'} {...register('abonements')} />
                 </div>
-                <Input additionalClass='input_name' placeholder='Время работы' type='text' />
-
-                <div className='input_label_container'>
-                    <span className='input_label'>Дни работы</span>
+                <div className="textfield_section_block">
+                    <div className="textfield_section_label">
+                        <span>{'Описание секции'}</span>
+                    </div>
+                    <textarea id="desc_textarea" placeholder={'Описание секции'} {...register('sectionDescription')} />
                 </div>
-                <Input additionalClass='input_name' placeholder='Дни работы' type='text' />
-
-                <div className='input_label_container'>
-                    <span className='input_label'>Абонементы</span>
-                </div>
-                <textarea name='desc' className="textarea_season_ticket" placeholder='Абонементы'></textarea>
-
-                <div className='input_label_container'>
-                    <span className='input_label'>Расписание</span>
-                </div>
-                <textarea name='desc' className="textarea_shedule" placeholder='Расписание'></textarea>
-
-                <div className='input_label_container'>
-                    <span className='input_label'>Описание секции</span>
-                </div>
-                <textarea name='desc' className="textarea_desc" placeholder='Описание секции'></textarea>
-                <Button title="Отправить" additionalClass="button" onClick={onNextClick} />
             </div>
+            <Button title="Отправить" additionalClass="button" onClick={onNextClick} />
         </div>
     )
 }

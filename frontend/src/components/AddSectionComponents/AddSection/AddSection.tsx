@@ -1,17 +1,15 @@
 'use client'
-import React from 'react';
-import './AddSection.scss'
-import Input from '../../Input/Input';
-import Button from '../../Button/Button';
-import { useForm, UseFormRegister } from 'react-hook-form';
 import { IAddSectionFormInput } from '@/src/app/(customHeader)/section_owner/add/page';
+import { UseFormReturn } from 'react-hook-form';
+import Button from '../../Button/Button';
+import Input from '../../Input/Input';
+import './AddSection.scss';
 
 interface props {
     onNextClick: () => void;
-    register: UseFormRegister<IAddSectionFormInput>;
+    formMethods: UseFormReturn<IAddSectionFormInput>;
 }
-
-export default function AddSection({ onNextClick, register }: props) {
+export default function AddSection({ onNextClick, formMethods: { register } }: props) {
     return (
         <div className='add_section'>
             <div className='add_section_container'>

@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { apiUrl } from "./constants";
 import { IFetch } from "./types";
 
@@ -76,3 +77,13 @@ export function formatPhoneNumber(input: string): string {
 
   return result;
 };
+
+
+export function handlePhoneChange<T>(
+  e: ChangeEvent<HTMLInputElement>,
+  formInput: keyof T, setValue: (name: keyof T, value: any) => void, trigger: (name?: keyof T | (keyof T)[]) => Promise<boolean>
+) {
+  const formattedValue = formatPhoneNumber(e.target.value);  // Форматируем номер телефона
+  setValue(formInput, formattedValue);  // Устанавливаем значение в react-hook-form
+  trigger(formInput);  // Триггерим валидацию для конкретного поля
+}

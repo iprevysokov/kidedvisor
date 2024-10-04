@@ -5,20 +5,19 @@ import Input from "../../Input/Input";
 import Location from "../../Map/Location";
 import Button from "../../Button/Button";
 import { IAddSectionFormInput } from "@/src/app/(customHeader)/section_owner/add/page";
-import { UseFormRegister } from "react-hook-form";
+import { UseFormGetValues, UseFormRegister, UseFormReturn } from "react-hook-form";
 //import Map from '../Map/Map';
 
 interface props {
     onNextClick: () => void;
-    heading: string;
-    register: UseFormRegister<IAddSectionFormInput>;
+    formMethods: UseFormReturn<IAddSectionFormInput>;
 }
 
-export default function SectionParams({ onNextClick, heading, register }: props) {
+export default function SectionParams({ onNextClick, formMethods: { register, getValues } }: props) {
     return (
         <div className="section_params">
             <div className="section_params_container">
-                <h1 className="section_params_title">{heading}</h1>
+                <h1 className="section_params_title">{getValues('sectionName')}</h1>
                 <div className="section_params_block">
                     <Input additionalClass="dir_input" placeholder="Например, спорт" label="Направление" {...register('sectionDirection', { required: true })} />
                     <Input additionalClass="dir_input" placeholder="Например, футбол" label="Вид деятельности" {...register('sectionType', { required: true })} />

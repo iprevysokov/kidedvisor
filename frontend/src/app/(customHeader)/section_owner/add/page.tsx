@@ -39,7 +39,8 @@ export interface IAddSectionFormInput {
 
 export default function Add() {
     const [formState, setFormState] = useState<FormState>(FormState.nameAndDescription);
-    const { register, handleSubmit, formState: { errors }, getValues, control, setValue, trigger } = useForm<IAddSectionFormInput>();
+    const validation = useForm<IAddSectionFormInput>();
+    const { register, handleSubmit, formState: { errors }, getValues, control, setValue, trigger } = validation;
 
     function handleNextClick() {
         setFormState((prev) => prev += 1);
@@ -47,9 +48,9 @@ export default function Add() {
 
     return (
         <form>
-            {formState == FormState.nameAndDescription && <AddSection onNextClick={handleNextClick} register={register} />}
-            {formState == FormState.infoAndLocation && <SectionParams onNextClick={handleNextClick} heading={getValues('sectionName')} register={register} />}
-            {formState == FormState.workInfo && <SectionInfo onNextClick={handleNextClick} heading={getValues('sectionName')} register={register} control={control} setValue={setValue} trigger={trigger} />}
+            {formState == FormState.nameAndDescription && <AddSection onNextClick={handleNextClick} formMethods={validation} />}
+            {formState == FormState.infoAndLocation && <SectionParams onNextClick={handleNextClick} formMethods={validation} />}
+            {formState == FormState.workInfo && <SectionInfo onNextClick={handleNextClick} formMethods={validation} />}
             {formState == FormState.abonements &&
                 <TextFieldSection
                     onNextClick={handleNextClick}
@@ -68,9 +69,9 @@ export default function Add() {
                     register={register('timetable')}
                 />
             }
-            {formState == FormState.mainPhoto && <AddSectionPhoto onNextClick={handleNextClick} />}
-            {formState == FormState.photos && <AddSection_Cards onNextClick={handleNextClick} />}
-            {formState == FormState.allInfo && <AddSection_All_Info onNextClick={handleNextClick} />}
+            {formState == FormState.mainPhoto && <AddSectionPhoto onNextClick={handleNextClick} formMethods={validation} />}
+            {formState == FormState.photos && <AddSection_Cards onNextClick={handleNextClick} formMethods={validation} />}
+            {formState == FormState.allInfo && <AddSection_All_Info onNextClick={handleNextClick} formMethods={validation} />}
         </form>
     )
 }
