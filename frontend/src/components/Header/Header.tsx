@@ -15,6 +15,15 @@ export default function Header() {
   function handleBurgerButtonClick() {
     dispatch(switchBurgerMenu());
   }
+  /*<div className='afford'>
+            <button>
+                <Image className='back_afford' alt='назад' src={back_afford.src} width={14} height={14}/>
+            </button>
+            <button>
+                <Image className='close_afford' alt='закрыть' src={close_afford.src} width={14} height={14}/>
+            </button>
+      </div>
+      */
 
   return (
     <header className="header">
@@ -29,19 +38,11 @@ export default function Header() {
           />
         </button>
       )}
-      <div className='afford'>
-            <button>
-                <Image className='back_afford' alt='назад' src={back_afford.src} width={14} height={14}/>
-            </button>
-            <button>
-                <Image className='close_afford' alt='закрыть' src={close_afford.src} width={14} height={14}/>
-            </button>
-      </div>
-      <div>
+      <div className="header__logo_container">
         <Image
           className="header__logo"
           src={logo.src}
-          height={61}
+          height={50}
           width={266}
           alt="логотип"
         />
