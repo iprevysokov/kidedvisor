@@ -125,6 +125,9 @@ class Section(models.Model):
     whatsapp = PhoneNumberField(
         "Номер телефона для связи в whatsapp", blank=True, null=True
     )
+    site = models.CharField(
+        max_length=200, db_index=True, verbose_name="Сайт", blank=True
+    )
     time_s = models.TimeField(
         verbose_name="Время работы с", blank=True, null=True
     )

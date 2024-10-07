@@ -23,18 +23,12 @@ class SectionSerializer(serializers.ModelSerializer):
             'email',
             'tg_contact',
             'whatsapp',
+            'site',
             'phone_number',
             'subscription',
             'schedule',
             'description',
         )
-
-        # model = SectionImage
-        # fields = (
-        #     "section_image",
-        #     "images",
-        #     "order",
-        # )
 
     def validate(self, data):
         """
@@ -43,9 +37,7 @@ class SectionSerializer(serializers.ModelSerializer):
 
         if not data["name"]:
             raise serializers.ValidationError(
-                "Наименование секции обязательное поле."
-        )
-
+                "Наименование секции обязательное поле.")
         return data
 
     def create(self, validated_data):
@@ -70,4 +62,5 @@ class SectionImageSerializer(serializers.ModelSerializer):
         section_image = self.context['section']  # Получаем секцию из контекста
         image_data = validated_data.pop('images')
         order = validated_data.pop('order')
-        return SectionImage.objects.create(section_image=section_image, images=image_data, order=order)
+        return SectionImage.objects.create(section_image=section_image,
+                                           images=image_data, order=order)

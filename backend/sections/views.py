@@ -19,7 +19,7 @@ class SectionViewSet(
     http_method_names = ["get", "patch", "delete", "post"]
 
     def get_serializer_class(self):
-        if self.action == 'upload_image':
+        if self.action in ['upload_image', 'update_image']:
             return SectionImageSerializer
         return super().get_serializer_class()
 
