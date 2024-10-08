@@ -1,11 +1,14 @@
 .season_ticket {
+    width: 100%;
+    padding: 0px 28px;
     &_container {
         display: block;
         flex-wrap: nowrap;
         justify-content: space-between;
     }
     &_title {
-        font-weight: 400;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
         font-size: 32px;
     }
     &_block {
@@ -21,7 +24,7 @@
 
 #desc_textarea {
     height: 233px;
-    width: 330px;
+    width: 100%;
     border: 1px #222020 solid;
     border-radius: 16px;
     padding: 13px 15px;

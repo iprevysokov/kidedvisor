@@ -10,8 +10,9 @@ import Afford from "../Afford/Afford";
 
 export default function AddSectionPhoto() {
     return (
+        <>
+        <Afford />
         <div className="add_photo">
-            <Afford />
             <div className="add_photo_container">
                 <div className="add_photo_title">
                     Олимпийский
@@ -26,5 +27,6 @@ export default function AddSectionPhoto() {
                 <Button title="Далее" additionalClass="button"/>
             </div>
         </div>
+        </>
     )
 }

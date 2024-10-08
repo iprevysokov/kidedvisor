@@ -9,8 +9,9 @@ import Afford from "../Afford/Afford";
 
 export default function AddSection_Cards() {
     return (
+        <>
+        <Afford />
         <div className="cards">
-            <Afford />
             <div className="cards_container">
                 <div className="cards_title">
                     Олимпийский
@@ -30,5 +31,6 @@ export default function AddSection_Cards() {
                 <Button title="Далее" additionalClass="button"/>
             </div>
         </div>
+        </>
     )
 }

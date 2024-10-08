@@ -1,4 +1,6 @@
 .add_section {
+    width: 100%;
+    padding: 0px 28px;
     &_container {
         display: block;
         flex-wrap: nowrap;
@@ -41,7 +43,7 @@
 
 #desc_textarea {
     height: 112px;
-    width: 328px;
+    width: 100%;
     border: 1px #222020 solid;
     border-radius: 16px;
     padding: 13px 15px;

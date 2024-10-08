@@ -3,9 +3,12 @@ import React from 'react';
 import '../AddSection/AddSection.scss'
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import Afford from '../Afford/Afford';
 
 export default function AddSection() {
     return (
+        <>
+        <Afford />
         <div className='add_section'>
             <div className='add_section_container'>
                 <h1 className='add_section_title'>Новая секция</h1>
@@ -24,5 +27,6 @@ export default function AddSection() {
             </div>
             <Button additionalClass='add_section_btn' title='Далее'/>
         </div>
+        </>
     )
 }

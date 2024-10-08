@@ -1,4 +1,6 @@
 .section_page {
+    width: 100%;
+    padding: 0px 16px;
     &_filters{
         margin-top: 7px;
         display: flex;
@@ -8,10 +10,12 @@
     &_avatar{
         margin-top: 16px;
         align-items: center;
+        text-align: center;
     }
     &_carousel {
         margin-top: 16px;
         display: flex;
+        justify-content: center;
         gap: 8px;
     }
     &_info {
@@ -49,24 +53,20 @@
     &_poster {
         margin-top: 16px;
         &_settings {
-            width: 330px;
-            //height: 60px;
+            padding-right:  15px;
+            width: 100%;
             border: black 1px solid;
             border-radius: 16px;
-            text-align: center;
-            align-items: center;
-            //display: flex; 
-            //justify-content: center;
-            //gap: 50px;
             &_container {
                 display: flex;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: center;
                 gap: 50px;
                 text-align: center;
             }
         }
         &_button {
+            padding-left: 15px;
             font-weight: 500;
             margin-top: 16px;
         }
@@ -88,7 +88,7 @@
             border: #FF3A3A 2px solid;
             border-radius: 50px;
             color: #FF3A3A;
-            width: 328px;
+            width: 100%;
             height: 48px;
             padding-top: 13px;
         }
@@ -96,7 +96,7 @@
             background-color: #0085FF;
             border-radius: 50px;
             color: white;
-            width: 328px;
+            width: 100%;
             height: 48px;
             padding-top: 13px;
             margin-top: 16px;
@@ -130,7 +130,7 @@
 .left_item {
     display: block;
     flex-direction: column;
-    width: 160px;
+    width: 100%;
     text-align: left;
 }
 
@@ -144,7 +144,7 @@
         display: flex;
         justify-content: end;
         align-items: center;
-        width: 300px;
+        width: 100%;
         height: 44px;
         border-radius: 12px;
         margin: 0 auto;
@@ -183,21 +183,21 @@
         margin-top: 7px !important;
         color: #8A8A8E;
         background-color: transparent !important;
-        position: relative; /* Родительский элемент */
-        padding-left: 30px; /* Отступ для текста, чтобы не перекрывался с иконкой */
+        position: relative;
+        padding-left: 30px; 
     }
     &_question::before {
         content: url(../../images/question_circle.svg);
-        position: absolute; /* Абсолютное позиционирование */
-        top: 0; /* Положение сверху */
-        left: 0; /* Положение слева */
-        width: 20px; /* Задайте нужный размер иконки */
-        height: 20px; /* Задайте нужный размер иконки */
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 20px; 
+        height: 20px; 
     }
     &_send {
         margin-top: 16px !important;
         button {
-            width: 298px;
+            width: 100%;
             height: 48px;
             background-color: #0085FF;
             border-radius: 50px;
@@ -208,7 +208,7 @@
         margin-top: 16px !important;
         margin-bottom: 17px !important;
         button {
-            width: 298px;
+            width: 100%;
             height: 48px;
             border: #0085FF 2px solid;
             border-radius: 50px;

@@ -1,12 +1,13 @@
 .btn_close {
     text-align: right;
-    width: 360px;
-    height: 76px;
+    padding: 28px;
+    width: 100%;
 }
 
 .section_page_message {
-    width: 277px;
-    height: auto;
+    width: 100%;
+    padding: 0px 28px;
+    //height: auto;
     display: column;
     flex-wrap: wrap;
     align-items: center;
@@ -25,6 +26,5 @@
 }
 
 .message_btn {
-    width: 120px !important;
-    height: 48px;
+    width: 40% !important;
 }

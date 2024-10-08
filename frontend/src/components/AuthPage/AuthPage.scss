@@ -1,6 +1,7 @@
 .authPage {
     margin-top: 33px;
-    width: calc(100% - 32px);
+    //width: calc(100% - 32px);
+    width: 100% !important;
     &__form {
         height: 100%;
         display: flex;
@@ -27,8 +28,6 @@
 
 }
 
-
-
 .top-container {
     padding-top: 30px;
     width: 100%;
@@ -46,5 +45,5 @@
     max-width: 323px;
     display: flex;
     flex-direction: column;
-    gap:36px;
+    gap: 36px;
 }

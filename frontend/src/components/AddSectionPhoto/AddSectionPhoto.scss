@@ -1,6 +1,8 @@
 $mainColor: #0085FF;
 
 .add_photo {
+    width: 100%;
+    padding: 0px 28px;
     &_container{
         display: flex;
         flex-direction: column;

@@ -30,7 +30,7 @@ export default function Location() {
     return (
         <div className='map_container'>
             <YMaps>
-                <Map
+                <Map className='map_container_map'
                     defaultState={{ center: coordinates, zoom: 9 }} // Используем координаты пользователя
                     onClick={handleMapClick}
                 >

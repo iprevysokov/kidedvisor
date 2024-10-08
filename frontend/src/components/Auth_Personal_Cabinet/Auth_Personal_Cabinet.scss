@@ -1,0 +1,56 @@
+.personal_cab {
+    width: 100%;
+    padding: 28px;
+    &_title {
+        font-size: 32px;
+    }
+    &_profile {
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    &_info {
+        margin-left: 16px;
+        &_name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        &_change_photo {
+            font-size: 12px;
+            color: #0085FF;
+        }
+    }
+    &_btns {
+        margin-top: 16px;
+        display: block;
+        flex-direction: column;
+        &_btn {
+            margin-top: 16px;
+        }
+    }
+}
+
+.delete {
+    color: #FF3A3A !important;
+    border: #FF3A3A 1px solid !important;
+}
+
+.profile_props {
+    display: block;
+    flex-direction: column;
+    &_label {
+        font-size: 16px;
+        font-weight: 500;
+        align-items: center !important;
+    }
+    div {
+        margin-top: 16px;
+    }
+}
+
+.input {
+    display: block;
+    flex-direction: column;
+    margin-top: 8px !important;
+}

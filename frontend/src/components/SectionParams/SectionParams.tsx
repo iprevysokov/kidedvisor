@@ -4,9 +4,12 @@ import './SectionParams.scss';
 import Input from "../Input/Input";
 import Location from "../Map/Location";
 import Button from "../Button/Button";
+import Afford from "../Afford/Afford";
 
 export default function SectionParams() {
     return (
+        <>
+        <Afford />
         <div className="section_params">
             <div className="section_params_container">
                 <h1 className="section_params_title">Олимпийский</h1>
@@ -41,5 +44,6 @@ export default function SectionParams() {
             </div>
             <Button title="Далее" additionalClass="button"/>
         </div>
+        </>
     )
 }

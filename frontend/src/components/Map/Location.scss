@@ -1,6 +1,11 @@
 .map_container {
-    width: 326px;
+    width: 100%;
     height: 170px;
     border: grey solid 1px;
     border-radius: 16px;
+    &_map {
+        height: 167px;
+        border-radius: 16px;
+        overflow: hidden;
+    }
 }

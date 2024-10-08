@@ -2,5 +2,5 @@ import SectionPage_message from "@/src/components/SectionPage_message/SectionPag
 import { title } from "process";
 
 export default function Message() {
-    return <SectionPage_message title ="" text=""/>
+    return <SectionPage_message title ="title" text="text"/>
 }

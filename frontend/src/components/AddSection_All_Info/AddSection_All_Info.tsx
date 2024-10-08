@@ -9,8 +9,9 @@ import Afford from '../Afford/Afford';
 
 export default function AddSection_All_Info() {
     return (
+        <>
+        <Afford />
         <div className='all_info'>
-            <Afford />
             <div className='all_info_container'>
                 <div className="all_info_photo">
                     <div className="all_info_photo_container">
@@ -88,5 +89,6 @@ export default function AddSection_All_Info() {
                         <Button title="Отправить" additionalClass="button"/>        
             </div>
         </div>
+        </>
     )
 }
