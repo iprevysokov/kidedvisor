@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    env_file: ./backend/env.example
+    env_file: .env
     build:
       context: .
       dockerfile: Dockerfile
