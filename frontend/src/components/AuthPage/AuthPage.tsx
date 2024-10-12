@@ -17,6 +17,7 @@ import close_afford from '../../images/close_aff.svg';
 import logo from "../../images/Kidedvisor.svg";
 import AuthWith_Menu from '../AuthWith_Menu/AuthWIth_Menu';
 import DefaultPopupElement from '../DefaultPopupElement/DefaultPopupElement';
+import { apiRegister } from '@/src/utils/api/usersApi';
 
 
 enum AuthState {
@@ -54,14 +55,6 @@ export default function AuthPage() {
         trigger()
     }
 
-    function sendCode() {
-        dispatch(openPopup(
-            <DefaultPopupElement heading='Проверьте почту' description='Пройдите по ссылке в почте для завершения регистрации'>
-                <Button title={'Изменить почту'} outlined onClick={handleChangeEmail} />
-            </DefaultPopupElement>
-        ))
-    }
-
     function openOAuthMenu() {
         dispatch(openPopup(<AuthWith_Menu />))
     }
@@ -74,13 +67,24 @@ export default function AuthPage() {
         }
     }, [authState])
 
-    const onSubmit = (data: formData) => {
+    const onSubmit = ({ email, tel }: formData) => {
         if (authState == AuthState.TEL) {
             onNextClick();
         }
         else if (authState == AuthState.EMAIL) {
-            console.log(data)
-            sendCode();
+            apiRegister({
+                email,
+                phone_number: tel
+            })
+                .then((res) => {
+                    dispatch(openPopup(
+                        <DefaultPopupElement heading='Проверьте почту' description='Пройдите по ссылке в почте для завершения регистрации'>
+                            <Button title={'Изменить почту'} outlined onClick={handleChangeEmail} />
+                        </DefaultPopupElement>
+                    ))
+                })
+                .catch(console.log) //todo
+
         }
     };
 

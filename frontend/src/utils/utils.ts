@@ -6,7 +6,7 @@ function checkResponse<T>(res: Response): Promise<T> {
   return res.ok ? res.json() : res.json().then((data) => Promise.reject(data));
 }
 
-function _fetch<T>({ url, method = "GET", headers, body }: IFetch): Promise<T> {
+export function _fetch<T>({ url, method = "GET", headers, body }: IFetch): Promise<T> {
   let contentTypeHeader: string | undefined = undefined;
   let authorization = "";
   // Получаем токен авторизации перед каждым запросом
