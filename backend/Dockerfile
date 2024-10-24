@@ -15,6 +15,6 @@ USER worker
 WORKDIR /home/worker
 
 COPY --chown=worker:worker ./ ./backend
-RUN python manage.py makemigrations
-RUN python manage.py migrate
+RUN python ./backend/manage.py makemigrations
+RUN python ./backend/manage.py migrate
 RUN chmod a+x ./backend/run.sh
