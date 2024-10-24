@@ -26,6 +26,7 @@ services:
       - backend
       - frontend
   frontend:
+    env_file: .env
     container_name: "frontend"
     build:
       context: frontend
