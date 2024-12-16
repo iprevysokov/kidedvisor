@@ -1,0 +1,22 @@
+package com.example.kidedvisor.core.roomdb
+
+import androidx.room.Database
+import com.example.kidedvisor.core.roomdb.dao.ClubDao
+import com.example.kidedvisor.core.roomdb.entity.ActivityBranchEntity
+import com.example.kidedvisor.core.roomdb.entity.ActivityTypeEntity
+import com.example.kidedvisor.core.roomdb.entity.ClubEntity
+import com.example.kidedvisor.core.roomdb.entity.CommentEntity
+import com.example.kidedvisor.core.roomdb.entity.ProfileEntity
+import com.example.kidedvisor.core.roomdb.entity.ReviewEntity
+
+@Database(version = 1, entities = [
+    ActivityBranchEntity::class,
+    ActivityTypeEntity::class,
+    ClubEntity::class,
+    ProfileEntity::class,
+    ReviewEntity::class,
+    CommentEntity::class
+])
+abstract class RoomDatabase {
+    abstract fun clubDao(): ClubDao
+}
