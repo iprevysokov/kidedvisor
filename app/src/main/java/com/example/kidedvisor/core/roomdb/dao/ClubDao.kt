@@ -7,7 +7,7 @@ import com.example.kidedvisor.core.roomdb.entity.ClubEntity
 @Dao
 interface ClubDao {
     @Query("SELECT *FROM $TABLE_NAME")
-    suspend fun getAllClubs(): ClubEntity
+    suspend fun getAllClubs(): ClubEntity?
 
     companion object {
         const val TABLE_NAME = "Club"
