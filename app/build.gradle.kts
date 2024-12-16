@@ -53,4 +53,7 @@ dependencies {
 
     // glide
     implementation(libs.bumptech.glide)
+
+    // coroutines
+    implementation(libs.kotlinx.coroutines)
 }
