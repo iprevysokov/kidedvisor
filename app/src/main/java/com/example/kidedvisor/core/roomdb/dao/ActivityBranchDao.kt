@@ -1,9 +1,11 @@
 package com.example.kidedvisor.core.roomdb.dao
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.kidedvisor.core.roomdb.entity.ActivityBranchEntity
 
+@Dao
 interface ActivityBranchDao {
 
     @Insert
