@@ -50,6 +50,7 @@ dependencies {
     // room
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
     // glide
     implementation(libs.bumptech.glide)

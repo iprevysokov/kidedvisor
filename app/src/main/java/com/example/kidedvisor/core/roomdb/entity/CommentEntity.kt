@@ -11,18 +11,18 @@ import java.util.UUID
     foreignKeys = [
         ForeignKey(
             entity = ReviewEntity::class,
-            parentColumns = ["profile_id"],
-            childColumns = ["profile_id"],
+            parentColumns = ["profile_id", "club_id"],
+            childColumns = ["profile_id", "club_id"],
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE,
         ),
-        ForeignKey(
-            entity = ReviewEntity::class,
-            parentColumns = ["club_id"],
-            childColumns = ["club_id"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE,
-        )
+//        ForeignKey(
+//            entity = ReviewEntity::class,
+//            parentColumns = ["club_id"],
+//            childColumns = ["club_id"],
+//            onDelete = ForeignKey.CASCADE,
+//            onUpdate = ForeignKey.CASCADE,
+//        )
     ]
 )
 data class CommentEntity(
@@ -32,7 +32,7 @@ data class CommentEntity(
     val profileId: UUID,
     @ColumnInfo(name = "club_id")
     val clubId: UUID,
-    val date: Date,
+    val date: String,
     @ColumnInfo(name = "comment_text")
     val commentText: String
 )

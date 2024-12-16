@@ -3,9 +3,10 @@ package com.example.kidedvisor.core.roomdb.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.kidedvisor.core.roomdb.dao.ClubDao
 import java.util.UUID
 
-@Entity
+@Entity(tableName = ClubDao.TABLE_NAME)
 data class ClubEntity(
     @PrimaryKey
     val id: UUID = UUID.randomUUID(),

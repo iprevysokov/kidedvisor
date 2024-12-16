@@ -3,11 +3,17 @@ package com.example.kidedvisor.core.roomdb.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.Date
 import java.util.UUID
 
 @Entity(
+    primaryKeys = [
+        "profile_id",
+        "club_id",
+    ],
+    indices = [Index(value = arrayOf("profile_id", "club_id"), unique = true)],
     foreignKeys = [
         ForeignKey(
             entity = ProfileEntity::class,
@@ -26,15 +32,13 @@ import java.util.UUID
     ]
 )
 data class ReviewEntity(
-    @PrimaryKey
     @ColumnInfo(name = "profile_id")
     val profileId: UUID,
-    @PrimaryKey
     @ColumnInfo(name = "club_id")
     val clubId: UUID,
     val photo: String,
     val rating: Int,
-    val date: Date,
+    val date: String,
     val advantages: String,
     val disadvantages: String,
     @ColumnInfo(name = "comment_text")
