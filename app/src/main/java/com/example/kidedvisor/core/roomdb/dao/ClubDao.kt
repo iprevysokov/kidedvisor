@@ -1,11 +1,15 @@
 package com.example.kidedvisor.core.roomdb.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import com.example.kidedvisor.core.roomdb.entity.ClubEntity
 
 @Dao
 interface ClubDao {
+    @Insert
+    suspend fun addClub(clubEntity: ClubEntity)
+
     @Query("SELECT *FROM $TABLE_NAME")
     suspend fun getAllClubs(): ClubEntity?
 
