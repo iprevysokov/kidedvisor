@@ -5,10 +5,12 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.example.kidedvisor.core.roomdb.dao.ReviewDao
 import java.util.Date
 import java.util.UUID
 
 @Entity(
+    tableName = ReviewDao.TABLE_NAME,
     primaryKeys = [
         "profile_id",
         "club_id",
@@ -38,7 +40,7 @@ data class ReviewEntity(
     val clubId: UUID,
     val photo: String,
     val rating: Int,
-    val date: String,
+    val date: Long, // дата в миллисекундах
     val advantages: String,
     val disadvantages: String,
     @ColumnInfo(name = "comment_text")

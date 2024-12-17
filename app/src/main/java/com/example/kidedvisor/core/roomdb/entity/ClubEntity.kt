@@ -13,16 +13,16 @@ data class ClubEntity(
     val name: String,
     @ColumnInfo(name = "activity_type")
     val activityType: UUID,
-    val address: String,
+    val address: String = "",
     @ColumnInfo(name = "for_age")
-    val forAge: String,
-    val contacts: String,
+    val forAge: String = "",
+    val contacts: String = "",
     @ColumnInfo(name = "work_days")
-    val workDays: String,
+    val workDays: String = "",
     @ColumnInfo(name = "work_time")
-    val workTime: String,
-    val price: String,
-    val schedule: String,
-    val description: String,
+    val workTime: String = "",
+    val price: String = "",
+    val schedule: String = "",
+    val description: String = "",
     val photo: String
 )

@@ -4,10 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import java.util.Date
+import com.example.kidedvisor.core.roomdb.dao.CommentDao
 import java.util.UUID
 
 @Entity(
+    tableName = CommentDao.TABLE_NAME,
     foreignKeys = [
         ForeignKey(
             entity = ReviewEntity::class,
@@ -16,13 +17,6 @@ import java.util.UUID
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE,
         ),
-//        ForeignKey(
-//            entity = ReviewEntity::class,
-//            parentColumns = ["club_id"],
-//            childColumns = ["club_id"],
-//            onDelete = ForeignKey.CASCADE,
-//            onUpdate = ForeignKey.CASCADE,
-//        )
     ]
 )
 data class CommentEntity(
@@ -32,7 +26,7 @@ data class CommentEntity(
     val profileId: UUID,
     @ColumnInfo(name = "club_id")
     val clubId: UUID,
-    val date: String,
+    val date: Long, // дата в миллисекундах
     @ColumnInfo(name = "comment_text")
     val commentText: String
 )
