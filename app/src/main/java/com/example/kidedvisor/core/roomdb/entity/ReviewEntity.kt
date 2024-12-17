@@ -4,9 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
-import androidx.room.PrimaryKey
 import com.example.kidedvisor.core.roomdb.dao.ReviewDao
-import java.util.Date
 import java.util.UUID
 
 @Entity(
