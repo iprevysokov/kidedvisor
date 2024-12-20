@@ -11,8 +11,6 @@ data class ClubEntity(
     @PrimaryKey
     val id: UUID = UUID.randomUUID(),
     val name: String,
-    @ColumnInfo(name = "activity_type")
-    val activityType: UUID,
     val address: String = "",
     @ColumnInfo(name = "for_age")
     val forAge: String = "",
@@ -24,5 +22,7 @@ data class ClubEntity(
     val price: String = "",
     val schedule: String = "",
     val description: String = "",
-    val photo: String
+    val photo: String,
+    @ColumnInfo(name = "is_recommend")
+    val isRecommend: Boolean = false,
 )
