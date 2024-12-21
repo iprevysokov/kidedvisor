@@ -5,7 +5,7 @@ import com.example.kidedvisor.core.roomdb.AppDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
-val dataModule = module {
+val dataCoreModule = module {
 
     single {
         Room.databaseBuilder(

@@ -7,11 +7,14 @@ import com.example.kidedvisor.core.roomdb.entity.ActivityBranchEntity
 import com.example.kidedvisor.core.roomdb.entity.ActivityTypeClubRelationEntity
 import com.example.kidedvisor.core.roomdb.entity.ActivityTypeEntity
 import com.example.kidedvisor.core.roomdb.entity.ClubEntity
+import com.example.kidedvisor.sample.domain.api.SampleCollectionRepository
 import java.util.UUID
 
-class SampleCollectionRepository(private val db: AppDatabase) {
+class SampleCollectionRepositoryImpl(
+    private val db: AppDatabase
+) : SampleCollectionRepository {
 
-    suspend fun createSamplesData() {
+    override suspend fun createSamplesData() {
         if (!isExistLocalData()) {
             createSampleActivityBranch()
             createSampleActivityType()
