@@ -15,7 +15,7 @@ class SearchFragment : Fragment() {
     }
 
     private var _binding: FragmentSearchBinding? = null
-    private val binding: FragmentSearchBinding get() = _binding!!
+    private val binding get() = _binding!!
 
     private val viewModel: SearchViewModel by viewModels()
 

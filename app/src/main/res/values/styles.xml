@@ -4,8 +4,27 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
     
-    <style name="AppTitleText" parent="TextAppearance.AppCompat">
+    <style name="AppTitleText">
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textSize">@dimen/app_title_size</item>
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+
+    <style name="BadgeText">
+        <item name="android:paddingHorizontal">6dp</item>
+        <item name="android:paddingVertical">4dp</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">@dimen/badge_text_size</item>
+        <item name="android:textColor">@color/badge_text_color</item>
+
+    </style>
+
+    <style name="UnFillButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:strokeColor">@color/dark_blue</item>
+        <item name="strokeColor">@color/dark_blue</item>
+        <item name="strokeWidth">@dimen/button_stroke_width</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
 </resources>
