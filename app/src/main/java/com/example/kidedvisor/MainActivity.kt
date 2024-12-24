@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val db = Room.databaseBuilder(this, AppDatabase::class.java, "KidedvisorDatabase").build()
         val repository = MainCollectionRepository(db)
 
