@@ -1,40 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".search.SearchFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/padding_8" />
+
     <Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:navigationIcon="@drawable/ic_burger" />
+        android:navigationIcon="@drawable/ic_burger"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/app_title"
         style="@style/AppTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding_size"
         android:layout_marginBottom="@dimen/padding_size"
-        android:text="@string/app_name" />
+        android:text="@string/app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
+    <!--  state 1  -->
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:id="@+id/filter_recycler"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginEnd="@dimen/padding_size"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toStartOf="@id/right_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_title"
         tools:listitem="@layout/item_filter_view" />
 
+    <!--  common input field  -->
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
+        android:id="@+id/input_field"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_size"
         android:layout_marginStart="@dimen/padding_size"
-        android:layout_marginEnd="@dimen/padding_size"
-        android:background="@drawable/rounded_rectangle">
+        android:layout_marginTop="@dimen/padding_size"
+        android:layout_marginEnd="@dimen/padding_8"
+        android:background="@drawable/rounded_rectangle"
+        app:layout_constraintEnd_toStartOf="@id/cancel_action"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_recycler">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,10 +72,12 @@
                 android:hint="@string/search_hint" />
 
             <ImageView
+                android:id="@+id/filter_search"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="@dimen/icon_padding"
-                android:src="@drawable/ic_filter" />
+                android:src="@drawable/ic_filter"
+                android:visibility="gone" />
 
             <ImageView
                 android:layout_width="24dp"
@@ -64,10 +88,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/ad_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:cardCornerRadius="16dp">
+        android:visibility="gone"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_field">
 
         <ImageView
             android:layout_width="match_parent"
@@ -81,13 +111,92 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:background="@drawable/rounded_choice_right"
-            tools:text="@string/our_choice" />
+            tools:text="@string/badge_text" />
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/club_collection_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_size"
+        android:layout_marginEnd="@dimen/padding_size"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ad_banner" />
+
+    <!--  state 2  -->
+    <TextView
+        android:id="@+id/cancel_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/icon_padding"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/cancel"
+        android:textColor="@color/dark_blue"
+        android:textSize="@dimen/text_size_16"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/input_field"
+        app:layout_constraintEnd_toEndOf="@id/right_border"
+        app:layout_constraintStart_toEndOf="@id/input_field"
+        app:layout_constraintTop_toTopOf="@id/input_field" />
+
+    <TextView
+        android:id="@+id/request_title"
+        style="@style/Title16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_size"
+        android:paddingBottom="@dimen/padding_8"
+        android:text="@string/popular_request"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_field" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_request_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/request_title"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_popular_request" />
 
+    <TextView
+        android:id="@+id/popular_club_title"
+        style="@style/Title16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_size"
+        android:paddingBottom="@dimen/padding_8"
+        android:text="@string/popular_clubs"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popular_request_recycler" />
 
-</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_club_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_8"
+        android:layout_marginEnd="@dimen/padding_size"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popular_club_title"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_popular_clubs_view" />
+
+    <!--  state 3  -->
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

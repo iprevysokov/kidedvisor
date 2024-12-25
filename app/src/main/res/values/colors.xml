@@ -4,8 +4,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary_dark">#222020</color>
     <color name="dark_gray">#4A4A4A</color>
+    <color name="light_gray">#C7C7C7</color>
     <color name="dark_blue">#0085FF</color>
     <color name="badge_text_color">#0067C5</color>
+    <color name="badge_rating_color">@color/white</color>
     <color name="button_text_color">#0085FF</color>
     <color name="background_white">#DEFFFFFF</color>
 </resources>
