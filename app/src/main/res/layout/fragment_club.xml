@@ -120,11 +120,11 @@
                 android:layout_marginTop="@dimen/gap_16"
                 android:layout_marginEnd="@dimen/gap_16"
                 android:clipToPadding="false"
+                android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rating_club"
-                android:orientation="horizontal"
                 tools:itemCount="2"
                 tools:listitem="@layout/item_photo_club"
                 tools:orientation="horizontal" />
