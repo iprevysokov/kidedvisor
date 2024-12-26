@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".club.presentation.ui.ClubFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarclub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:buttonGravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        tools:ignore="MissingConstraints" />
+
+    <ScrollView
+        android:id="@+id/scrollView_club"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarclub">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_in_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:id="@+id/img_club"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:background="@drawable/background_club_photo"
+                android:clipToOutline="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sport3"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_under_club_photo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/constraint_in_scroll" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_under_club_photo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.3" />
+
+            <TextView
+                android:id="@+id/tv_club_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_under_club_photo"
+                tools:text="Олимпийский" />
+
+            <ImageView
+                android:id="@+id/rating_club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rating_star"
+                app:layout_constraintStart_toStartOf="@+id/tv_club_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_club_name" />
+
+            <TextView
+                android:id="@+id/tv_rating_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_13"
+                app:layout_constraintBottom_toBottomOf="@+id/rating_club"
+                app:layout_constraintStart_toEndOf="@+id/rating_club"
+                app:layout_constraintTop_toTopOf="@+id/rating_club"
+                tools:text="4,9" />
+
+            <TextView
+                android:id="@+id/tv_common_of_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:text="@string/common_of_reviews"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/textSize_12"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_rating_point"
+                app:layout_constraintStart_toEndOf="@+id/tv_rating_point"
+                app:layout_constraintTop_toTopOf="@+id/tv_rating_point" />
+
+            <TextView
+                android:id="@+id/tv_create_review"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:text="@string/leave_rating"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/textSize_12"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_common_of_reviews"
+                app:layout_constraintEnd_toEndOf="@+id/tv_club_name"
+                app:layout_constraintStart_toEndOf="@+id/tv_common_of_reviews"
+                app:layout_constraintTop_toTopOf="@+id/tv_common_of_reviews" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_photo_club"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rating_club"
+                android:orientation="horizontal"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_photo_club"
+                tools:orientation="horizontal" />
+
+            <TextView
+                android:id="@+id/tv_visite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:text="@string/visit_website"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_photo_club" />
+
+            <TextView
+                android:id="@+id/tv_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:text="@string/schedule"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_visite" />
+
+            <TextView
+                android:id="@+id/tv_club_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:maxLines="4"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_14"
+                app:layout_constraintEnd_toEndOf="@+id/recycler_photo_club"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_schedule"
+                tools:text="Описание деятельности клуба" />
+
+            <TextView
+                android:id="@+id/tv_show_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_8"
+                android:drawablePadding="@dimen/gap_8"
+                android:text="@string/show_all"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_15"
+                app:drawableEndCompat="@drawable/ic_open_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_club_description" />
+
+            <TextView
+                android:id="@+id/tv_street_club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_show_all"
+                tools:text="Проспект мира д.1" />
+
+            <TextView
+                android:id="@+id/tv_direction_club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_8"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_street_club"
+                tools:text="Спорт: футбол" />
+
+            <TextView
+                android:id="@+id/tv_age_club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_direction_club"
+                tools:text="Возраст: 8-16 лет" />
+
+            <TextView
+                android:id="@+id/tv_time_work_club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_age_club"
+                tools:text="Пн-Вс: 9:00-20:00" />
+
+            <Button
+                android:id="@+id/bt_season_ticket"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_8"
+                android:background="@drawable/background_button_season_ticket"
+                android:text="@string/season_tickets"
+                android:textAlignment="center"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/textSize_16"
+                app:backgroundTint="@null"
+                app:layout_constraintEnd_toStartOf="@id/bt_contact"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_time_work_club"
+                app:layout_constraintWidth_percent="0.45" />
+
+            <Button
+                android:id="@+id/bt_contact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_button_season_ticket"
+                android:text="@string/contact"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_16"
+                app:backgroundTint="@color/dark_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/bt_season_ticket"
+                app:layout_constraintTop_toTopOf="@+id/bt_season_ticket"
+                app:layout_constraintWidth_percent="0.45" />
+
+
+            <TextView
+                android:id="@+id/tv_unknown_owner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:gravity="center"
+                android:text="@string/unknown_owner"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/textSize_14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_season_ticket" />
+
+            <TextView
+                android:id="@+id/tv_request_rights"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_8"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:layout_marginBottom="@dimen/gap_16"
+                android:gravity="center"
+                android:text="@string/tv_request_card_manager"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_unknown_owner" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone"
+        app:layout_anchor="@id/toolbarclub"
+        app:layout_anchorGravity="center" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_sheet_club"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet"
+        android:clickable="true"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="480dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/gap_16"
+            android:layout_marginTop="@dimen/gap_24"
+            android:layout_marginEnd="@dimen/gap_16"
+            android:text="@string/schedule_clubs"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_schedule_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_16"
+            android:layout_marginBottom="@dimen/gap_16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/schedule"
+            app:layout_constraintStart_toStartOf="@+id/schedule"
+            app:layout_constraintTop_toBottomOf="@+id/schedule"
+            tools:text="Расписание групп и индивидуальных занятий" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/schedule_group_bottom_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="schedule, tv_schedule_description" />
+
+        <TextView
+            android:id="@+id/season_tickets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/gap_16"
+            android:layout_marginTop="@dimen/gap_24"
+            android:layout_marginEnd="@dimen/gap_16"
+            android:text="@string/season_tickets"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/coast_season_tickets"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_16"
+            app:layout_constraintEnd_toEndOf="@+id/season_tickets"
+            app:layout_constraintStart_toStartOf="@+id/season_tickets"
+            app:layout_constraintTop_toBottomOf="@+id/season_tickets"
+            tools:text="Стоимость абонементов" />
+
+        <Button
+            android:id="@+id/bt_contact_owner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/gap_16"
+            android:layout_marginTop="@dimen/gap_16"
+            android:layout_marginEnd="@dimen/gap_16"
+            android:layout_marginBottom="@dimen/gap_16"
+            android:background="@drawable/background_button_season_ticket"
+            android:text="@string/contact_with_owner"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize_16"
+            app:backgroundTint="@color/dark_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coast_season_tickets" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_of_season_tickets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="bt_contact_owner, coast_season_tickets,
+             season_tickets" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
