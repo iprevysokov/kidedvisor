@@ -3,6 +3,9 @@
     <string name="search_hint">Название секции</string>
     <string name="badge_text">Наш выбор</string>
     <string name="cancel">Отменить</string>
+    <string name="popular">Популярные</string>
     <string name="popular_request">Популярные запросы сегодня</string>
     <string name="popular_clubs">Популярные секции</string>
+    <string name="filters">Фильтры</string>
+    <string name="more_detailed">Подробнее</string>
 </resources>
