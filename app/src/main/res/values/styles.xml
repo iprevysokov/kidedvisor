@@ -38,6 +38,12 @@
         <item name="android:textColor">@color/primary_dark</item>
     </style>
 
+    <style name="RegularText10">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/text_size_10</item>
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+
     <style name="Title14">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">@dimen/text_size_14</item>
