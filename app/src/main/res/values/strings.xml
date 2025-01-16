@@ -12,4 +12,12 @@
     <string name="unknown_owner">На данный момент мы не знаем, кто владелец секции. Если это вы, сообщите нам.</string>
     <string name="contact">Связаться</string>
     <string name="leave_rating">оставить оценку</string>
+    <string name="search_hint">Название секции</string>
+    <string name="badge_text">Наш выбор</string>
+    <string name="cancel">Отменить</string>
+    <string name="popular">Популярные</string>
+    <string name="popular_request">Популярные запросы сегодня</string>
+    <string name="popular_clubs">Популярные секции</string>
+    <string name="filters">Фильтры</string>
+    <string name="more_detailed">Подробнее</string>
 </resources>

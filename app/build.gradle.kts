@@ -67,4 +67,8 @@ dependencies {
 
     // coroutines
     implementation(libs.kotlinx.coroutines)
+
+    // koin
+    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.android)
 }

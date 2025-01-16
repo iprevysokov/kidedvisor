@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".search.SearchFragment">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:navigationIcon="@drawable/ic_burger"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/app_title"
+        style="@style/AppTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginBottom="@dimen/padding_size"
+        android:text="@string/app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <!--  state 1  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/filter_recycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_8"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_title"
+        tools:listitem="@layout/item_filter_view" />
+
+    <!--  common input field  -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_size"
+        android:layout_marginEnd="@dimen/padding_size"
+        android:background="@drawable/rounded_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_recycler">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/SearchEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/search_hint" />
+
+            <ImageView
+                android:id="@+id/filter_search"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="@dimen/icon_padding"
+                android:src="@drawable/ic_filter"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/search_action"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="@dimen/end_icon_padding"
+                android:src="@drawable/ic_search"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/close_search_action"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="@dimen/end_icon_padding"
+                android:src="@drawable/ic_close"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="visible"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chart_btn">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="208dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/banner_main" />
+
+        <TextView
+            style="@style/BadgeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@drawable/rounded_choice_right"
+            tools:text="@string/badge_text" />
+
+        <Button
+            android:id="@+id/banner_button"
+            style="@style/FillButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/padding_size"
+            android:layout_marginBottom="@dimen/icon_padding"
+            android:paddingHorizontal="@dimen/small_button_text_padding"
+            android:text="@string/more_detailed" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/club_collection_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_size"
+        android:layout_marginEnd="@dimen/padding_size"
+        android:visibility="visible"
+        tools:listitem="@layout/item_outer_rv"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ad_banner" />
+
+    <!--  state 2  -->
+    <TextView
+        android:id="@+id/request_title"
+        style="@style/Title16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_size"
+        android:paddingBottom="@dimen/padding_8"
+        android:text="@string/popular_request"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_field" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_request_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/request_title"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_popular_request" />
+
+    <TextView
+        android:id="@+id/popular_club_title"
+        style="@style/Title16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_size"
+        android:paddingBottom="@dimen/padding_8"
+        android:text="@string/popular_clubs"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popular_request_recycler" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_club_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_8"
+        android:layout_marginEnd="@dimen/padding_size"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popular_club_title"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_popular_clubs_view" />
+
+    <!--  state 3  -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/chart_btn"
+        style="@style/FilterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_size"
+        android:layout_marginTop="@dimen/padding_size"
+        android:text="@string/popular"
+        android:visibility="gone"
+        app:icon="@drawable/ic_chart"
+        app:iconPadding="@dimen/padding_8"
+        app:layout_constraintEnd_toStartOf="@id/filter_btn"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_field" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/filter_btn"
+        style="@style/FilterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_size"
+        android:layout_marginEnd="@dimen/padding_size"
+        android:text="@string/filters"
+        android:visibility="gone"
+        app:icon="@drawable/ic_filter"
+        app:iconGravity="end"
+        app:iconPadding="@dimen/padding_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/chart_btn"
+        app:layout_constraintTop_toBottomOf="@+id/input_field" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_result_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/padding_size"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ad_banner"
+        tools:listitem="@layout/item_search_result" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

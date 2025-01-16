@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#222020</color>
+    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_gray">#4A4A4A</color>
     <color name="dark_blue">#0085FF</color>
     <color name="gray">#A0A3A6</color>
+    <color name="primary_dark">#222020</color>
+    <color name="secondary_container">#EFEFEF</color>
+    <color name="light_gray">#C7C7C7</color>
+    <color name="badge_text_color">#0067C5</color>
+    <color name="badge_rating_color">@color/white</color>
+    <color name="button_text_color">#0085FF</color>
+    <color name="background_white">#DEFFFFFF</color>
 </resources>
