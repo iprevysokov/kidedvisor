@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SearchEditText">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    
+    <style name="AppTitleText">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/app_title_size</item>
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+
+    <style name="BadgeText">
+        <item name="android:paddingHorizontal">6dp</item>
+        <item name="android:paddingVertical">4dp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/badge_text_size</item>
+        <item name="android:textColor">@color/badge_text_color</item>
+    </style>
+
+    <style name="BadgeRating">
+        <item name="android:paddingHorizontal">2dp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:textColor">@color/badge_rating_color</item>
+        <item name="android:background">@drawable/blue_badge_rectangle</item>
+    </style>
+    
+    <style name="RegularText14">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+
+    <style name="RegularText12">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+
+    <style name="RegularText10">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/text_size_10</item>
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+
+    <style name="Title14">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+
+    <style name="Title16">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+
+    <style name="UnFillButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:strokeColor">@color/dark_blue</item>
+        <item name="strokeColor">@color/dark_blue</item>
+        <item name="strokeWidth">@dimen/button_stroke_width</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="FillButton" parent="Widget.Material3.Button.IconButton.Filled">
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="FilterButton" parent="Widget.Material3.Button.TonalButton.Icon">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+    </style>
+
+    <style name="SmallStars" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:numStars">5</item>
+        <item name="android:isIndicator">true</item>
+        <item name="android:progressTint">@color/dark_blue</item>
+    </style>
+</resources>

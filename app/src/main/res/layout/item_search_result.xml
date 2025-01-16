@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/club_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="visible"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="208dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/art1" />
+
+        <TextView
+            style="@style/BadgeRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/padding_size"
+            android:paddingHorizontal="7dp"
+            android:textSize="@dimen/text_size_20"
+            tools:text="4.9" />
+    </androidx.cardview.widget.CardView>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/SmallStars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/club_banner"
+        tools:rating="4.9" />
+
+    <TextView
+        android:id="@+id/club_title"
+        style="@style/Title14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@id/ratingBar"
+        tools:text="Дворец спорта" />
+
+    <TextView
+        android:id="@+id/club_address"
+        style="@style/RegularText12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@id/club_title"
+        tools:text="Металлистов, д.1" />
+
+    <ImageView
+        android:id="@+id/type_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@id/club_address"
+        tools:src="@drawable/ic_sports_soccer_24" />
+
+    <TextView
+        android:id="@+id/club_type"
+        style="@style/RegularText12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_indent"
+        app:layout_constraintBottom_toBottomOf="@id/type_icon"
+        app:layout_constraintStart_toEndOf="@id/type_icon"
+        app:layout_constraintTop_toTopOf="@id/type_icon"
+        tools:text="Спорт, Футбол" />
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/more_btn"
+        style="@style/UnFillButton"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:text="@string/more_detailed"
+        app:layout_constraintBottom_toBottomOf="@id/type_icon"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
