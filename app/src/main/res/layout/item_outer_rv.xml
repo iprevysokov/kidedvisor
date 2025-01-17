@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/padding_size"
-    android:layout_marginBottom="@dimen/padding_size"
+    android:layout_marginStart="@dimen/gap_16"
+    android:layout_marginBottom="@dimen/gap_16"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
@@ -13,7 +13,7 @@
         style="@style/Title14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/title_to_scroll_padding"
+        android:layout_marginBottom="@dimen/gap_10"
         tools:text="Спорт"/>
 
     <androidx.recyclerview.widget.RecyclerView

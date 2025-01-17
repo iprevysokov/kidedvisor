@@ -15,8 +15,8 @@
             style="@style/RegularText14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/text_size_16"
-            android:paddingBottom="@dimen/padding_14"
+            android:paddingTop="@dimen/textSize_16"
+            android:paddingBottom="@dimen/gap_14"
             tools:text="Теннис" />
         <View
             android:layout_width="match_parent"
