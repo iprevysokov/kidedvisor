@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.kidedvisor.databinding.FragmentSearchBinding
 import com.example.kidedvisor.search.presenter.OuterAdapter
+import com.example.kidedvisor.search.presenter.models.OuterModel
 
 class SearchFragment : Fragment() {
 

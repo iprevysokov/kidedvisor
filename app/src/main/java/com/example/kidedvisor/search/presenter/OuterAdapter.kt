@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidedvisor.databinding.ItemOuterRvBinding
-import com.example.kidedvisor.search.OuterModel
+import com.example.kidedvisor.search.presenter.models.OuterModel
 
 class OuterAdapter : RecyclerView.Adapter<OuterAdapter.ViewHolder>() {
 

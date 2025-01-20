@@ -1,4 +1,4 @@
-package com.example.kidedvisor.search
+package com.example.kidedvisor.search.presenter.models
 
 data class OuterModel(
     val typeName: String,
