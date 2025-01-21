@@ -9,11 +9,11 @@ class GetClubsInfoInteractorImpl(
         private val zeroSearchRepository: ZeroSearchRepository
 ) : GetClubsInfoInteractor {
 
-    override suspend fun getClubTypes(): Flow<List<String>> {
-        return zeroSearchRepository.getClubsType()
+    override suspend fun getClubBranch(): List<String> {
+        return zeroSearchRepository.getClubsBranch()
     }
 
-    override suspend fun getClubInType(type: String): Flow<List<ClubInSearch>> {
-        return zeroSearchRepository.getClubInType()
+    override suspend fun getClubInBranch(branch: String): List<ClubInSearch> {
+        return zeroSearchRepository.getClubInBranch(branch)
     }
 }

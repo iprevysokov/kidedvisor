@@ -28,7 +28,7 @@ class OuterAdapter : RecyclerView.Adapter<OuterAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemList[position]
-        holder.binding.typeName.text = item.typeName
+        holder.binding.typeName.text = item.branchName
         holder.binding.innerRv.adapter = InnerAdapter(item.clubs)
     }
 }
