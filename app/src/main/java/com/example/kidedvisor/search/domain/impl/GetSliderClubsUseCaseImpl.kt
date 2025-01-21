@@ -6,7 +6,7 @@ import com.example.kidedvisor.search.presenter.models.OuterModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetSliderClubsUseCaseImp(
+class GetSliderClubsUseCaseImpl(
     private val interactor: GetClubsInfoInteractor
 ) : GetSliderClubsUseCase {
 
