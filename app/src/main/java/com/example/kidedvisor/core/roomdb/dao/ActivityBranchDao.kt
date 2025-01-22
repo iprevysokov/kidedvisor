@@ -14,7 +14,7 @@ interface ActivityBranchDao {
     @Query("SELECT * FROM $TABLE_NAME")
     suspend fun getAllActivityBranch(): List<ActivityBranchEntity>
 
-    @Query("SELECT * FROM ${ActivityTypeDao.TABLE_NAME} WHERE name = :name")
+    @Query("SELECT * FROM $TABLE_NAME WHERE name = :name")
     suspend fun getActivityBranchByName(name: String): ActivityBranchEntity
 
     companion object {
