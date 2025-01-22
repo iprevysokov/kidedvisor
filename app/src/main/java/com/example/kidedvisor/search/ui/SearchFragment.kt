@@ -1,33 +1,23 @@
-package com.example.kidedvisor.search
+package com.example.kidedvisor.search.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.kidedvisor.databinding.FragmentSearchBinding
 import com.example.kidedvisor.search.presenter.OuterAdapter
 import com.example.kidedvisor.search.presenter.models.OuterModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SearchFragment()
-    }
-
-    val list = listOf(
-        OuterModel("Спорт", listOf("Tutti", "Tutti", "Tutti", "Tutti")),
-        OuterModel("Спорт", listOf("Tutti", "Tutti", "Tutti", "Tutti")),
-        OuterModel("Спорт", listOf("Tutti", "Tutti", "Tutti", "Tutti")),
-    )
 
     private val adapter = OuterAdapter()
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: SearchViewModel by viewModels()
+    private val viewModel by viewModel<SearchViewModel>()
 
     override fun onDestroy() {
         super.onDestroy()
@@ -45,7 +35,21 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter.itemList = list
+        viewModel.getState().observe(viewLifecycleOwner) { state ->
+            render(state)
+        }
+    }
+
+    private fun render(state: SearchScreenState) {
+        when (state) {
+            is SearchScreenState.ZeroSearchState -> {
+                showZeroSearchScreenState(state.outerModels)
+            }
+        }
+    }
+
+    private fun showZeroSearchScreenState(outerModels: List<OuterModel>) {
+        adapter.itemList = outerModels
         binding.clubCollectionRecycler.adapter = adapter
     }
 }
