@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ZeroSearchRepository {
     suspend fun getClubsBranch(): List<String>
-    suspend fun getClubInBranch(type: String): List<ClubInSearch>
+    suspend fun getClubInBranch(branch: String): List<ClubInSearch>
 }

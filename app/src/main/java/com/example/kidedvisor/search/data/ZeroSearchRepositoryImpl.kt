@@ -14,7 +14,7 @@ class ZeroSearchRepositoryImpl(
 
     override suspend fun getClubsBranch(): List<String> {
         val activityBranches = appDatabase.activityBranchDao().getAllActivityBranch()
-        return convertFromActivityTypeEntity(activityBranches)
+        return convertFromActivityBranchEntity(activityBranches)
     }
 
     override suspend fun getClubInBranch(branch: String): List<ClubInSearch> {
@@ -25,7 +25,7 @@ class ZeroSearchRepositoryImpl(
 
     }
 
-    private fun convertFromActivityTypeEntity(activityBranches: List<ActivityBranchEntity>): List<String> {
+    private fun convertFromActivityBranchEntity(activityBranches: List<ActivityBranchEntity>): List<String> {
         return activityBranches.map { clubDbConverter.mapActivityType(it) }
     }
 
