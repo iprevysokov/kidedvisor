@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GetClubsInfoInteractor {
     suspend fun getClubBranch(): List<String>
-    suspend fun getClubInBranch(type: String): List<ClubInSearch>
+    suspend fun getClubInBranch(branch: String): List<ClubInSearch>
 }
