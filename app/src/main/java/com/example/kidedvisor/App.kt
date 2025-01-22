@@ -6,6 +6,7 @@ import com.example.kidedvisor.sample.di.interactorSampleModule
 import com.example.kidedvisor.sample.di.repositorySampleModule
 import com.example.kidedvisor.search.di.interactorSearchModule
 import com.example.kidedvisor.search.di.repositorySearchModule
+import com.example.kidedvisor.search.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -20,6 +21,7 @@ class App : Application() {
                 interactorSampleModule,
                 repositorySearchModule,
                 interactorSearchModule,
+                viewModelModule,
             )
         }
     }
