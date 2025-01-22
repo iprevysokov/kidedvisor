@@ -19,7 +19,7 @@ class ClubDbConverter {
             address = clubEntity.address,
             branch = branch,
             image = clubEntity.photo.toInt(),
-            rating = 3
+            rating = 3.0
         )
     }
 }

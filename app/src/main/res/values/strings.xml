@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">kidedvisor</string>
+    <string name="app_name">Kidedvisor</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="common_of_reviews"><u>199 отзывов</u></string>
     <string name="schedule"><u>Расписание</u></string>

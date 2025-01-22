@@ -12,5 +12,5 @@ data class ClubInSearch(
     val branchIcon: Int = R.drawable.ic_sports_soccer_24,
     @DrawableRes
     val image: Int,
-    val rating: Int
+    val rating: Double
 )
