@@ -26,7 +26,7 @@ class SampleCollectionRepositoryImpl(
 
     private suspend fun isExistLocalData(): Boolean {
         val data = db.activityBranchDao().getAllActivityBranch()
-        return data != null
+        return data.isNotEmpty()
     }
 
     private suspend fun createSampleActivityBranch() {
@@ -84,56 +84,68 @@ class SampleCollectionRepositoryImpl(
         listOf(
             // искусство
             ClubEntity(
+                id = UUID.fromString("8C0A9050-F44A-4766-8E48-FAEA54369708"),
                 name = "Школа искусств \"Тутти\"",
                 photo = R.drawable.art1.toString()
             ),
             ClubEntity(
+                id = UUID.fromString("E18BA298-B80D-46BE-9D72-CEA20176DA59"),
                 name = "Художественная студия \"Пикассо\"",
                 photo = R.drawable.art2.toString()
             ),
             ClubEntity(
+                id = UUID.fromString("73245E2F-0152-427A-AD1A-1B034595EC52"),
                 name = "Художественная студия \"Пикассо\"",
                 photo = R.drawable.art3.toString(),
                 isRecommend = true
             ),
             ClubEntity(
+                id = UUID.fromString("D29D68E2-27A6-4888-9247-784E68BF1E13"),
                 name = "Художественная студия \"Пикассо\"",
                 photo = R.drawable.art4.toString()
             ),
 
             // спорт
             ClubEntity(
+                id = UUID.fromString("8A7565BD-F1C6-4830-90FD-9C3F0360CE4E"),
                 name = "Мир единоборств чертаново \"Пикассо\"",
                 photo = R.drawable.sport2.toString()
             ),
             ClubEntity(
+                id = UUID.fromString("A0DF9F8E-A036-4FBA-97F7-D1D6D72EE966"),
                 name = "Спортивный клуб \"Farteam\"",
                 photo = R.drawable.sport4.toString()
             ),
             ClubEntity(
+                id = UUID.fromString("8BAA30F4-8C5A-42C9-9AE0-1AEBFCB02A41"),
                 name = "Спортивная школа \"Ратмир\"",
                 photo = R.drawable.sport1.toString()
             ),
             ClubEntity(
+                id = UUID.fromString("725A01FF-3715-451A-BC9A-789DB20D9351"),
                 name = "Спортивная школа \"Ратмир\"",
                 photo = R.drawable.sport3.toString()
             ),
 
             // Наука
             ClubEntity(
+                id = UUID.fromString("01B64A92-D897-4D6B-8765-F512FBC5DF99"),
                 name = "ДК \"Юность\"",
                 photo = R.drawable.science1.toString(),
                 isRecommend = true
             ),
             ClubEntity(
+                id = UUID.fromString("3CDE3827-8969-47EF-8C40-6AF938694DD5"),
                 name = "ДК \"Ховринский\"",
                 photo = R.drawable.science2.toString()
             ),
             ClubEntity(
+                id = UUID.fromString("08D2D968-F86A-4D91-8240-D52A97B17BC8"),
                 name = "Языковая школа ILS",
                 photo = R.drawable.science3.toString()
             ),
             ClubEntity(
+                id = UUID.fromString("9E1C2630-DCB4-40F4-97CA-F14DA151D997"),
                 name = "Языковая школа ILS",
                 photo = R.drawable.science4.toString()
             ),

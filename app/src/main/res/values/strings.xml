@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">Kidedvisor</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="common_of_reviews"><u>199 отзывов</u></string>
+    <string name="schedule"><u>Расписание</u></string>
+    <string name="visit_website"><u>Посетить веб-сайт</u></string>
+    <string name="show_all"><u>Показать все</u></string>
+    <string name="contact_with_owner">Связаться с владельцем секции</string>
+    <string name="schedule_clubs">Расписание секций</string>
+    <string name="season_tickets">Абонементы</string>
+    <string name="tv_request_card_manager"><u>Запросить права на управление карточкой</u></string>
+    <string name="unknown_owner">На данный момент мы не знаем, кто владелец секции. Если это вы, сообщите нам.</string>
+    <string name="contact">Связаться</string>
+    <string name="leave_rating">оставить оценку</string>
     <string name="search_hint">Название секции</string>
     <string name="badge_text">Наш выбор</string>
     <string name="cancel">Отменить</string>

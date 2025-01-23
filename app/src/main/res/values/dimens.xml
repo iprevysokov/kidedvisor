@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="app_title_size">50sp</dimen>
-    <dimen name="text_size_20">20sp</dimen>
-    <dimen name="text_size_16">16sp</dimen>
-    <dimen name="text_size_14">14sp</dimen>
-    <dimen name="text_size_10">10sp</dimen>
-    <dimen name="button_text_size">16sp</dimen>
-    <dimen name="text_size_12">12sp</dimen>
-    <dimen name="badge_text_size">10sp</dimen>
-    <dimen name="text_indent">2dp</dimen>
-    <dimen name="button_stroke_width">2dp</dimen>
-    <dimen name="padding_size">16dp</dimen>
-    <dimen name="padding_14">14dp</dimen>
-    <dimen name="padding_8">8dp</dimen>
-    <dimen name="title_to_scroll_padding">10dp</dimen>
-    <dimen name="text_padding">4dp</dimen>
-    <dimen name="end_icon_padding">18dp</dimen>
-    <dimen name="icon_padding">12dp</dimen>
-    <dimen name="small_button_text_padding">24dp</dimen>
+    <dimen name="gap_24">24dp</dimen>
+    <dimen name="gap_18">18dp</dimen>
+    <dimen name="gap_16">16dp</dimen>
+    <dimen name="gap_14">14dp</dimen>
+    <dimen name="gap_12">12dp</dimen>
+    <dimen name="gap_10">10dp</dimen>
+    <dimen name="gap_8">8dp</dimen>
+    <dimen name="gap_4">4dp</dimen>
+    <dimen name="gap_2">2dp</dimen>
+
+    <dimen name="textSize_50">50sp</dimen>
+    <dimen name="textSize_24">24sp</dimen>
+    <dimen name="textSize_20">20sp</dimen>
+    <dimen name="textSize_16">16sp</dimen>
+    <dimen name="textSize_15">15sp</dimen>
+    <dimen name="textSize_14">14sp</dimen>
+    <dimen name="textSize_13">13sp</dimen>
+    <dimen name="textSize_12">12sp</dimen>
+    <dimen name="textSize_10">10sp</dimen>
+
 </resources>

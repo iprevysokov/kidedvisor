@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".search.SearchFragment">
+    tools:context=".search.ui.SearchFragment">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -20,37 +20,37 @@
         style="@style/AppTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_size"
-        android:layout_marginBottom="@dimen/padding_size"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginBottom="@dimen/gap_16"
         android:text="@string/app_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <!--  state 1  -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/filter_recycler"
+        android:id="@+id/filter_tag_recycler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/padding_8"
+        android:layout_marginEnd="@dimen/gap_8"
         android:orientation="horizontal"
         android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_title"
-        tools:listitem="@layout/item_filter_view" />
+        tools:listitem="@layout/item_filter_tag" />
 
     <!--  common input field  -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_field"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_size"
-        android:layout_marginTop="@dimen/padding_size"
-        android:layout_marginEnd="@dimen/padding_size"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginTop="@dimen/gap_16"
+        android:layout_marginEnd="@dimen/gap_16"
         android:background="@drawable/rounded_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_recycler">
+        app:layout_constraintTop_toBottomOf="@id/filter_tag_recycler">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,7 +69,7 @@
                 android:id="@+id/filter_search"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginEnd="@dimen/icon_padding"
+                android:layout_marginEnd="@dimen/gap_12"
                 android:src="@drawable/ic_filter"
                 android:visibility="visible" />
 
@@ -77,7 +77,7 @@
                 android:id="@+id/search_action"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginEnd="@dimen/end_icon_padding"
+                android:layout_marginEnd="@dimen/gap_18"
                 android:src="@drawable/ic_search"
                 android:visibility="visible" />
 
@@ -85,7 +85,7 @@
                 android:id="@+id/close_search_action"
                 android:layout_width="14dp"
                 android:layout_height="14dp"
-                android:layout_marginEnd="@dimen/end_icon_padding"
+                android:layout_marginEnd="@dimen/gap_18"
                 android:src="@drawable/ic_close"
                 android:visibility="gone" />
 
@@ -97,7 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:cardCornerRadius="16dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,6 +105,7 @@
         app:layout_constraintTop_toBottomOf="@id/chart_btn">
 
         <ImageView
+            android:id="@+id/image_add_banner"
             android:layout_width="match_parent"
             android:layout_height="208dp"
             android:scaleType="centerCrop"
@@ -115,6 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:text="@string/badge_text"
             android:background="@drawable/rounded_choice_right"
             tools:text="@string/badge_text" />
 
@@ -124,9 +126,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginStart="@dimen/padding_size"
-            android:layout_marginBottom="@dimen/icon_padding"
-            android:paddingHorizontal="@dimen/small_button_text_padding"
+            android:layout_marginStart="@dimen/gap_16"
+            android:layout_marginBottom="@dimen/gap_12"
+            android:paddingHorizontal="@dimen/gap_24"
             android:text="@string/more_detailed" />
     </androidx.cardview.widget.CardView>
 
@@ -134,9 +136,9 @@
         android:id="@+id/club_collection_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/padding_size"
-        android:layout_marginTop="@dimen/padding_size"
-        android:layout_marginEnd="@dimen/padding_size"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginTop="@dimen/gap_16"
+        android:layout_marginEnd="@dimen/gap_16"
         android:visibility="visible"
         tools:listitem="@layout/item_outer_rv"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -151,9 +153,9 @@
         style="@style/Title16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_size"
-        android:layout_marginTop="@dimen/padding_size"
-        android:paddingBottom="@dimen/padding_8"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginTop="@dimen/gap_16"
+        android:paddingBottom="@dimen/gap_8"
         android:text="@string/popular_request"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +165,7 @@
         android:id="@+id/popular_request_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/padding_size"
+        android:layout_marginHorizontal="@dimen/gap_16"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -176,9 +178,9 @@
         style="@style/Title16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_size"
-        android:layout_marginTop="@dimen/padding_size"
-        android:paddingBottom="@dimen/padding_8"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginTop="@dimen/gap_16"
+        android:paddingBottom="@dimen/gap_8"
         android:text="@string/popular_clubs"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
@@ -188,9 +190,9 @@
         android:id="@+id/popular_club_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/padding_size"
-        android:layout_marginTop="@dimen/padding_8"
-        android:layout_marginEnd="@dimen/padding_size"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginTop="@dimen/gap_8"
+        android:layout_marginEnd="@dimen/gap_16"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -205,12 +207,12 @@
         style="@style/FilterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_size"
-        android:layout_marginTop="@dimen/padding_size"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginTop="@dimen/gap_16"
         android:text="@string/popular"
         android:visibility="gone"
         app:icon="@drawable/ic_chart"
-        app:iconPadding="@dimen/padding_8"
+        app:iconPadding="@dimen/gap_8"
         app:layout_constraintEnd_toStartOf="@id/filter_btn"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
@@ -221,13 +223,13 @@
         style="@style/FilterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_size"
-        android:layout_marginEnd="@dimen/padding_size"
+        android:layout_marginTop="@dimen/gap_16"
+        android:layout_marginEnd="@dimen/gap_16"
         android:text="@string/filters"
         android:visibility="gone"
         app:icon="@drawable/ic_filter"
         app:iconGravity="end"
-        app:iconPadding="@dimen/padding_8"
+        app:iconPadding="@dimen/gap_8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/chart_btn"
         app:layout_constraintTop_toBottomOf="@+id/input_field" />
@@ -236,7 +238,7 @@
         android:id="@+id/search_result_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/padding_size"
+        android:layout_marginHorizontal="@dimen/gap_16"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
