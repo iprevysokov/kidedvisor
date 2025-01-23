@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/request_text"
             style="@style/RegularText14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
