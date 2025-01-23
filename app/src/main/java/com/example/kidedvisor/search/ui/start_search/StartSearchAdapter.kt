@@ -1,10 +1,10 @@
-package com.example.kidedvisor.search.ui.start
+package com.example.kidedvisor.search.ui.start_search
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidedvisor.search.presenter.models.SearchStartRVItem
 
-class StartAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class StartSearchAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var items = emptyList<SearchStartRVItem>()
 
