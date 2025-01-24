@@ -50,6 +50,7 @@ class SearchFragment : Fragment() {
     private fun render(state: SearchScreenState) {
         when (state) {
             is SearchScreenState.ZeroSearchState -> renderZeroSearchScreenState(state)
+            is SearchScreenState.StartSearchState -> renderStartSearchScreenState(state)
         }
     }
 

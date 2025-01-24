@@ -11,7 +11,7 @@ class StartSearchHeaderViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: SearchStartRVItem.Header) {
-        val headerText = item.headerText
+        val headerText = binding.root.context.getText(item.headerText)
         binding.startSearchHeader.text = headerText
     }
 

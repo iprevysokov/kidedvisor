@@ -9,5 +9,5 @@ sealed class SearchScreenState {
         val outerModels: List<OuterModel>
     ) : SearchScreenState()
 
-    data class StartSearchState(val searchStartRVItem: List<SearchStartRVItem>)
+    data class StartSearchState(val searchStartRVItem: List<SearchStartRVItem>) : SearchScreenState()
 }

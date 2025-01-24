@@ -43,12 +43,12 @@ class SearchViewModel(
         val items = buildList<SearchStartRVItem> {
             if (popularRequest.isNotEmpty()) {
                 this += SearchStartRVItem.Header(R.string.popular_request)
-                this += SearchStartRVItem.Request(popularRequest)
+                this += popularRequest.map { SearchStartRVItem.Request(it) }
             }
 
             if (popularClubs.isNotEmpty()) {
                 this += SearchStartRVItem.Header(R.string.popular_clubs)
-                this += SearchStartRVItem.Club(popularClubs)
+                this += popularClubs.map { SearchStartRVItem.Club(it) }
             }
         }
 
