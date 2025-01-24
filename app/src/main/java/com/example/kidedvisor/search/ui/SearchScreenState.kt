@@ -1,7 +1,7 @@
 package com.example.kidedvisor.search.ui
 
 import com.example.kidedvisor.search.presenter.models.OuterModel
-import com.example.kidedvisor.search.presenter.models.SearchStartModel
+import com.example.kidedvisor.search.presenter.models.SearchStartRVItem
 
 sealed class SearchScreenState {
 
@@ -9,5 +9,5 @@ sealed class SearchScreenState {
         val outerModels: List<OuterModel>
     ) : SearchScreenState()
 
-    data class SearchStartState(val searchStartModels: List<SearchStartModel>)
+    data class StartSearchState(val searchStartRVItem: List<SearchStartRVItem>)
 }
