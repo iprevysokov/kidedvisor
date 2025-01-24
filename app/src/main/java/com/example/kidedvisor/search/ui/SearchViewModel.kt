@@ -4,12 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.kidedvisor.search.domain.api.GetPopularRequestUseCase
 import com.example.kidedvisor.search.domain.api.GetSliderClubsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
-    private val getSliderClubsUseCase: GetSliderClubsUseCase
+    private val getSliderClubsUseCase: GetSliderClubsUseCase,
+    private val getPopularRequestUseCase: GetPopularRequestUseCase,
 ) : ViewModel() {
 
     private val state = MutableLiveData<SearchScreenState>()
@@ -28,5 +30,9 @@ class SearchViewModel(
                     )
                 }
         }
+    }
+
+    private fun renderStartSearch() {
+
     }
 }
