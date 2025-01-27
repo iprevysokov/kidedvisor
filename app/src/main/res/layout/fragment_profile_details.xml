@@ -1,21 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background_white"
     tools:context=".profile.presentation.ui.ProfileDetailsFragment">
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_profile_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:buttonGravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_back"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/gap_18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/gap_18" />
+
+    <TextView
+        android:id="@+id/profile_details_headline"
+        style="@style/Title32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my_details"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_profile_details" />
+
+    <ImageView
+        android:id="@+id/profile_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_20"
+        android:src="@drawable/ic_profile_avatar"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/profile_details_headline" />
+
+    <TextView
+        android:id="@+id/user_name"
+        style="@style/Title16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_16"
+        android:text="@string/user_name"
+        app:layout_constraintBottom_toTopOf="@id/personal_account"
+        app:layout_constraintStart_toEndOf="@id/profile_avatar"
+        app:layout_constraintTop_toTopOf="@id/profile_avatar" />
+
+    <TextView
+        android:id="@+id/personal_account"
+        style="@style/RegularText12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/personal_account"
+        app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
+        app:layout_constraintStart_toStartOf="@id/user_name"
+        app:layout_constraintTop_toBottomOf="@id/user_name" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/gap_6"
+        android:src="@drawable/ic_forward_small"
+        app:layout_constraintBottom_toBottomOf="@id/personal_account"
+        app:layout_constraintStart_toEndOf="@id/personal_account"
+        app:layout_constraintTop_toTopOf="@id/personal_account" />
+
+    <TextView
+        android:id="@+id/register_tw"
+        style="@style/RegularGrayText14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_16"
+        android:background="@drawable/background_line"
+        android:paddingTop="@dimen/gap_17"
+        android:paddingBottom="@dimen/gap_14"
+        android:text="@string/register"
+        app:layout_constraintEnd_toStartOf="@id/end_line"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/profile_avatar" />
+
+    <ImageView
+        android:id="@+id/register_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_forward"
+        app:layout_constraintBottom_toBottomOf="@id/register_tw"
+        app:layout_constraintEnd_toStartOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="@id/register_tw" />
+
+    <TextView
+        android:id="@+id/help_tw"
+        style="@style/RegularGrayText14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_line"
+        android:paddingTop="@dimen/gap_17"
+        android:paddingBottom="@dimen/gap_14"
+        android:text="@string/help"
+        app:layout_constraintEnd_toStartOf="@id/end_line"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/register_tw" />
+
+    <ImageView
+        android:id="@+id/help_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_forward"
+        app:layout_constraintBottom_toBottomOf="@id/help_tw"
+        app:layout_constraintEnd_toStartOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="@id/help_tw" />
+
+    <TextView
+        android:id="@+id/kidedviser_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/RegularGrayText14"
+        android:layout_marginBottom="@dimen/gap_16"
+        android:text="@string/kidedviser_details"
+        android:background="@drawable/background_line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/end_line"
+        app:layout_constraintStart_toStartOf="@+id/start_line" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="SearchEditText">
         <item name="android:background">@android:color/transparent</item>
     </style>
-    
+
     <style name="AppTitleText">
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/textSize_50</item>
@@ -25,35 +26,48 @@
         <item name="android:textColor">@color/badge_rating_color</item>
         <item name="android:background">@drawable/blue_badge_rectangle</item>
     </style>
-    
-    <style name="RegularText14">
+
+    <style name="RegularDarkText">
         <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textSize">@dimen/textSize_14</item>
         <item name="android:textColor">@color/primary_dark</item>
     </style>
 
-    <style name="RegularText12">
-        <item name="android:fontFamily">@font/roboto_regular</item>
+    <style name="RegularText14" parent="RegularDarkText">
+        <item name="android:textSize">@dimen/textSize_14</item>
+    </style>
+
+    <style name="RegularText12" parent="RegularDarkText">
         <item name="android:textSize">@dimen/textSize_12</item>
-        <item name="android:textColor">@color/primary_dark</item>
     </style>
 
-    <style name="RegularText10">
-        <item name="android:fontFamily">@font/roboto_regular</item>
+    <style name="RegularText10" parent="RegularDarkText">
         <item name="android:textSize">@dimen/textSize_10</item>
-        <item name="android:textColor">@color/primary_dark</item>
     </style>
 
-    <style name="Title14">
-        <item name="android:fontFamily">@font/roboto_medium</item>
+    <style name="RegularGrayText">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/text_gray</item>
+    </style>
+
+    <style name="RegularGrayText14" parent="RegularGrayText">
         <item name="android:textSize">@dimen/textSize_14</item>
+    </style>
+
+    <style name="MediumDarkText">
+        <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">@color/primary_dark</item>
     </style>
 
-    <style name="Title16">
-        <item name="android:fontFamily">@font/roboto_medium</item>
+    <style name="Title14" parent="MediumDarkText">
+        <item name="android:textSize">@dimen/textSize_14</item>
+    </style>
+
+    <style name="Title16" parent="MediumDarkText">
         <item name="android:textSize">@dimen/textSize_16</item>
-        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+    
+    <style name="Title32" parent="MediumDarkText">
+        <item name="android:textSize">@dimen/textSize_32</item>
     </style>
 
     <style name="UnFillButton" parent="Widget.Material3.Button.OutlinedButton">
