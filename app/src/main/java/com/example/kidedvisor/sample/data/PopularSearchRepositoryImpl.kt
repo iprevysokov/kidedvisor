@@ -24,7 +24,8 @@ class PopularSearchRepositoryImpl : PopularSearchRepository {
                 name = "Школа искусств \"Тутти\"",
                 address = "Металлистов, д.1",
                 image = R.drawable.art1,
-                branch = "Искусство"
+                branch = "Искусство",
+                type = "Танцы",
             ),
             ClubInSearch(
                 rating = 4.2,
@@ -32,6 +33,7 @@ class PopularSearchRepositoryImpl : PopularSearchRepository {
                 address = "Металлистов, д.1",
                 image = R.drawable.art2,
                 branch = "Искусство",
+                type = "Рисование",
             ),
             ClubInSearch(
                 rating = 4.2,
@@ -39,20 +41,23 @@ class PopularSearchRepositoryImpl : PopularSearchRepository {
                 address = "Металлистов, д.1",
                 image = R.drawable.art3,
                 branch = "Искусство",
+                type = "Рисование",
             ),
             ClubInSearch(
                 rating = 4.2,
                 name = "Художественная студия \"Пикассо\"",
                 address = "Металлистов, д.1",
                 image = R.drawable.art4,
-                branch = "Искусство"
+                branch = "Искусство",
+                type = "Рисование",
             ),
             ClubInSearch(
                 rating = 4.2,
                 name = "Мир единоборств чертаново \"Пикассо\"",
                 address = "Металлистов, д.1",
                 image = R.drawable.sport2,
-                branch = "Спорт"
+                branch = "Спорт",
+                type = "Борьба"
             ),
         )
     }
