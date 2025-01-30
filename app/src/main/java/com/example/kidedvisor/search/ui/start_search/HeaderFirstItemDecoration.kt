@@ -1,10 +1,8 @@
 package com.example.kidedvisor.search.ui.start_search
 
 import android.graphics.Rect
-import android.util.TypedValue
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kidedvisor.R
 
 class HeaderFirstItemDecoration : RecyclerView.ItemDecoration() {
 

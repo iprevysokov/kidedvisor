@@ -1,10 +1,8 @@
 package com.example.kidedvisor.sample.data
 
 import com.example.kidedvisor.R
-import com.example.kidedvisor.core.roomdb.entity.ClubEntity
 import com.example.kidedvisor.sample.domain.api.PopularSearchRepository
 import com.example.kidedvisor.search.domain.models.ClubInSearch
-import java.util.UUID
 
 class PopularSearchRepositoryImpl : PopularSearchRepository {
     override fun getPopularRequest(): List<String> {

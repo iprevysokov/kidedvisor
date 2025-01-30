@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kidedvisor.databinding.ItemSearchStartClubBinding
-import com.example.kidedvisor.search.domain.models.ClubInSearch
 import com.example.kidedvisor.search.presenter.models.SearchStartRVItem
 
 class StartSearchClubViewHolder(
