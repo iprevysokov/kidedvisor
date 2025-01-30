@@ -11,10 +11,10 @@
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
-            android:id="@+id/action_searchFragment_to_clubFragment2"
+            android:id="@+id/action_searchFragment_to_clubFragment"
             app:destination="@id/clubFragment" />
         <action
-            android:id="@+id/action_searchFragment_to_placeholder"
+            android:id="@+id/action_searchFragment_to_myData"
             app:destination="@id/myData" />
         <action
             android:id="@+id/action_searchFragment_to_filter"
@@ -26,12 +26,12 @@
         android:label="fragment_club"
         tools:layout="@layout/fragment_club" >
         <action
-            android:id="@+id/action_clubFragment2_to_placeholder3"
+            android:id="@+id/action_clubFragment_to_review"
             app:destination="@id/review" />
     </fragment>
     <fragment android:id="@+id/myData" >
         <action
-            android:id="@+id/action_myData_to_placeholder4"
+            android:id="@+id/action_myData_to_support"
             app:destination="@id/support" />
     </fragment>
     <fragment android:id="@+id/filter" />
