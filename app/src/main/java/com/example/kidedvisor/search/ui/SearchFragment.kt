@@ -99,8 +99,8 @@ class SearchFragment : Fragment() {
         visibilityStartSearch(true)
 
         startSearchAdapter.items = state.searchStartRVItem
-        binding.popularRequestRecycler.adapter = startSearchAdapter
-        binding.popularRequestRecycler.addItemDecoration(HeaderFirstItemDecoration())
+        binding.startSearchRecycler.adapter = startSearchAdapter
+        binding.startSearchRecycler.addItemDecoration(HeaderFirstItemDecoration())
     }
 
     private fun visibilityZeroSearch(visibility: Boolean) {
@@ -116,7 +116,7 @@ class SearchFragment : Fragment() {
     private fun visibilityStartSearch(visibility: Boolean) {
         binding.apply {
             closeSearchAction.isVisible = visibility
-            popularRequestRecycler.isVisible = visibility
+            startSearchRecycler.isVisible = visibility
         }
     }
 

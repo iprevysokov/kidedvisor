@@ -18,6 +18,7 @@ class StartSearchClubViewHolder(
 
         Glide.with(binding.root)
             .load(club.image)
+            .centerCrop()
             .into(binding.clubImage)
 
         binding.apply {

@@ -149,21 +149,8 @@
         app:layout_constraintTop_toBottomOf="@id/ad_banner" />
 
     <!--  state 2  -->
-    <TextView
-        android:id="@+id/request_title"
-        style="@style/Title16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/gap_16"
-        android:layout_marginTop="@dimen/gap_16"
-        android:paddingBottom="@dimen/gap_8"
-        android:text="@string/popular_request"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_field" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popular_request_recycler"
+        android:id="@+id/start_search_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="@dimen/gap_16"
@@ -172,38 +159,10 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/request_title"
+        app:layout_constraintTop_toBottomOf="@id/input_field"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:itemCount="5"
         tools:listitem="@layout/item_popular_request" />
-
-    <TextView
-        android:id="@+id/popular_club_title"
-        style="@style/Title16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/gap_16"
-        android:layout_marginTop="@dimen/gap_16"
-        android:paddingBottom="@dimen/gap_8"
-        android:text="@string/popular_clubs"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/popular_request_recycler" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popular_club_recycler"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/gap_16"
-        android:layout_marginTop="@dimen/gap_8"
-        android:layout_marginEnd="@dimen/gap_16"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/popular_club_title"
-        tools:itemCount="10"
-        tools:listitem="@layout/item_popular_clubs_view" />
 
     <!--  state 3  -->
     <com.google.android.material.button.MaterialButton
