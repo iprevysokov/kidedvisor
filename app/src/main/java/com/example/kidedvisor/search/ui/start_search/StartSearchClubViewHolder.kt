@@ -21,7 +21,7 @@ class StartSearchClubViewHolder(
             .into(binding.clubImage)
 
         binding.apply {
-            ratingBadge.text = "%f".format(club.rating)
+            ratingBadge.text = club.rating.toString()
             ratingBar.rating = club.rating.toFloat()
             clubTitle.text = club.name
             clubAddress.text = club.address

@@ -36,7 +36,7 @@ class SearchViewModel(
         }
     }
 
-    private fun renderStartSearch() {
+    fun renderStartSearch() {
         val popularRequest = getPopularRequestUseCase.execute()
         val popularClubs = getPopularClubsUseCase.execute()
 
@@ -52,6 +52,6 @@ class SearchViewModel(
             }
         }
 
-        SearchScreenState.StartSearchState(items)
+        state.value = SearchScreenState.StartSearchState(items)
     }
 }

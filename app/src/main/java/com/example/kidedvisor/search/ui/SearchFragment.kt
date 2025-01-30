@@ -1,6 +1,8 @@
 package com.example.kidedvisor.search.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import com.example.kidedvisor.databinding.FragmentSearchBinding
 import com.example.kidedvisor.search.presenter.FilterTagAdapter
 import com.example.kidedvisor.search.presenter.OuterAdapter
 import com.example.kidedvisor.search.presenter.models.OuterModel
+import com.example.kidedvisor.search.ui.start_search.HeaderFirstItemDecoration
 import com.example.kidedvisor.search.ui.start_search.StartSearchAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,6 +28,8 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModel<SearchViewModel>()
+
+    private var inputSearchText = DEF_TEXT
 
     override fun onDestroy() {
         super.onDestroy()
@@ -44,7 +49,30 @@ class SearchFragment : Fragment() {
 
         viewModel.getState().observe(viewLifecycleOwner) { state ->
             render(state)
+
         }
+
+        binding.editText.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && inputSearchText.isEmpty()) viewModel.renderStartSearch()
+        }
+
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                TODO("Not yet implemented")
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                inputSearchText = p0.toString()
+
+                if (inputSearchText.isEmpty()) viewModel.renderStartSearch()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+//                TODO("Not yet implemented")
+            }
+        }
+
+        binding.editText.addTextChangedListener(textWatcher)
     }
 
     private fun render(state: SearchScreenState) {
@@ -72,6 +100,7 @@ class SearchFragment : Fragment() {
 
         startSearchAdapter.items = state.searchStartRVItem
         binding.popularRequestRecycler.adapter = startSearchAdapter
+        binding.popularRequestRecycler.addItemDecoration(HeaderFirstItemDecoration())
     }
 
     private fun visibilityZeroSearch(visibility: Boolean) {
@@ -87,6 +116,7 @@ class SearchFragment : Fragment() {
     private fun visibilityStartSearch(visibility: Boolean) {
         binding.apply {
             closeSearchAction.isVisible = visibility
+            popularRequestRecycler.isVisible = visibility
         }
     }
 
@@ -104,5 +134,9 @@ class SearchFragment : Fragment() {
         Glide.with(requireContext())
             .load(R.drawable.banner_main)
             .into(binding.imageAddBanner)
+    }
+
+    companion object {
+        private const val DEF_TEXT = ""
     }
 }
