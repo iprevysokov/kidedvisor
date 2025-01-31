@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".club.presentation.ui.RequestCardRightsFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_Request_Card_Rights"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:buttonGravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_write_us"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginEnd="@dimen/gap_16"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/Write_to_us"
+        android:textColor="@color/primary_dark"
+        android:textSize="@dimen/textSize_32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_Request_Card_Rights" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_8"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/if_you_owner"
+        android:textColor="@color/primary_dark"
+        android:textSize="@dimen/textSize_14"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/tv_write_us"
+        app:layout_constraintStart_toStartOf="@+id/tv_write_us"
+        app:layout_constraintTop_toBottomOf="@+id/tv_write_us" />
+
+    <Button
+        android:id="@+id/bt_send"
+        style="@style/FillButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginEnd="@dimen/gap_16"
+        android:layout_marginBottom="@dimen/gap_16"
+        android:text="@string/send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_message"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/gap_112"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginTop="@dimen/gap_16"
+        android:layout_marginEnd="@dimen/gap_16"
+        android:background="@drawable/rectangle_for_big_edittext"
+        android:gravity="top"
+        android:hint="@string/text_your_message"
+        android:padding="@dimen/gap_16"
+        android:textSize="@dimen/textSize_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,4 +20,8 @@
     <string name="popular_clubs">Популярные секции</string>
     <string name="filters">Фильтры</string>
     <string name="more_detailed">Подробнее</string>
+    <string name="send">Отправить</string>
+    <string name="Write_to_us">Напишите нам</string>
+    <string name="text_your_message">Текст вашего обращения</string>
+    <string name="if_you_owner">Если вы владелец секции, напишите нам, мы с вами свяжемся в ближайшее время.</string>
 </resources>
