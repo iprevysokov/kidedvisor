@@ -16,8 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        tools:ignore="MissingConstraints" />
+        app:navigationIcon="@drawable/ic_arrow_back" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/start_line"
@@ -62,25 +61,37 @@
         app:layout_constraintStart_toEndOf="@id/profile_avatar"
         app:layout_constraintTop_toTopOf="@id/profile_avatar" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/gap_3"
+        android:src="@drawable/ic_forward_small"
+        app:layout_constraintBottom_toBottomOf="@id/personal_account"
+        app:layout_constraintEnd_toEndOf="@id/personal_account"
+        app:layout_constraintTop_toTopOf="@id/personal_account" />
+
     <TextView
         android:id="@+id/personal_account"
         style="@style/RegularText12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/gap_4"
+        android:paddingTop="@dimen/gap_4"
+        android:paddingEnd="@dimen/gap_12"
         android:text="@string/personal_account"
         app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
         app:layout_constraintStart_toStartOf="@id/user_name"
         app:layout_constraintTop_toBottomOf="@id/user_name" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/register_ic"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/gap_6"
-        android:src="@drawable/ic_forward_small"
-        app:layout_constraintBottom_toBottomOf="@id/personal_account"
-        app:layout_constraintStart_toEndOf="@id/personal_account"
-        app:layout_constraintTop_toTopOf="@id/personal_account" />
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_forward"
+        app:layout_constraintBottom_toBottomOf="@id/register_tw"
+        app:layout_constraintEnd_toStartOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="@id/register_tw" />
 
     <TextView
         android:id="@+id/register_tw"
@@ -97,13 +108,13 @@
         app:layout_constraintTop_toBottomOf="@id/profile_avatar" />
 
     <ImageView
-        android:id="@+id/register_ic"
+        android:id="@+id/help_ic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_forward"
-        app:layout_constraintBottom_toBottomOf="@id/register_tw"
+        app:layout_constraintBottom_toBottomOf="@id/help_tw"
         app:layout_constraintEnd_toStartOf="@id/end_line"
-        app:layout_constraintTop_toTopOf="@id/register_tw" />
+        app:layout_constraintTop_toTopOf="@id/help_tw" />
 
     <TextView
         android:id="@+id/help_tw"
@@ -118,23 +129,14 @@
         app:layout_constraintStart_toStartOf="@id/start_line"
         app:layout_constraintTop_toBottomOf="@id/register_tw" />
 
-    <ImageView
-        android:id="@+id/help_ic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_forward"
-        app:layout_constraintBottom_toBottomOf="@id/help_tw"
-        app:layout_constraintEnd_toStartOf="@id/end_line"
-        app:layout_constraintTop_toTopOf="@id/help_tw" />
-
     <TextView
-        android:id="@+id/kidedviser_tw"
+        android:id="@+id/kidedvisor_tw"
+        style="@style/RegularGrayText14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/RegularGrayText14"
         android:layout_marginBottom="@dimen/gap_16"
-        android:text="@string/kidedviser_details"
         android:background="@drawable/background_line"
+        android:text="@string/kidedvisor_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/end_line"
         app:layout_constraintStart_toStartOf="@+id/start_line" />
