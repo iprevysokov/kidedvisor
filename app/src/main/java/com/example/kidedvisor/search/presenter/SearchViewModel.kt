@@ -1,14 +1,18 @@
-package com.example.kidedvisor.search.ui
+package com.example.kidedvisor.search.presenter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kidedvisor.R
+import com.example.kidedvisor.search.domain.api.GetAdBannerUseCase
 import com.example.kidedvisor.search.domain.api.GetPopularClubsUseCase
 import com.example.kidedvisor.search.domain.api.GetPopularRequestUseCase
 import com.example.kidedvisor.search.domain.api.GetSliderClubsUseCase
+import com.example.kidedvisor.search.domain.models.AdBanner
+import com.example.kidedvisor.search.presenter.models.ClubsSelection
 import com.example.kidedvisor.search.presenter.models.SearchStartRVItem
+import com.example.kidedvisor.search.presenter.models.ZeroSearchRVItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -16,6 +20,7 @@ class SearchViewModel(
     private val getSliderClubsUseCase: GetSliderClubsUseCase,
     private val getPopularRequestUseCase: GetPopularRequestUseCase,
     private val getPopularClubsUseCase: GetPopularClubsUseCase,
+    private val getAdBannerUseCase: GetAdBannerUseCase,
 ) : ViewModel() {
 
     private val state = MutableLiveData<SearchScreenState>()
@@ -27,13 +32,31 @@ class SearchViewModel(
 
     private fun renderZeroSearch() {
         viewModelScope.launch(Dispatchers.IO) {
+            val adBanner = getAdBannerUseCase.execute()
             getSliderClubsUseCase.execute()
-                .collect { outerModel ->
+                .collect { clubsSelectionList ->
                     state.postValue(
-                        SearchScreenState.ZeroSearchState(outerModel)
+                        zeroSearchToUi(adBanner, clubsSelectionList)
                     )
                 }
         }
+    }
+
+    private fun zeroSearchToUi(
+        adBanner: AdBanner, clubsSelectionList: List<ClubsSelection>
+    ): SearchScreenState.ZeroSearchState {
+
+        var branches = emptyList<String>()
+        val items = buildList<ZeroSearchRVItem> {
+            this += ZeroSearchRVItem.AdBannerItem(adBanner)
+            clubsSelectionList.map {
+                this += ZeroSearchRVItem.ClubSelectionItem(it)
+                branches += it.branchName
+            }
+
+        }
+
+        return SearchScreenState.ZeroSearchState(items, branches)
     }
 
     fun renderStartSearch() {

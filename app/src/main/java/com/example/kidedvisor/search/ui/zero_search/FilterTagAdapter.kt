@@ -1,4 +1,4 @@
-package com.example.kidedvisor.search.presenter
+package com.example.kidedvisor.search.ui.zero_search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ class FilterTagAdapter(
         val binding: ItemFilterTagBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterTagAdapter.ViewBinding {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewBinding {
         return ViewBinding(
             ItemFilterTagBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -28,7 +28,7 @@ class FilterTagAdapter(
         return filterTagList.size
     }
 
-    override fun onBindViewHolder(holder: FilterTagAdapter.ViewBinding, position: Int) {
+    override fun onBindViewHolder(holder: ViewBinding, position: Int) {
         val item = filterTagList[position]
         holder.binding.filterBtn.text = item
     }

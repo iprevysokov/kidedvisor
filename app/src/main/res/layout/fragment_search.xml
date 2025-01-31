@@ -93,46 +93,6 @@
         </LinearLayout>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/ad_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:visibility="gone"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chart_btn">
-
-        <ImageView
-            android:id="@+id/image_add_banner"
-            android:layout_width="match_parent"
-            android:layout_height="208dp"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/banner_main" />
-
-        <TextView
-            style="@style/BadgeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:text="@string/badge_text"
-            android:background="@drawable/rounded_choice_right"
-            tools:text="@string/badge_text" />
-
-        <Button
-            android:id="@+id/banner_button"
-            style="@style/FillButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="@dimen/gap_16"
-            android:layout_marginBottom="@dimen/gap_12"
-            android:paddingHorizontal="@dimen/gap_24"
-            android:text="@string/more_detailed" />
-    </androidx.cardview.widget.CardView>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/club_collection_recycler"
         android:layout_width="0dp"
@@ -141,12 +101,12 @@
         android:layout_marginTop="@dimen/gap_16"
         android:layout_marginEnd="@dimen/gap_16"
         android:visibility="gone"
-        tools:listitem="@layout/item_outer_rv"
+        tools:listitem="@layout/item_zero_search_selection"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ad_banner" />
+        app:layout_constraintTop_toBottomOf="@id/input_field" />
 
     <!--  state 2  -->
     <androidx.recyclerview.widget.RecyclerView
@@ -161,8 +121,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_field"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:itemCount="5"
-        tools:listitem="@layout/item_popular_request" />
+        tools:itemCount="5" />
 
     <!--  state 3  -->
     <com.google.android.material.button.MaterialButton
@@ -206,7 +165,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ad_banner"
+        app:layout_constraintTop_toBottomOf="@id/filter_btn"
         tools:listitem="@layout/item_search_result" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

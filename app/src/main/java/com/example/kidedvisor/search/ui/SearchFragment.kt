@@ -8,19 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
-import com.example.kidedvisor.R
 import com.example.kidedvisor.databinding.FragmentSearchBinding
-import com.example.kidedvisor.search.presenter.FilterTagAdapter
-import com.example.kidedvisor.search.presenter.OuterAdapter
-import com.example.kidedvisor.search.presenter.models.OuterModel
+import com.example.kidedvisor.search.presenter.SearchScreenState
+import com.example.kidedvisor.search.presenter.SearchViewModel
 import com.example.kidedvisor.search.ui.start_search.HeaderFirstItemDecoration
 import com.example.kidedvisor.search.ui.start_search.StartSearchAdapter
+import com.example.kidedvisor.search.ui.zero_search.FilterTagAdapter
+import com.example.kidedvisor.search.ui.zero_search.ZeroSearchAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
 
-    private val adapter = OuterAdapter()
+    private val zeroSearchAdapter = ZeroSearchAdapter()
     private val filterTagAdapter = FilterTagAdapter()
     private val startSearchAdapter = StartSearchAdapter()
 
@@ -86,19 +85,17 @@ class SearchFragment : Fragment() {
         visibilityZeroSearch(true)
         visibilityStartSearch(false)
 
-        showFilterTags(state.outerModels.map {
-            it.branchName
-        })
+        showFilterTags(state.branches)
 
-        showClubsSlider(state.outerModels)
-        showAddBanner()
+        zeroSearchAdapter.items = state.zeroSearchRVItem
+        binding.clubCollectionRecycler.adapter = zeroSearchAdapter
     }
 
     private fun renderStartSearchScreenState(state: SearchScreenState.StartSearchState) {
         visibilityZeroSearch(false)
         visibilityStartSearch(true)
 
-        startSearchAdapter.items = state.searchStartRVItem
+        startSearchAdapter.items = state.searchStartRVItems
         binding.startSearchRecycler.adapter = startSearchAdapter
         binding.startSearchRecycler.addItemDecoration(HeaderFirstItemDecoration())
     }
@@ -109,7 +106,6 @@ class SearchFragment : Fragment() {
             filterSearch.isVisible = visibility
             searchAction.isVisible = visibility
             clubCollectionRecycler.isVisible = visibility
-            adBanner.isVisible = visibility
         }
     }
 
@@ -123,17 +119,6 @@ class SearchFragment : Fragment() {
     private fun showFilterTags(tags: List<String>) {
         filterTagAdapter.filterTagList = tags
         binding.filterTagRecycler.adapter = filterTagAdapter
-    }
-
-    private fun showClubsSlider(outerModels: List<OuterModel>) {
-        adapter.itemList = outerModels
-        binding.clubCollectionRecycler.adapter = adapter
-    }
-
-    private fun showAddBanner() {
-        Glide.with(requireContext())
-            .load(R.drawable.banner_main)
-            .into(binding.imageAddBanner)
     }
 
     companion object {

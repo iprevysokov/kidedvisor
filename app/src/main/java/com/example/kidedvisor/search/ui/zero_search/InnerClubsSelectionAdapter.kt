@@ -1,4 +1,4 @@
-package com.example.kidedvisor.search.presenter
+package com.example.kidedvisor.search.ui.zero_search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kidedvisor.databinding.ItemInnerRvBinding
 import com.example.kidedvisor.search.domain.models.ClubInSearch
 
-class InnerAdapter(private val clubs: List<ClubInSearch>) :
-    RecyclerView.Adapter<InnerAdapter.ViewBinding>() {
+class InnerClubsSelectionAdapter(private val clubs: List<ClubInSearch>) :
+    RecyclerView.Adapter<InnerClubsSelectionAdapter.ViewBinding>() {
 
     inner class ViewBinding(val binding: ItemInnerRvBinding) : RecyclerView.ViewHolder(binding.root)
 

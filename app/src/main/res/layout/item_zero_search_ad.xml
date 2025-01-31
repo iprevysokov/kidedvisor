@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="@dimen/gap_16"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <ImageView
+        android:id="@+id/image_ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="208dp"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/banner_main" />
+
+    <TextView
+        style="@style/BadgeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="@string/badge_text"
+        android:background="@drawable/rounded_choice_right"
+        tools:text="@string/badge_text" />
+
+    <Button
+        android:id="@+id/banner_button"
+        style="@style/FillButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginBottom="@dimen/gap_12"
+        android:paddingHorizontal="@dimen/gap_24"
+        android:text="@string/more_detailed" />
+</androidx.cardview.widget.CardView>
