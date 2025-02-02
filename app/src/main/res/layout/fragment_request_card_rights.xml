@@ -8,15 +8,14 @@
     tools:context=".club.presentation.ui.RequestCardRightsFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_Request_Card_Rights"
+        android:id="@+id/toolbar_request_card_rights"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:buttonGravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        tools:ignore="MissingConstraints" />
+        app:navigationIcon="@drawable/ic_arrow_back" />
 
     <TextView
         android:id="@+id/tv_write_us"
@@ -30,7 +29,7 @@
         android:textSize="@dimen/textSize_32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_Request_Card_Rights" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_request_card_rights" />
 
     <TextView
         android:id="@+id/tv_description"
