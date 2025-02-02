@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".club.presentation.ui.ClubFragment">
+    tools:context=".club.presentation.ui.fragment.ClubFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarclub"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="gap_112">112dp</dimen>
+    <dimen name="gap_26">26dp</dimen>
     <dimen name="gap_24">24dp</dimen>
     <dimen name="gap_18">18dp</dimen>
     <dimen name="gap_16">16dp</dimen>
