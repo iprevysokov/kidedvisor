@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kidedvisor.databinding.ItemSearchResultBinding
 import com.example.kidedvisor.search.domain.models.ClubInSearch
+import com.example.kidedvisor.search.presenter.models.ResultSearchRVItem
+import com.example.kidedvisor.search.presenter.models.SearchStartRVItem
 
 class SearchResultViewHolder(
     private val binding: ItemSearchResultBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(club: ClubInSearch) {
+    fun bind(item: ResultSearchRVItem.Result) {
+        val club = item.clubInSearch
         binding.apply {
 
             Glide.with(binding.root)
