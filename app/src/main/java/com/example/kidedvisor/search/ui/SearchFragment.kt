@@ -64,6 +64,7 @@ class SearchFragment : Fragment() {
                 inputSearchText = p0.toString()
 
                 if (inputSearchText.isEmpty()) viewModel.renderStartSearch()
+                else if (inputSearchText.isNotEmpty()) viewModel.searchDebounce(inputSearchText)
             }
 
             override fun afterTextChanged(p0: Editable?) {

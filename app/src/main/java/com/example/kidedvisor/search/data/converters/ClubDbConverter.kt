@@ -22,4 +22,16 @@ class ClubDbConverter {
             rating = 3.0
         )
     }
+
+    fun map(clubEntity: ClubEntity): ClubInSearch {
+        return ClubInSearch(
+            name = clubEntity.name,
+            address = clubEntity.address,
+            branch = "Искусство",
+            type = "Рисование",
+            image = clubEntity.photo.toInt(),
+            rating = 3.0
+        )
+
+    }
 }

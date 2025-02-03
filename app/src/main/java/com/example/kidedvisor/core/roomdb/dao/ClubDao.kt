@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.kidedvisor.core.roomdb.entity.ClubEntity
+import kotlinx.coroutines.flow.Flow
 import java.util.UUID
 
 @Dao
@@ -12,7 +13,7 @@ interface ClubDao {
     suspend fun addClub(clubEntity: ClubEntity)
 
     @Query("SELECT * FROM $TABLE_NAME")
-    suspend fun getAllClubs(): ClubEntity?
+    suspend fun getAllClubs(): List<ClubEntity>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id IN (:ids)")
     suspend fun getClubsById(ids: List<UUID>): List<ClubEntity>
