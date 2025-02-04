@@ -1,4 +1,4 @@
-package com.example.kidedvisor.club.presentation.ui
+package com.example.kidedvisor.club.presentation.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

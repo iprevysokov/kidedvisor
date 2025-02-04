@@ -32,6 +32,14 @@
         <item name="android:textColor">@color/primary_dark</item>
     </style>
 
+    <style name="RegularText20" parent="RegularDarkText">
+        <item name="android:textSize">@dimen/textSize_20</item>
+    </style>
+
+    <style name="RegularText16" parent="RegularDarkText">
+        <item name="android:textSize">@dimen/textSize_16</item>
+    </style>
+
     <style name="RegularText14" parent="RegularDarkText">
         <item name="android:textSize">@dimen/textSize_14</item>
     </style>
@@ -65,9 +73,15 @@
     <style name="Title16" parent="MediumDarkText">
         <item name="android:textSize">@dimen/textSize_16</item>
     </style>
-    
+
     <style name="Title32" parent="MediumDarkText">
         <item name="android:textSize">@dimen/textSize_32</item>
+    </style>
+
+    <style name="MediumText20">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/textSize_20</item>
+        <item name="android:textColor">@color/primary_dark</item>
     </style>
 
     <style name="UnFillButton" parent="Widget.Material3.Button.OutlinedButton">
