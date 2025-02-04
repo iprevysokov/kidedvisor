@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/gap_4"
         android:paddingTop="@dimen/gap_4"
-        android:paddingEnd="@dimen/gap_12"
+        android:paddingEnd="@dimen/gap_10"
         android:text="@string/personal_account"
         app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
         app:layout_constraintStart_toStartOf="@id/user_name"
