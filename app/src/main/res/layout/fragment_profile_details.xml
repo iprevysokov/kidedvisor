@@ -76,9 +76,9 @@
         style="@style/RegularText12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/gap_4"
         android:paddingTop="@dimen/gap_4"
         android:paddingEnd="@dimen/gap_10"
+        android:paddingBottom="@dimen/gap_4"
         android:text="@string/personal_account"
         app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
         app:layout_constraintStart_toStartOf="@id/user_name"
@@ -88,6 +88,7 @@
         android:id="@+id/register_ic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_4"
         android:src="@drawable/ic_forward"
         app:layout_constraintBottom_toBottomOf="@id/register_tw"
         app:layout_constraintEnd_toStartOf="@id/end_line"
@@ -111,6 +112,7 @@
         android:id="@+id/help_ic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_4"
         android:src="@drawable/ic_forward"
         app:layout_constraintBottom_toBottomOf="@id/help_tw"
         app:layout_constraintEnd_toStartOf="@id/end_line"
@@ -140,4 +142,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/end_line"
         app:layout_constraintStart_toStartOf="@+id/start_line" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
