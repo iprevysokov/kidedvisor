@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".club.presentation.ui.fragment.ConnectionFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_connection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:buttonGravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back" />
+
+    <TextView
+        android:id="@+id/tv_write_us"
+        style="@style/Title32"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginEnd="@dimen/gap_16"
+        android:text="@string/write_to_us"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_connection" />
+
+    <EditText
+        android:id="@+id/et_message"
+        android:layout_width="match_parent"
+        android:layout_height="137dp"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginTop="@dimen/gap_12"
+        android:layout_marginEnd="@dimen/gap_16"
+        android:background="@drawable/rectangle_for_big_edittext"
+        android:gravity="top"
+        android:hint="@string/text_your_message_hint"
+        android:maxLength="500"
+        android:maxLines="5"
+        android:minLines="1"
+        android:padding="@dimen/gap_16"
+        android:textSize="@dimen/textSize_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_write_us" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/gap_16"
+        android:layout_marginBottom="@dimen/gap_12"
+        app:layout_constraintBottom_toTopOf="@+id/btn_send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_message">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/gap_16">
+
+            <TextView
+                android:id="@+id/tv_name_club"
+                style="@style/RegularText20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Название секции" />
+
+            <TextView
+                android:id="@+id/tv_street_club"
+                style="@style/RegularText16"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_club"
+                tools:text="Адрес" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_16"
+                app:cardCornerRadius="@dimen/gap_16"
+                app:cardElevation="@dimen/gap_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_street_club">
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/owner"
+                style="@style/Title16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_16"
+                android:text="@string/owner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <TextView
+                android:id="@+id/tv_owner"
+                style="@style/RegularText16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/owner"
+                app:layout_constraintTop_toTopOf="@+id/owner"
+                tools:text="Геннадий Владимирович" />
+
+            <TextView
+                android:id="@+id/phone_number"
+                style="@style/Title16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_8"
+                android:text="@string/phone_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/owner" />
+
+            <TextView
+                android:id="@+id/tv_phone_number"
+                style="@style/RegularText16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/phone_number"
+                app:layout_constraintTop_toTopOf="@+id/phone_number"
+                tools:text="8 (499) 999-99-99" />
+
+            <TextView
+                android:id="@+id/email"
+                style="@style/Title16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_8"
+                android:text="@string/email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phone_number" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                style="@style/RegularText16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/email"
+                app:layout_constraintTop_toTopOf="@+id/email"
+                tools:text="olimpyiskii@mail.ru" />
+
+            <TextView
+                android:id="@+id/telegram"
+                style="@style/Title16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_8"
+                android:text="@string/telegram"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email" />
+
+            <TextView
+                android:id="@+id/tv_telegram"
+                style="@style/RegularText16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/telegram"
+                app:layout_constraintTop_toTopOf="@+id/telegram"
+                tools:text="\u0040olimpyiskii" />
+
+            <TextView
+                android:id="@+id/whatsapp"
+                style="@style/Title16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_8"
+                android:text="@string/whatsApp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/telegram" />
+
+            <TextView
+                android:id="@+id/tv_whatsapp"
+                style="@style/RegularText16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/whatsapp"
+                app:layout_constraintTop_toTopOf="@+id/whatsapp"
+                tools:text="8 (499) 999-99-99" />
+
+            <TextView
+                android:id="@+id/website"
+                style="@style/Title16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_8"
+                android:text="@string/website"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/whatsapp" />
+
+            <TextView
+                android:id="@+id/tv_website"
+                style="@style/RegularText16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/website"
+                app:layout_constraintTop_toTopOf="@+id/website"
+                tools:text="Olimpyiskii.ru" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_send"
+        style="@style/FillButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginEnd="@dimen/gap_16"
+        android:layout_marginBottom="@dimen/gap_16"
+        android:text="@string/send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/thanks"
+        style="@style/MediumText20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/gap_8"
+        android:text="@string/thanks"
+        app:layout_constraintBottom_toTopOf="@+id/message_send"
+        app:layout_constraintEnd_toEndOf="@+id/message_send"
+        app:layout_constraintStart_toStartOf="@+id/message_send" />
+
+    <TextView
+        android:id="@+id/message_send"
+        style="@style/RegularText16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_26"
+        android:layout_marginEnd="@dimen/gap_26"
+        android:layout_marginBottom="@dimen/gap_24"
+        android:text="@string/message_send"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ok"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        style="@style/FillButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="@string/ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/connection_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="toolbar_connection,
+        tv_write_us, et_message,scrollView, btn_send" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_message_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="btn_ok, thanks, message_send" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

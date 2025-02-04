@@ -20,4 +20,18 @@
     <string name="popular_clubs">Популярные секции</string>
     <string name="filters">Фильтры</string>
     <string name="more_detailed">Подробнее</string>
+    <string name="send">Отправить</string>
+    <string name="write_to_us">Напишите нам</string>
+    <string name="text_your_appeal_hint">Текст вашего обращения</string>
+    <string name="text_your_message_hint">Текст сообщения</string>
+    <string name="if_you_owner">Если вы владелец секции, напишите нам, мы с вами свяжемся в ближайшее время.</string>
+    <string name="owner">Владелец:</string>
+    <string name="phone_number">Телефон:</string>
+    <string name="email">Почта:</string>
+    <string name="telegram">Telegram:</string>
+    <string name="whatsApp">WhatsApp:</string>
+    <string name="website">Веб-сайт:</string>
+    <string name="thanks">Спасибо!</string>
+    <string name="message_send">Ваше обращение было отправлено.\nМенеджер свяжется с вами\nв ближайшее время.</string>
+    <string name="ok">OK</string>
 </resources>
