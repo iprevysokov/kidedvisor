@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".search.SearchFragment">
+    tools:context=".search.ui.SearchFragment">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -28,16 +28,16 @@
 
     <!--  state 1  -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/filter_recycler"
+        android:id="@+id/filter_tag_recycler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/gap_8"
         android:orientation="horizontal"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_title"
-        tools:listitem="@layout/item_filter_view" />
+        tools:listitem="@layout/item_filter_tag" />
 
     <!--  common input field  -->
     <com.google.android.material.textfield.TextInputLayout
@@ -50,7 +50,7 @@
         android:background="@drawable/rounded_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_recycler">
+        app:layout_constraintTop_toBottomOf="@id/filter_tag_recycler">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,6 +59,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text"
                 style="@style/SearchEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,7 +72,7 @@
                 android:layout_height="24dp"
                 android:layout_marginEnd="@dimen/gap_12"
                 android:src="@drawable/ic_filter"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/search_action"
@@ -79,7 +80,7 @@
                 android:layout_height="24dp"
                 android:layout_marginEnd="@dimen/gap_18"
                 android:src="@drawable/ic_search"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/close_search_action"
@@ -87,49 +88,10 @@
                 android:layout_height="14dp"
                 android:layout_marginEnd="@dimen/gap_18"
                 android:src="@drawable/ic_close"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
         </LinearLayout>
     </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/ad_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:visibility="visible"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chart_btn">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="208dp"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/banner_main" />
-
-        <TextView
-            style="@style/BadgeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="@drawable/rounded_choice_right"
-            tools:text="@string/badge_text" />
-
-        <Button
-            android:id="@+id/banner_button"
-            style="@style/FillButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:visibility="gone"
-            android:layout_marginStart="@dimen/gap_16"
-            android:layout_marginBottom="@dimen/gap_12"
-            android:paddingHorizontal="@dimen/gap_24"
-            android:text="@string/more_detailed" />
-    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/club_collection_recycler"
@@ -138,67 +100,28 @@
         android:layout_marginStart="@dimen/gap_16"
         android:layout_marginTop="@dimen/gap_16"
         android:layout_marginEnd="@dimen/gap_16"
-        android:visibility="visible"
-        tools:listitem="@layout/item_outer_rv"
+        android:visibility="gone"
+        tools:listitem="@layout/item_zero_search_selection"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ad_banner" />
-
-    <!--  state 2  -->
-    <TextView
-        android:id="@+id/request_title"
-        style="@style/Title16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/gap_16"
-        android:layout_marginTop="@dimen/gap_16"
-        android:paddingBottom="@dimen/gap_8"
-        android:text="@string/popular_request"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_field" />
 
+    <!--  state 2  -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popular_request_recycler"
+        android:id="@+id/start_search_recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/gap_16"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/request_title"
-        tools:itemCount="5"
-        tools:listitem="@layout/item_popular_request" />
-
-    <TextView
-        android:id="@+id/popular_club_title"
-        style="@style/Title16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/gap_16"
-        android:layout_marginTop="@dimen/gap_16"
-        android:paddingBottom="@dimen/gap_8"
-        android:text="@string/popular_clubs"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/popular_request_recycler" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popular_club_recycler"
-        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/gap_16"
-        android:layout_marginTop="@dimen/gap_8"
-        android:layout_marginEnd="@dimen/gap_16"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="@dimen/gap_16"
+        android:paddingTop="@dimen/gap_16"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/popular_club_title"
-        tools:itemCount="10"
-        tools:listitem="@layout/item_popular_clubs_view" />
+        app:layout_constraintTop_toBottomOf="@id/input_field"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:itemCount="5" />
 
     <!--  state 3  -->
     <com.google.android.material.button.MaterialButton
@@ -242,7 +165,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ad_banner"
+        app:layout_constraintTop_toBottomOf="@id/filter_btn"
         tools:listitem="@layout/item_search_result" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

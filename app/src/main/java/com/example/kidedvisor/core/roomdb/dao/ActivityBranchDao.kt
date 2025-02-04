@@ -12,7 +12,10 @@ interface ActivityBranchDao {
     suspend fun addActivityBranch(activityBranchEntity: ActivityBranchEntity)
 
     @Query("SELECT * FROM $TABLE_NAME")
-    suspend fun getAllActivityBranch(): ActivityBranchEntity?
+    suspend fun getAllActivityBranch(): List<ActivityBranchEntity>
+
+    @Query("SELECT * FROM $TABLE_NAME WHERE name = :name")
+    suspend fun getActivityBranchByName(name: String): ActivityBranchEntity
 
     companion object {
         const val TABLE_NAME = "Activity_Branch"
