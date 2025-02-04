@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.kidedvisor.databinding.FragmentSearchBinding
 import com.example.kidedvisor.search.presenter.SearchScreenState
 import com.example.kidedvisor.search.presenter.SearchViewModel
+import com.example.kidedvisor.search.ui.result_search.ResultSearchAdapter
 import com.example.kidedvisor.search.ui.start_search.HeaderFirstItemDecoration
 import com.example.kidedvisor.search.ui.start_search.StartSearchAdapter
 import com.example.kidedvisor.search.ui.zero_search.FilterTagAdapter
@@ -22,6 +23,7 @@ class SearchFragment : Fragment() {
     private val zeroSearchAdapter = ZeroSearchAdapter()
     private val filterTagAdapter = FilterTagAdapter()
     private val startSearchAdapter = StartSearchAdapter()
+    private val resultSearchAdapter = ResultSearchAdapter()
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
@@ -79,12 +81,14 @@ class SearchFragment : Fragment() {
         when (state) {
             is SearchScreenState.ZeroSearchState -> renderZeroSearchScreenState(state)
             is SearchScreenState.StartSearchState -> renderStartSearchScreenState(state)
+            is SearchScreenState.ResultSearchState -> renderResultSearchState(state)
         }
     }
 
     private fun renderZeroSearchScreenState(state: SearchScreenState.ZeroSearchState) {
-        visibilityZeroSearch(true)
         visibilityStartSearch(false)
+        visibilityResultSearch(false)
+        visibilityZeroSearch(true)
 
         showFilterTags(state.branches)
 
@@ -94,11 +98,21 @@ class SearchFragment : Fragment() {
 
     private fun renderStartSearchScreenState(state: SearchScreenState.StartSearchState) {
         visibilityZeroSearch(false)
+        visibilityResultSearch(false)
         visibilityStartSearch(true)
 
         startSearchAdapter.items = state.searchStartRVItems
         binding.startSearchRecycler.adapter = startSearchAdapter
         binding.startSearchRecycler.addItemDecoration(HeaderFirstItemDecoration())
+    }
+
+    private fun renderResultSearchState(state: SearchScreenState.ResultSearchState) {
+        visibilityZeroSearch(false)
+        visibilityStartSearch(false)
+        visibilityResultSearch(true)
+
+        resultSearchAdapter.items = state.resultSearchRVItem
+        binding.searchResultRecycler.adapter = resultSearchAdapter
     }
 
     private fun visibilityZeroSearch(visibility: Boolean) {
@@ -114,6 +128,15 @@ class SearchFragment : Fragment() {
         binding.apply {
             closeSearchAction.isVisible = visibility
             startSearchRecycler.isVisible = visibility
+        }
+    }
+
+    private fun visibilityResultSearch(visibility: Boolean) {
+        binding.apply {
+            closeSearchAction.isVisible = visibility
+            chartBtn.isVisible = visibility
+            filterBtn.isVisible = visibility
+            searchResultRecycler.isVisible = visibility
         }
     }
 

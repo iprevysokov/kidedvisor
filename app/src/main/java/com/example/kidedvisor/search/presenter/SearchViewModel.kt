@@ -5,15 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kidedvisor.R
+import com.example.kidedvisor.core.utils.debounce
 import com.example.kidedvisor.search.domain.api.GetAdBannerUseCase
 import com.example.kidedvisor.search.domain.api.GetPopularClubsUseCase
 import com.example.kidedvisor.search.domain.api.GetPopularRequestUseCase
 import com.example.kidedvisor.search.domain.api.GetSliderClubsUseCase
+import com.example.kidedvisor.search.domain.api.SearchInteractor
 import com.example.kidedvisor.search.domain.models.AdBanner
+import com.example.kidedvisor.search.domain.models.ClubInSearch
 import com.example.kidedvisor.search.presenter.models.ClubsSelection
+import com.example.kidedvisor.search.presenter.models.ResultSearchRVItem
 import com.example.kidedvisor.search.presenter.models.SearchStartRVItem
 import com.example.kidedvisor.search.presenter.models.ZeroSearchRVItem
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
@@ -21,6 +26,7 @@ class SearchViewModel(
     private val getPopularRequestUseCase: GetPopularRequestUseCase,
     private val getPopularClubsUseCase: GetPopularClubsUseCase,
     private val getAdBannerUseCase: GetAdBannerUseCase,
+    private val searchInteractor: SearchInteractor,
 ) : ViewModel() {
 
     private val state = MutableLiveData<SearchScreenState>()
@@ -76,5 +82,37 @@ class SearchViewModel(
         }
 
         state.value = SearchScreenState.StartSearchState(items)
+    }
+
+    private fun startSearch(expression: String) {
+        if (expression.isNotEmpty()) {
+            viewModelScope.launch {
+                val adClub = searchInteractor.getAdClub()
+                searchInteractor.getSearchResult()
+                    .collect { clubs ->
+                        state.postValue(castSearchResultToUi(adClub, clubs))
+                    }
+
+            }
+        }
+    }
+
+    val searchDebounce =
+        debounce<String>(SEARCH_DEBOUNCE_DELAY, viewModelScope, true) { changedText ->
+            startSearch(changedText)
+        }
+
+    private fun castSearchResultToUi(
+        adClub: ClubInSearch, clubs: List<ClubInSearch>
+    ): SearchScreenState.ResultSearchState {
+        val list = buildList<ResultSearchRVItem> {
+            this += ResultSearchRVItem.AdResult(adClub)
+            this += clubs.map { ResultSearchRVItem.Result(it) }
+        }
+        return SearchScreenState.ResultSearchState(list)
+    }
+
+    companion object{
+        private const val SEARCH_DEBOUNCE_DELAY = 2000L
     }
 }
