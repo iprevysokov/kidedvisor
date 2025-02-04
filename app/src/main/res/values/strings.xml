@@ -20,6 +20,12 @@
     <string name="popular_clubs">Популярные секции</string>
     <string name="filters">Фильтры</string>
     <string name="more_detailed">Подробнее</string>
+    <string name="my_details">Мои данные</string>
+    <string name="user_name">Имя пользователя</string>
+    <string name="personal_account">Личный кабинет</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="help">Помощь</string>
+    <string name="kidedvisor_details">Подробнее о Kidedvisor</string>
     <string name="send">Отправить</string>
     <string name="write_to_us">Напишите нам</string>
     <string name="text_your_appeal_hint">Текст вашего обращения</string>
