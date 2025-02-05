@@ -42,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/gap_16"
+        android:layout_marginBottom="@dimen/gap_4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/club_banner"
         tools:rating="4.9" />
@@ -49,17 +50,25 @@
     <TextView
         android:id="@+id/club_title"
         style="@style/Title14"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/gap_4"
+        android:maxLines="1"
+        android:ellipsize="end"
         app:layout_constraintStart_toStartOf="@id/rating_bar"
         app:layout_constraintTop_toBottomOf="@id/rating_bar"
+        app:layout_constraintEnd_toStartOf="@id/more_btn"
         tools:text="Дворец спорта" />
 
     <TextView
         android:id="@+id/club_address"
         style="@style/RegularText12"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/gap_4"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@id/more_btn"
         app:layout_constraintStart_toStartOf="@id/rating_bar"
         app:layout_constraintTop_toBottomOf="@id/club_title"
         tools:text="Металлистов, д.1" />
