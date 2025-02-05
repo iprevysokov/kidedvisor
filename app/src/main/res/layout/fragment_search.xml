@@ -86,9 +86,11 @@
 
             <ImageView
                 android:id="@+id/close_search_action"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_marginEnd="@dimen/gap_18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/gap_8"
+                android:paddingEnd="@dimen/gap_18"
+                android:paddingStart="@dimen/gap_8"
                 android:src="@drawable/ic_close"
                 android:visibility="visible" />
 
