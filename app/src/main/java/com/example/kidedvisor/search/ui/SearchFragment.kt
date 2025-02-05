@@ -1,11 +1,14 @@
 package com.example.kidedvisor.search.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.kidedvisor.databinding.FragmentSearchBinding
@@ -55,6 +58,17 @@ class SearchFragment : Fragment() {
 
         binding.editText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus && inputSearchText.isEmpty()) viewModel.renderStartSearch()
+        }
+
+        //Выполнение запроса на поиск с кнопки на клавиатуре
+        binding.editText.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+
+                viewModel.searchDebounce(inputSearchText)
+                val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+            }
+            false
         }
 
         val textWatcher = object : TextWatcher {
