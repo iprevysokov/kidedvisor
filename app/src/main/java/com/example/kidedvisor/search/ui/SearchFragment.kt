@@ -53,7 +53,10 @@ class SearchFragment : Fragment() {
 
         viewModel.getState().observe(viewLifecycleOwner) { state ->
             render(state)
+        }
 
+        binding.closeSearchAction.setOnClickListener {
+            closeIconAction()
         }
 
         binding.editText.setOnFocusChangeListener { _, hasFocus ->
@@ -61,12 +64,11 @@ class SearchFragment : Fragment() {
         }
 
         //Выполнение запроса на поиск с кнопки на клавиатуре
-        binding.editText.setOnEditorActionListener { v, actionId, _ ->
+        binding.editText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
 
                 viewModel.searchDebounce(inputSearchText)
-                val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v.windowToken, 0)
+                hideKeyboard()
             }
             false
         }
@@ -125,6 +127,8 @@ class SearchFragment : Fragment() {
         visibilityStartSearch(false)
         visibilityResultSearch(true)
 
+        hideKeyboard()
+
         resultSearchAdapter.items = state.resultSearchRVItem
         binding.searchResultRecycler.adapter = resultSearchAdapter
     }
@@ -157,6 +161,18 @@ class SearchFragment : Fragment() {
     private fun showFilterTags(tags: List<String>) {
         filterTagAdapter.filterTagList = tags
         binding.filterTagRecycler.adapter = filterTagAdapter
+    }
+
+    private fun closeIconAction() {
+        viewModel.renderZeroSearch()
+        binding.editText.setText(DEF_TEXT)
+        binding.editText.clearFocus()
+        hideKeyboard()
+    }
+
+    private fun hideKeyboard() {
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.editText.windowToken, 0)
     }
 
     companion object {

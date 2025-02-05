@@ -36,7 +36,7 @@ class SearchViewModel(
         renderZeroSearch()
     }
 
-    private fun renderZeroSearch() {
+    fun renderZeroSearch() {
         viewModelScope.launch(Dispatchers.IO) {
             val adBanner = getAdBannerUseCase.execute()
             getSliderClubsUseCase.execute()
