@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_nav_graph"
+    app:startDestination="@id/zeroSearchFragment">
+
+    <fragment
+        android:id="@+id/zeroSearchFragment"
+        android:name="com.example.kidedvisor.search.ui.zero_search.ZeroSearchFragment"
+        android:label="fragment_zero_search"
+        tools:layout="@layout/fragment_zero_search" >
+        <action
+            android:id="@+id/action_zeroSearchFragment_to_startSearchFragment"
+            app:destination="@id/startSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startSearchFragment"
+        android:name="com.example.kidedvisor.search.ui.start_search.StartSearchFragment"
+        android:label="fragment_start_search"
+        tools:layout="@layout/fragment_start_search" />
+</navigation>
