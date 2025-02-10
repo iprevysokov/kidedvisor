@@ -48,7 +48,6 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
 koin-android = { module = "io.insert-koin:koin-android" }
-koin-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 
 [plugins]

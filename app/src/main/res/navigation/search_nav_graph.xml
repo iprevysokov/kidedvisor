@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/startSearchFragment"
-        android:name="com.example.kidedvisor.search.ui.start_search.StartSearchFragment"
+        android:name="com.example.kidedvisor.search.ui.user_search.StartSearchFragment"
         android:label="fragment_start_search"
         tools:layout="@layout/fragment_start_search" />
 </navigation>

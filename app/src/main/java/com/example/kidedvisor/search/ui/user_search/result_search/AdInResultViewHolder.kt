@@ -1,4 +1,4 @@
-package com.example.kidedvisor.search.ui.result_search
+package com.example.kidedvisor.search.ui.user_search.result_search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,27 +1,12 @@
 package com.example.kidedvisor.search.ui
 
-import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.example.kidedvisor.R
 import com.example.kidedvisor.databinding.FragmentSearchBinding
-import com.example.kidedvisor.search.presenter.SearchScreenState
 import com.example.kidedvisor.search.presenter.SearchViewModel
-import com.example.kidedvisor.search.ui.result_search.ResultSearchAdapter
-import com.example.kidedvisor.search.ui.start_search.HeaderFirstItemDecoration
-import com.example.kidedvisor.search.ui.start_search.StartSearchAdapter
-import com.example.kidedvisor.search.ui.zero_search.FilterTagAdapter
-import com.example.kidedvisor.search.ui.zero_search.ZeroSearchAdapter
-import com.example.kidedvisor.search.ui.zero_search.ZeroSearchFragment
-import org.koin.androidx.navigation.koinNavGraphViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
@@ -34,10 +19,8 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    //
-//    private val viewModel by viewModel<SearchViewModel>()
-//
-    private val viewModel: SearchViewModel by koinNavGraphViewModel(R.id.search_nav_graph)
+    private val viewModel by viewModel<SearchViewModel>()
+
 //    private var inputSearchText = DEF_TEXT
 
     override fun onDestroy() {
