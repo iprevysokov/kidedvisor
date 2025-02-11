@@ -1,7 +1,7 @@
 package com.example.kidedvisor.search.di
 
 import com.example.kidedvisor.search.presenter.SearchViewModel
-import com.example.kidedvisor.search.presenter.StartSearchViewModel
+import com.example.kidedvisor.search.presenter.UserSearchViewModel
 import com.example.kidedvisor.search.presenter.ZeroSearchViewModel
 import org.koin.dsl.module
 
@@ -15,7 +15,7 @@ val viewModelModule = module {
         ZeroSearchViewModel(get(), get())
     }
 
-    factory<StartSearchViewModel> {
-        StartSearchViewModel(get(), get())
+    factory<UserSearchViewModel> {
+        UserSearchViewModel(get(), get(), get())
     }
 }
