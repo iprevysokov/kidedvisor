@@ -14,9 +14,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidedvisor.databinding.FragmentStartSearchBinding
-import com.example.kidedvisor.search.presenter.UserSearchIntent
-import com.example.kidedvisor.search.presenter.UserSearchState
-import com.example.kidedvisor.search.presenter.UserSearchViewModel
+import com.example.kidedvisor.search.presenter.user_search.UserSearchIntent
+import com.example.kidedvisor.search.presenter.user_search.UserSearchState
+import com.example.kidedvisor.search.presenter.user_search.UserSearchViewModel
 import com.example.kidedvisor.search.ui.user_search.result_search.ResultSearchAdapter
 import com.example.kidedvisor.search.ui.user_search.start_search.HeaderFirstItemDecoration
 import com.example.kidedvisor.search.ui.user_search.start_search.StartSearchAdapter

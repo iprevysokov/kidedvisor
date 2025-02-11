@@ -1,4 +1,4 @@
-package com.example.kidedvisor.search.presenter
+package com.example.kidedvisor.search.presenter.zero_search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.kidedvisor.search.domain.api.GetAdBannerUseCase
 import com.example.kidedvisor.search.domain.api.GetSliderClubsUseCase
 import com.example.kidedvisor.search.domain.models.AdBanner
+import com.example.kidedvisor.search.presenter.SearchScreenState
 import com.example.kidedvisor.search.presenter.models.ClubsSelection
 import com.example.kidedvisor.search.presenter.models.ZeroSearchRVItem
 import kotlinx.coroutines.Dispatchers

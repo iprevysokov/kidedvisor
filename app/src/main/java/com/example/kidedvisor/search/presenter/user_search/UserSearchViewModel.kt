@@ -1,4 +1,4 @@
-package com.example.kidedvisor.search.presenter
+package com.example.kidedvisor.search.presenter.user_search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

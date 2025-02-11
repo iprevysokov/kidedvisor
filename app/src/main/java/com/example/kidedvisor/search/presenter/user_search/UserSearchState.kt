@@ -1,4 +1,4 @@
-package com.example.kidedvisor.search.presenter
+package com.example.kidedvisor.search.presenter.user_search
 
 import com.example.kidedvisor.search.presenter.models.ResultSearchRVItem
 import com.example.kidedvisor.search.presenter.models.SearchStartRVItem

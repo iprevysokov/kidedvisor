@@ -1,8 +1,8 @@
 package com.example.kidedvisor.search.di
 
 import com.example.kidedvisor.search.presenter.SearchViewModel
-import com.example.kidedvisor.search.presenter.UserSearchViewModel
-import com.example.kidedvisor.search.presenter.ZeroSearchViewModel
+import com.example.kidedvisor.search.presenter.user_search.UserSearchViewModel
+import com.example.kidedvisor.search.presenter.zero_search.ZeroSearchViewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {

@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.kidedvisor.R
 import com.example.kidedvisor.databinding.FragmentZeroSearchBinding
 import com.example.kidedvisor.search.presenter.SearchScreenState
-import com.example.kidedvisor.search.presenter.ZeroSearchViewModel
+import com.example.kidedvisor.search.presenter.zero_search.ZeroSearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ZeroSearchFragment : Fragment() {

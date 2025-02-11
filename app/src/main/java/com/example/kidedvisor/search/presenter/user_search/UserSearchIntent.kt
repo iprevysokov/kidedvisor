@@ -1,4 +1,4 @@
-package com.example.kidedvisor.search.presenter
+package com.example.kidedvisor.search.presenter.user_search
 
 sealed class UserSearchIntent {
     data object StartSearchIntent : UserSearchIntent()
