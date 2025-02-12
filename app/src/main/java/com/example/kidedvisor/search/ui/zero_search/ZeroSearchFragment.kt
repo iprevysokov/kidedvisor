@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.kidedvisor.R
 import com.example.kidedvisor.databinding.FragmentZeroSearchBinding
-import com.example.kidedvisor.search.presenter.SearchScreenState
+import com.example.kidedvisor.search.presenter.zero_search.ZeroSearchState
 import com.example.kidedvisor.search.presenter.zero_search.ZeroSearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,12 +39,10 @@ class ZeroSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.zeroSearchState.observe(viewLifecycleOwner) { state ->
-            when (state) {
-                is SearchScreenState.ZeroSearchState -> renderZeroSearchScreenState(state)
-                else -> error("ZeroSearchFragment Error")
-            }
+            render(state)
         }
 
+        // переход на экран пользовательского поиска
         binding.editText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) findNavController().navigate(
                 R.id.action_zeroSearchFragment_to_startSearchFragment
@@ -52,21 +50,21 @@ class ZeroSearchFragment : Fragment() {
         }
     }
 
-    private fun renderZeroSearchScreenState(state: SearchScreenState.ZeroSearchState) {
+    private fun renderZeroSearchScreenState(state: ZeroSearchState.ZeroSearch) {
         showFilterTags(state.branches)
 
         zeroSearchAdapter.items = state.zeroSearchRVItem
         binding.clubCollectionRecycler.adapter = zeroSearchAdapter
     }
 
+    private fun render(state: ZeroSearchState) {
+        when (state) {
+            is ZeroSearchState.ZeroSearch -> renderZeroSearchScreenState(state)
+        }
+    }
+
     private fun showFilterTags(tags: List<String>) {
         filterTagAdapter.filterTagList = tags
         binding.filterTagRecycler.adapter = filterTagAdapter
-    }
-
-    companion object {
-        fun newInstance(): ZeroSearchFragment {
-            return ZeroSearchFragment()
-        }
     }
 }

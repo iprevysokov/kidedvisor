@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.kidedvisor.search.domain.api.GetAdBannerUseCase
 import com.example.kidedvisor.search.domain.api.GetSliderClubsUseCase
 import com.example.kidedvisor.search.domain.models.AdBanner
-import com.example.kidedvisor.search.presenter.SearchScreenState
 import com.example.kidedvisor.search.presenter.models.ClubsSelection
 import com.example.kidedvisor.search.presenter.models.ZeroSearchRVItem
 import kotlinx.coroutines.Dispatchers
@@ -18,14 +17,14 @@ class ZeroSearchViewModel(
     private val getSliderClubsUseCase: GetSliderClubsUseCase,
 ) : ViewModel() {
 
-    private val _zeroSearchState = MutableLiveData<SearchScreenState>()
-    val zeroSearchState: LiveData<SearchScreenState> get() = _zeroSearchState
+    private val _zeroSearchState = MutableLiveData<ZeroSearchState>()
+    val zeroSearchState: LiveData<ZeroSearchState> get() = _zeroSearchState
 
     init {
-        renderZeroSearch()
+        processIntent(ZeroSearchIntent.ZeroSearch)
     }
 
-    fun renderZeroSearch() {
+    private fun runZeroSearch() {
         viewModelScope.launch(Dispatchers.IO) {
             val adBanner = getAdBannerUseCase.execute()
             getSliderClubsUseCase.execute()
@@ -39,7 +38,7 @@ class ZeroSearchViewModel(
 
     private fun zeroSearchToUi(
         adBanner: AdBanner, clubsSelectionList: List<ClubsSelection>
-    ): SearchScreenState.ZeroSearchState {
+    ): ZeroSearchState.ZeroSearch {
 
         var branches = emptyList<String>()
         val items = buildList<ZeroSearchRVItem> {
@@ -51,6 +50,12 @@ class ZeroSearchViewModel(
 
         }
 
-        return SearchScreenState.ZeroSearchState(items, branches)
+        return ZeroSearchState.ZeroSearch(items, branches)
+    }
+
+    fun processIntent(intent: ZeroSearchIntent) {
+        when (intent) {
+            ZeroSearchIntent.ZeroSearch -> runZeroSearch()
+        }
     }
 }
