@@ -78,10 +78,22 @@
         <item name="android:textSize">@dimen/textSize_32</item>
     </style>
 
-    <style name="MediumText20">
-        <item name="android:fontFamily">@font/roboto_medium</item>
+    <style name="Average_ranting_36">
+        <item name="android:textSize">@dimen/textSize_36</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/rating_gray</item>
+    </style>
+
+    <style name="MediumText14" parent="MediumDarkText">
+        <item name="android:textSize">@dimen/textSize_14</item>
+    </style>
+
+    <style name="MediumText16" parent="MediumDarkText">
+        <item name="android:textSize">@dimen/textSize_16</item>
+    </style>
+
+    <style name="MediumText20" parent="MediumDarkText">
         <item name="android:textSize">@dimen/textSize_20</item>
-        <item name="android:textColor">@color/primary_dark</item>
     </style>
 
     <style name="UnFillButton" parent="Widget.Material3.Button.OutlinedButton">

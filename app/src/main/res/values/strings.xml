@@ -40,4 +40,11 @@
     <string name="thanks">Спасибо!</string>
     <string name="message_send">Ваше обращение было отправлено.\nМенеджер свяжется с вами\nв ближайшее время.</string>
     <string name="ok">OK</string>
+    <string name="dignities">Достоинства</string>
+    <string name="disadvantages">Недостатки</string>
+    <string name="comment">Комментарий</string>
+    <string name="comment_on">Комментировать</string>
+    <string name="watch_all">Смотреть все</string>
+    <string name="reviews">Отзывы</string>
+    <string name="show_first">Показывать сначала</string>
 </resources>
