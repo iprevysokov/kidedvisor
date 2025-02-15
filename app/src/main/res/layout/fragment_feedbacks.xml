@@ -23,7 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,9 +38,9 @@
                 style="@style/RegularText20"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_8"
+                android:layout_marginEnd="@dimen/gap_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -52,8 +51,8 @@
                 style="@style/RegularText12"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
                 android:textColor="@color/dark_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,9 +63,9 @@
                 android:id="@+id/view"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
                 android:background="@color/light_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +76,7 @@
                 style="@style/Average_ranting_36"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/gap_8"
                 app:layout_constraintStart_toStartOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/view"
                 tools:text="4,9" />
@@ -87,7 +86,7 @@
                 style="@style/RegularText12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="из 5"
+                android:text="@string/out_of_five"
                 android:textColor="@color/rating_gray"
                 app:layout_constraintEnd_toEndOf="@+id/tv_average_rating"
                 app:layout_constraintStart_toStartOf="@+id/tv_average_rating"
@@ -97,8 +96,8 @@
                 android:id="@+id/five_stars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="@dimen/gap_26"
+                android:layout_marginTop="@dimen/gap_12"
                 android:src="@drawable/five_stars"
                 app:layout_constraintStart_toEndOf="@+id/tv_average_rating"
                 app:layout_constraintTop_toTopOf="@+id/tv_average_rating" />
@@ -139,9 +138,9 @@
                 android:id="@+id/progressBar_five_stars"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
-                android:layout_height="4dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="@dimen/gap_4"
+                android:layout_marginStart="@dimen/gap_8"
+                android:layout_marginEnd="@dimen/gap_16"
                 android:max="100"
                 android:progressDrawable="@drawable/rounder_progress_bar"
                 app:layout_constraintBottom_toBottomOf="@+id/five_stars"
@@ -153,9 +152,9 @@
                 android:id="@+id/progressBar_four_stars"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
-                android:layout_height="4dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="@dimen/gap_4"
+                android:layout_marginStart="@dimen/gap_8"
+                android:layout_marginEnd="@dimen/gap_16"
                 android:max="100"
                 android:progressDrawable="@drawable/rounder_progress_bar"
                 app:layout_constraintBottom_toBottomOf="@+id/four_stars"
@@ -167,9 +166,9 @@
                 android:id="@+id/progressBar_three_stars"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
-                android:layout_height="4dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="@dimen/gap_4"
+                android:layout_marginStart="@dimen/gap_8"
+                android:layout_marginEnd="@dimen/gap_16"
                 android:max="100"
                 android:progressDrawable="@drawable/rounder_progress_bar"
                 app:layout_constraintBottom_toBottomOf="@+id/three_stars"
@@ -181,9 +180,9 @@
                 android:id="@+id/progressBar_two_stars"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
-                android:layout_height="4dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="@dimen/gap_4"
+                android:layout_marginStart="@dimen/gap_8"
+                android:layout_marginEnd="@dimen/gap_16"
                 android:max="100"
                 android:progressDrawable="@drawable/rounder_progress_bar"
                 app:layout_constraintBottom_toBottomOf="@+id/two_stars"
@@ -195,9 +194,9 @@
                 android:id="@+id/progressBar_one_star"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
-                android:layout_height="4dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="@dimen/gap_4"
+                android:layout_marginStart="@dimen/gap_8"
+                android:layout_marginEnd="@dimen/gap_16"
                 android:max="100"
                 android:progressDrawable="@drawable/rounder_progress_bar"
                 app:layout_constraintBottom_toBottomOf="@+id/one_star"
@@ -209,9 +208,9 @@
                 android:id="@+id/view_2"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_8"
+                android:layout_marginEnd="@dimen/gap_16"
                 android:background="@color/light_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -222,9 +221,9 @@
                 style="@style/RegularText12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="22dp"
-                android:text="Оценка касанием:"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_22"
+                android:text="@string/assessment_by_touch"
                 android:textColor="@color/rating_touch_gray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_2" />
@@ -232,15 +231,18 @@
             <me.zhanghai.android.materialratingbar.MaterialRatingBar
                 style="@style/Widget.MaterialRatingBar.RatingBar"
                 android:layout_width="0dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_height="@dimen/gap_28"
+                android:layout_marginStart="@dimen/gap_24"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:layout_marginBottom="@dimen/gap_16"
                 android:numStars="5"
                 android:rating="4"
+                app:layout_constraintBottom_toTopOf="@+id/btn_write_feedback"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/assessment_by_touch"
                 app:layout_constraintTop_toBottomOf="@+id/view_2"
+                app:mrb_background="@color/dark_blue"
                 app:mrb_progressTint="@color/dark_blue" />
 
             <Button
@@ -249,10 +251,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginEnd="16dp"
-                android:text="Написать отзыв"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_22"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:text="@string/write_review"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/assessment_by_touch" />
@@ -261,9 +263,9 @@
                 android:id="@+id/recycler_photo_feedback"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/gap_16"
                 android:layout_marginTop="@dimen/gap_16"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="@dimen/gap_16"
                 android:clipToPadding="false"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -325,7 +327,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:paddingStart="@dimen/gap_12"
-                    android:text="Сначала новые"
+                    android:text="@string/new_ones_first"
                     tools:ignore="RtlSymmetry" />
 
                 <ImageView
@@ -334,10 +336,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_forward_feedback" />
-
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_feedbacks"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/gap_16"
@@ -350,8 +352,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout"
                 tools:itemCount="5"
-                tools:listitem="@layout/feedback_item" />
-
+                tools:listitem="@layout/item_feedback" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -365,7 +366,6 @@
         android:visibility="gone"
         app:layout_anchor="@id/toolbar_feedbacks"
         app:layout_anchorGravity="center" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_sheet_feedbacks"
@@ -381,66 +381,340 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/show_first"
+            android:id="@+id/tv_tittle_bottom_sheet"
             style="@style/MediumText20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/gap_24"
             android:text="@string/show_first"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/background_btst_feedback_settings"
+        <TextView
+            android:id="@+id/choice_reason"
+            style="@style/RegularText16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/specify_reason"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/show_first">
+            app:layout_constraintTop_toBottomOf="@+id/tv_tittle_bottom_sheet" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_show_first"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/gap_16"
+            android:layout_marginBottom="@dimen/gap_24"
+            android:background="@drawable/background_btst_feedback_settings"
+            app:layout_constraintBottom_toTopOf="@+id/bt_bottom_sheet_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tittle_bottom_sheet">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/new_ones_first"
                 style="@style/RegularText14"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="71dp"
-                android:text="Сначала новые"
-                app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:text="@string/new_ones_first"
+                app:layout_constraintEnd_toStartOf="@+id/radio_bt_new_ones_first"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup"
+            <RadioButton
+                android:id="@+id/radio_bt_new_ones_first"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/view_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/radio_bt_first_high_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/view_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_3" />
+
+            <RadioButton
+                android:id="@+id/radio_bt_first_low_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="@+id/view_4" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            <View
+                android:id="@+id/view_3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:background="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_ones_first" />
 
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
 
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </RadioGroup>
+            <TextView
+                android:id="@+id/first_high_rating"
+                style="@style/RegularText14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:text="@string/first_high_rating"
+                app:layout_constraintEnd_toStartOf="@+id/radio_bt_first_high_rating"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_3" />
 
+            <View
+                android:id="@+id/view_4"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:background="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/first_high_rating" />
+
+            <TextView
+                android:id="@+id/first_low_rating"
+                style="@style/RegularText14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:layout_marginBottom="@dimen/gap_16"
+                android:text="@string/first_low_rating"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/radio_bt_first_low_rating"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_4" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_action"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/gap_16"
+            android:layout_marginBottom="@dimen/gap_16"
+            android:visibility="gone"
+            android:background="@drawable/background_btst_feedback_settings"
+            app:layout_constraintBottom_toTopOf="@+id/bt_bottom_sheet_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choice_reason">
+
+            <TextView
+                android:id="@+id/complain"
+                style="@style/RegularText14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:text="@string/complain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_5"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:background="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/complain" />
+
+            <TextView
+                android:id="@+id/share"
+                style="@style/RegularText14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:layout_marginBottom="@dimen/gap_16"
+                android:text="@string/share"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_claim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/gap_16"
+            android:visibility="visible"
+            android:layout_marginBottom="@dimen/gap_16"
+            android:background="@drawable/background_btst_feedback_settings"
+            app:layout_constraintBottom_toTopOf="@+id/et_detailed_reason"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choice_reason">
+
+            <TextView
+                android:id="@+id/misrepresentation"
+                style="@style/RegularText14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:text="@string/misleading"
+                app:layout_constraintEnd_toStartOf="@+id/radio_bt_misrepresentation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/radio_bt_misrepresentation"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/view_6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_6"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:background="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/misrepresentation" />
+
+            <TextView
+                android:id="@+id/unacceptable_content"
+                style="@style/RegularText14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:text="@string/unacceptable_content"
+                app:layout_constraintEnd_toStartOf="@+id/radio_bt_unacceptable_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_6" />
+
+            <RadioButton
+                android:id="@+id/radio_bt_unacceptable_content"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/view_7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_6" />
+
+            <View
+                android:id="@+id/view_7"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:background="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/unacceptable_content" />
+
+            <TextView
+                android:id="@+id/other_reason"
+                style="@style/RegularText14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/gap_16"
+                android:layout_marginTop="@dimen/gap_16"
+                android:layout_marginEnd="@dimen/gap_16"
+                android:layout_marginBottom="@dimen/gap_16"
+                android:text="@string/other_reason"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/radio_bt_other_reason"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_7" />
+
+            <RadioButton
+                android:id="@+id/radio_bt_other_reason"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/et_detailed_reason"
+            style="@style/RegularText16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rectangle_for_big_edittext"
+            android:hint="@string/detailed_reason"
+            android:maxLength="500"
+            android:maxLines="5"
+            android:minLines="1"
+            android:paddingHorizontal="@dimen/gap_16"
+            android:paddingVertical="@dimen/gap_14"
+            app:layout_constraintBottom_toTopOf="@+id/bt_bottom_sheet_send"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout_claim" />
+
+        <Button
+            android:id="@+id/bt_bottom_sheet_send"
+            style="@style/FillButton_disabled"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/gap_24"
+            android:text="@string/send"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/bt_bottom_sheet_cancel"
+            style="@style/FillButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/gap_24"
+            android:text="@string/cancel"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/bt_and_edit_text_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="et_detailed_reason, bt_bottom_sheet_send, choice_reason"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Group
+        android:id="@+id/bottom_sheet_overlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"

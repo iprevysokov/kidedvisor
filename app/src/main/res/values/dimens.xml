@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="gap_112">112dp</dimen>
+    <dimen name="gap_28">28dp</dimen>
     <dimen name="gap_26">26dp</dimen>
     <dimen name="gap_24">24dp</dimen>
+    <dimen name="gap_22">22dp</dimen>
     <dimen name="gap_20">20dp</dimen>
     <dimen name="gap_18">18dp</dimen>
     <dimen name="gap_17">17dp</dimen>
@@ -26,6 +28,7 @@
     <dimen name="textSize_14">14sp</dimen>
     <dimen name="textSize_13">13sp</dimen>
     <dimen name="textSize_12">12sp</dimen>
+    <dimen name="textSize_11">11sp</dimen>
     <dimen name="textSize_10">10sp</dimen>
 
     <dimen name="bottom_line">2dp</dimen>

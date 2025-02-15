@@ -47,4 +47,20 @@
     <string name="watch_all">Смотреть все</string>
     <string name="reviews">Отзывы</string>
     <string name="show_first">Показывать сначала</string>
+    <string name="action">Действия</string>
+    <string name="claim">Жалоба</string>
+    <string name="out_of_five">из 5</string>
+    <string name="assessment_by_touch">Оценка касанием:</string>
+    <string name="write_review">Написать отзыв</string>
+    <string name="new_ones_first">Сначала новые</string>
+    <string name="specify_reason">Укажите причину</string>
+    <string name="first_high_rating">Сначала с высокой оценкой</string>
+    <string name="first_low_rating">Сначала с низкой оценкой</string>
+    <string name="complain">Пожаловаться</string>
+    <string name="share">Поделиться</string>
+    <string name="misleading">Введение в заблуждение</string>
+    <string name="unacceptable_content">Неприемлемое содержание</string>
+    <string name="other_reason">Другая причина</string>
+    <string name="detailed_reason">Опишите причину подробнее</string>
+    <string name="photo_user_feedbacks">Фотография пользователя</string>
 </resources>
