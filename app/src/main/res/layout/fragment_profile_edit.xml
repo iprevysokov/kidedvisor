@@ -52,11 +52,12 @@
     <TextView
         android:id="@+id/user_name"
         style="@style/Title16"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/gap_16"
         android:text="@string/no_name"
         app:layout_constraintBottom_toTopOf="@id/personal_account"
+        app:layout_constraintEnd_toStartOf="@+id/end_line"
         app:layout_constraintStart_toEndOf="@id/profile_avatar"
         app:layout_constraintTop_toTopOf="@id/profile_avatar" />
 
