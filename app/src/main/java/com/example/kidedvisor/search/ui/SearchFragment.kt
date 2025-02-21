@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.kidedvisor.R
 import com.example.kidedvisor.databinding.FragmentSearchBinding
 import com.example.kidedvisor.search.presenter.SearchScreenState
 import com.example.kidedvisor.search.presenter.SearchViewModel
@@ -53,6 +55,10 @@ class SearchFragment : Fragment() {
 
         binding.editText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus && inputSearchText.isEmpty()) viewModel.renderStartSearch()
+        }
+
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigate(R.id.action_searchFragment_to_profileDetailsFragment)
         }
 
         val textWatcher = object : TextWatcher {

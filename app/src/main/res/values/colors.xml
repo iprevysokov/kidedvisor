@@ -13,5 +13,6 @@
     <color name="badge_rating_color">@color/white</color>
     <color name="button_text_color">#0085FF</color>
     <color name="background_white">#DEFFFFFF</color>
+    <color name="danger_red">#FF3A3A</color>
     <color name="none">#00000000</color>
 </resources>
