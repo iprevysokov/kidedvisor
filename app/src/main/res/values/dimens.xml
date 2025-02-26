@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="gap_112">112dp</dimen>
+    <dimen name="gap_70">70dp</dimen>
     <dimen name="gap_50">50dp</dimen>
     <dimen name="gap_48">48dp</dimen>
+    <dimen name="gap_32">32dp</dimen>
     <dimen name="gap_30">30dp</dimen>
     <dimen name="gap_26">26dp</dimen>
     <dimen name="gap_24">24dp</dimen>
