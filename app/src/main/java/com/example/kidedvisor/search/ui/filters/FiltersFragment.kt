@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.kidedvisor.R
 import com.example.kidedvisor.databinding.FragmentFiltersBinding
+import com.example.kidedvisor.search.presenter.filters.FilterBranchAdapter
 import com.example.kidedvisor.search.presenter.filters.FiltersViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,6 +30,10 @@ class FiltersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.branchRecycler.adapter = FilterBranchAdapter(
+            listOf("Спорт", "Наука", "Искусство")
+        )
     }
 
     override fun onDestroy() {
