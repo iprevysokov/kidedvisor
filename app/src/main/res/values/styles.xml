@@ -127,7 +127,7 @@
         <item name="android:progressTint">@color/dark_blue</item>
     </style>
 
-    <style name="Hint_text" parent="RegularText14">
+    <style name="HintRangeText" parent="RegularText14">
         <item name="android:textColor">@color/hint_color</item>
     </style>
 </resources>

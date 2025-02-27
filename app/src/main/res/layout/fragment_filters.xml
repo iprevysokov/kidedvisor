@@ -61,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/gap_8"
             android:background="@drawable/rounded_rectangle"
+            android:textColorHint="@color/light_gray"
             app:layout_constraintEnd_toEndOf="@id/end_line"
             app:layout_constraintStart_toStartOf="@id/start_line"
             app:layout_constraintTop_toBottomOf="@id/title_city">
@@ -122,7 +123,7 @@
             app:layout_constraintTop_toBottomOf="@id/age_title">
 
             <TextView
-                style="@style/Hint_text"
+                style="@style/HintRangeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/from" />
@@ -136,6 +137,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/min_age_edit_text"
+                    style="@style/Title16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -147,7 +149,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                style="@style/Hint_text"
+                style="@style/HintRangeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/before" />
@@ -161,6 +163,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/max_age_edit_text"
+                    style="@style/Title16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -196,7 +199,7 @@
             app:layout_constraintTop_toBottomOf="@id/rating_title">
 
             <TextView
-                style="@style/Hint_text"
+                style="@style/HintRangeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/from" />
@@ -210,6 +213,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/min_rating_edit_text"
+                    style="@style/Title16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -221,7 +225,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                style="@style/Hint_text"
+                style="@style/HintRangeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/before" />
@@ -235,6 +239,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/max_rating_edit_text"
+                    style="@style/Title16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
