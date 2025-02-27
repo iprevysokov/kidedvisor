@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.checkbox.MaterialCheckBox
+<CheckBox
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_branch"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/gap_70"
+    android:layout_marginEnd="@dimen/gap_70"
     android:paddingTop="@dimen/gap_16"
     android:paddingBottom="@dimen/gap_14"
     tools:text="Sport"
-    android:button="@null"
-    android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+    android:layoutDirection="rtl"
+    android:gravity="start|center_vertical"
     android:background="@drawable/background_line" />
