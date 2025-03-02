@@ -55,24 +55,20 @@
             app:layout_constraintStart_toStartOf="@id/start_line"
             app:layout_constraintTop_toBottomOf="@id/title_filter" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_layout"
+        <EditText
+            android:id="@+id/edit_text"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginTop="@dimen/gap_8"
-            android:background="@drawable/rounded_rectangle"
+            android:background="@drawable/rounded_city_filter"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/gap_16"
+            android:singleLine="true"
             android:textColorHint="@color/light_gray"
+            android:textSize="@dimen/textSize_16"
             app:layout_constraintEnd_toEndOf="@id/end_line"
             app:layout_constraintStart_toStartOf="@id/start_line"
-            app:layout_constraintTop_toBottomOf="@id/title_city">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text"
-                style="@style/SearchEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/city_hint" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/title_city" />
 
         <TextView
             android:id="@+id/branch_title"
@@ -80,12 +76,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/gap_32"
-            android:background="@drawable/background_line"
+            android:background="@drawable/underline"
             android:paddingBottom="@dimen/gap_14"
             android:text="@string/branch"
             app:layout_constraintEnd_toEndOf="@id/end_line"
             app:layout_constraintStart_toStartOf="@id/start_line"
-            app:layout_constraintTop_toBottomOf="@id/input_layout" />
+            app:layout_constraintTop_toBottomOf="@id/edit_text" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/branch_recycler"
@@ -104,7 +100,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/gap_32"
-            android:background="@drawable/background_line"
+            android:background="@drawable/underline"
             android:paddingBottom="@dimen/gap_14"
             android:text="@string/age"
             app:layout_constraintEnd_toEndOf="@id/end_line"
@@ -116,7 +112,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/gap_70"
-            android:background="@drawable/background_line"
+            android:background="@drawable/underline"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@id/end_line"
             app:layout_constraintStart_toStartOf="@id/start_line"
@@ -180,7 +176,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/gap_32"
-            android:background="@drawable/background_line"
+            android:background="@drawable/underline"
             android:paddingBottom="@dimen/gap_14"
             android:text="@string/rating"
             app:layout_constraintEnd_toEndOf="@id/end_line"
@@ -192,7 +188,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/gap_70"
-            android:background="@drawable/background_line"
+            android:background="@drawable/underline"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@id/end_line"
             app:layout_constraintStart_toStartOf="@id/start_line"
