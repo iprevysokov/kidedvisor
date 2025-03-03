@@ -15,8 +15,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        app:title="@string/reviews" />
+        app:navigationIcon="@drawable/ic_arrow_back">
+
+        <TextView
+            style="@style/Title20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/reviews" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
@@ -237,12 +245,12 @@
                 android:layout_marginEnd="@dimen/gap_16"
                 android:layout_marginBottom="@dimen/gap_16"
                 android:numStars="5"
-                android:rating="4"
+                android:rating="3"
                 app:layout_constraintBottom_toTopOf="@+id/btn_write_feedback"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/assessment_by_touch"
                 app:layout_constraintTop_toBottomOf="@+id/view_2"
-                app:mrb_background="@color/dark_blue"
+                app:mrb_progressBackgroundTint="@color/dark_blue"
                 app:mrb_progressTint="@color/dark_blue" />
 
             <Button
@@ -405,10 +413,10 @@
             android:id="@+id/constraint_show_first"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             android:layout_marginTop="@dimen/gap_16"
             android:layout_marginBottom="@dimen/gap_24"
             android:background="@drawable/background_btst_feedback_settings"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/bt_bottom_sheet_cancel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -510,8 +518,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/gap_16"
             android:layout_marginBottom="@dimen/gap_16"
-            android:visibility="gone"
             android:background="@drawable/background_btst_feedback_settings"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/bt_bottom_sheet_cancel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -564,9 +572,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/gap_16"
-            android:visibility="visible"
             android:layout_marginBottom="@dimen/gap_16"
             android:background="@drawable/background_btst_feedback_settings"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/et_detailed_reason"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -709,7 +717,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            app:constraint_referenced_ids="et_detailed_reason, bt_bottom_sheet_send, choice_reason"/>
+            app:constraint_referenced_ids="et_detailed_reason, bt_bottom_sheet_send, choice_reason" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

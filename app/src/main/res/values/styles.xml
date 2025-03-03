@@ -74,6 +74,10 @@
         <item name="android:textSize">@dimen/textSize_16</item>
     </style>
 
+    <style name="Title20" parent="MediumDarkText">
+        <item name="android:textSize">@dimen/textSize_20</item>
+    </style>
+
     <style name="Title32" parent="MediumDarkText">
         <item name="android:textSize">@dimen/textSize_32</item>
     </style>
