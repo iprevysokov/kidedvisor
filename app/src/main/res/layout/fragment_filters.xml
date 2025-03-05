@@ -63,6 +63,7 @@
             android:layout_marginTop="@dimen/gap_8"
             android:background="@drawable/rounded_city_filter"
             android:maxLines="1"
+            android:hint="@string/city_hint"
             android:paddingHorizontal="@dimen/gap_16"
             android:singleLine="true"
             android:textColorHint="@color/light_gray"

@@ -30,7 +30,6 @@ class FiltersFragment : Fragment() {
     ): View {
         _binding = FragmentFiltersBinding.inflate(inflater, container, false)
 
-        setCityFilterHint()
         setAgeFilter(minAge, maxAge)
         setRatingFilter(minRating, maxRating)
 
@@ -48,17 +47,6 @@ class FiltersFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    private fun setCityFilterHint() {
-        binding.editText.apply {
-            setOnFocusChangeListener { _, hasFocus ->  }
-            if (isFocused) {
-                hint = ""
-            } else {
-                setHint(R.string.city_hint)
-            }
-        }
     }
 
     private fun setAgeFilter(minAge: String, maxAge: String) {
