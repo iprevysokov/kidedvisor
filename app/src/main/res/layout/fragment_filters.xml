@@ -251,7 +251,7 @@
         <Button
             android:id="@+id/apply_button"
             style="@style/FillButton"
-            android:layout_width="328dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             android:layout_marginTop="@dimen/gap_48"
