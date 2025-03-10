@@ -79,14 +79,30 @@
         <item name="android:textSize">@dimen/textSize_24</item>
     </style>
 
+    <style name="Title20" parent="MediumDarkText">
+        <item name="android:textSize">@dimen/textSize_20</item>
+    </style>
+
     <style name="Title32" parent="MediumDarkText">
         <item name="android:textSize">@dimen/textSize_32</item>
     </style>
 
-    <style name="MediumText20">
-        <item name="android:fontFamily">@font/roboto_medium</item>
+    <style name="Average_ranting_36">
+        <item name="android:textSize">@dimen/textSize_36</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/rating_gray</item>
+    </style>
+
+    <style name="MediumText14" parent="MediumDarkText">
+        <item name="android:textSize">@dimen/textSize_14</item>
+    </style>
+
+    <style name="MediumText16" parent="MediumDarkText">
+        <item name="android:textSize">@dimen/textSize_16</item>
+    </style>
+
+    <style name="MediumText20" parent="MediumDarkText">
         <item name="android:textSize">@dimen/textSize_20</item>
-        <item name="android:textColor">@color/primary_dark</item>
     </style>
 
     <style name="LinkText12" parent="RegularText12">
@@ -114,6 +130,13 @@
         <item name="android:background">@drawable/background_empty_button</item>
         <item name="backgroundTint">@color/danger_red</item>
         <item name="android:textColor">@color/danger_red</item>
+    </style>
+
+    <style name="FillButton_disabled" parent="Widget.Material3.Button.IconButton.Filled">
+        <item name="android:textSize">@dimen/textSize_16</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:background">@drawable/button_background_disabled</item>
     </style>
 
     <style name="FilterButton" parent="Widget.Material3.Button.TonalButton.Icon">

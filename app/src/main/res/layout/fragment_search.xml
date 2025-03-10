@@ -26,146 +26,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <!--  state 1  -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/filter_tag_recycler"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/gap_8"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_title"
-        tools:listitem="@layout/item_filter_tag" />
-
-    <!--  common input field  -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/gap_16"
-        android:layout_marginTop="@dimen/gap_16"
-        android:layout_marginEnd="@dimen/gap_16"
-        android:background="@drawable/rounded_rectangle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_tag_recycler">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text"
-                style="@style/SearchEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/search_hint" />
-
-            <ImageView
-                android:id="@+id/filter_search"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="@dimen/gap_12"
-                android:src="@drawable/ic_filter"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/search_action"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="@dimen/gap_18"
-                android:src="@drawable/ic_search"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/close_search_action"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_marginEnd="@dimen/gap_18"
-                android:src="@drawable/ic_close"
-                android:visibility="visible" />
-
-        </LinearLayout>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/club_collection_recycler"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/gap_16"
-        android:layout_marginTop="@dimen/gap_16"
-        android:layout_marginEnd="@dimen/gap_16"
-        android:visibility="gone"
-        tools:listitem="@layout/item_zero_search_selection"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_field" />
-
-    <!--  state 2  -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/start_search_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/gap_16"
-        android:paddingTop="@dimen/gap_16"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_field"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:itemCount="5" />
-
-    <!--  state 3  -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/chart_btn"
-        style="@style/FilterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/gap_16"
-        android:layout_marginTop="@dimen/gap_16"
-        android:text="@string/popular"
-        android:visibility="gone"
-        app:icon="@drawable/ic_chart"
-        app:iconPadding="@dimen/gap_8"
-        app:layout_constraintEnd_toStartOf="@id/filter_btn"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_field" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/filter_btn"
-        style="@style/FilterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/gap_16"
-        android:layout_marginEnd="@dimen/gap_16"
-        android:text="@string/filters"
-        android:visibility="gone"
-        app:icon="@drawable/ic_filter"
-        app:iconGravity="end"
-        app:iconPadding="@dimen/gap_8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/chart_btn"
-        app:layout_constraintTop_toBottomOf="@+id/input_field" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_result_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/gap_16"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_btn"
-        tools:listitem="@layout/item_search_result" />
+   <androidx.fragment.app.FragmentContainerView
+       android:id="@+id/fragment_child_container"
+       android:layout_width="0dp"
+       android:layout_height="0dp"
+       android:name="androidx.navigation.fragment.NavHostFragment"
+       app:navGraph="@navigation/search_nav_graph"
+       app:defaultNavHost="true"
+       app:layout_constraintTop_toBottomOf="@id/app_title"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

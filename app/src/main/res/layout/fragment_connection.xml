@@ -31,6 +31,7 @@
 
     <EditText
         android:id="@+id/et_message"
+        style="@style/RegularText16"
         android:layout_width="match_parent"
         android:layout_height="137dp"
         android:layout_marginStart="@dimen/gap_16"
@@ -43,7 +44,6 @@
         android:maxLines="5"
         android:minLines="1"
         android:padding="@dimen/gap_16"
-        android:textSize="@dimen/textSize_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_write_us" />

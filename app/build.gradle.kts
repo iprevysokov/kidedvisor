@@ -72,4 +72,7 @@ dependencies {
     // koin
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.android)
+
+    //Rating Bar
+    implementation(libs.library)
 }
