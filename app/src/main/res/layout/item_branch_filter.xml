@@ -11,4 +11,4 @@
     tools:text="Sport"
     android:layoutDirection="rtl"
     android:gravity="start|center_vertical"
-    android:background="@drawable/underline" />
+    android:background="@drawable/background_line" />
