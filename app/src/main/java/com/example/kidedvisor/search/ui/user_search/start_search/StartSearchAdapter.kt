@@ -1,4 +1,4 @@
-package com.example.kidedvisor.search.ui.start_search
+package com.example.kidedvisor.search.ui.user_search.start_search
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

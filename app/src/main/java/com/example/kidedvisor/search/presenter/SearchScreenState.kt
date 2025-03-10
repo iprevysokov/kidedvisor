@@ -1,5 +1,6 @@
 package com.example.kidedvisor.search.presenter
 
+import com.example.kidedvisor.search.presenter.models.ResultSearchRVItem
 import com.example.kidedvisor.search.presenter.models.SearchStartRVItem
 import com.example.kidedvisor.search.presenter.models.ZeroSearchRVItem
 
@@ -12,5 +13,9 @@ sealed class SearchScreenState {
 
     data class StartSearchState(
         val searchStartRVItems: List<SearchStartRVItem>
+    ) : SearchScreenState()
+
+    data class ResultSearchState(
+        val resultSearchRVItem: List<ResultSearchRVItem>
     ) : SearchScreenState()
 }
