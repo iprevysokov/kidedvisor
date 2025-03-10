@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white"
+    tools:context=".profile.presentation.ui.ProfileDetailsFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_profile_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:buttonGravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/gap_18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/gap_18" />
+
+    <TextView
+        android:id="@+id/profile_edit_headline"
+        style="@style/Title32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_profile_edit" />
+
+    <ImageView
+        android:id="@+id/profile_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_16"
+        android:src="@drawable/ic_profile_avatar"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/profile_edit_headline" />
+
+    <TextView
+        android:id="@+id/user_name"
+        style="@style/Title16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_16"
+        android:text="@string/no_name"
+        app:layout_constraintBottom_toTopOf="@id/personal_account"
+        app:layout_constraintEnd_toStartOf="@+id/end_line"
+        app:layout_constraintStart_toEndOf="@id/profile_avatar"
+        app:layout_constraintTop_toTopOf="@id/profile_avatar" />
+
+    <TextView
+        android:id="@+id/personal_account"
+        style="@style/LinkText12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/gap_4"
+        android:paddingBottom="@dimen/gap_4"
+        android:text="@string/change_photo"
+        app:layout_constraintBottom_toBottomOf="@id/profile_avatar"
+        app:layout_constraintStart_toStartOf="@id/user_name"
+        app:layout_constraintTop_toBottomOf="@id/user_name" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/gap_16"
+        android:layout_marginBottom="@dimen/gap_30"
+        app:layout_constraintBottom_toTopOf="@id/profile_save_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_avatar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/gap_20"
+            android:paddingEnd="@dimen/gap_17">
+
+            <TextView
+                android:id="@+id/enter_name_tw"
+                style="@style/RegularText16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_name" />
+
+            <EditText
+                android:id="@+id/enter_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gap_48"
+                android:layout_marginTop="@dimen/gap_8"
+                android:background="@drawable/background_edit_text"
+                android:hint="@string/name_hint"
+                android:inputType="textPersonName"
+                android:paddingStart="@dimen/gap_16" />
+
+            <TextView
+                android:id="@+id/enter_second_name_tw"
+                style="@style/RegularText16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_16"
+                android:text="@string/enter_second_name" />
+
+            <EditText
+                android:id="@+id/enter_second_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gap_48"
+                android:layout_marginTop="@dimen/gap_8"
+                android:background="@drawable/background_edit_text"
+                android:hint="@string/second_name_hint"
+                android:inputType="textPersonName"
+                android:paddingStart="@dimen/gap_16" />
+
+            <TextView
+                android:id="@+id/enter_surname_tw"
+                style="@style/RegularText16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_16"
+                android:text="@string/enter_surname" />
+
+            <EditText
+                android:id="@+id/enter_surname_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gap_48"
+                android:layout_marginTop="@dimen/gap_8"
+                android:background="@drawable/background_edit_text"
+                android:hint="@string/surname_hint"
+                android:inputType="textPersonName"
+                android:paddingStart="@dimen/gap_16" />
+
+            <TextView
+                android:id="@+id/phone_number_tw"
+                style="@style/RegularText16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_16"
+                android:text="@string/your_phone_number" />
+
+            <EditText
+                android:id="@+id/phone_number_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gap_48"
+                android:layout_marginTop="@dimen/gap_8"
+                android:background="@drawable/background_edit_text"
+                android:hint="@string/phone_number_hint"
+                android:inputType="phone"
+                android:paddingStart="@dimen/gap_16" />
+
+            <TextView
+                android:id="@+id/enter_email_tw"
+                style="@style/RegularText16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_16"
+                android:text="@string/your_email" />
+
+            <EditText
+                android:id="@+id/enter_email_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gap_48"
+                android:layout_marginTop="@dimen/gap_8"
+                android:background="@drawable/background_edit_text"
+                android:hint="@string/email_hint"
+                android:inputType="textEmailAddress"
+                android:paddingStart="@dimen/gap_16" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/profile_save_button"
+        style="@style/FillButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gap_48"
+        android:layout_marginBottom="@dimen/gap_16"
+        android:text="@string/save_changes"
+        app:layout_constraintBottom_toTopOf="@id/profile_exit_button"
+        app:layout_constraintEnd_toStartOf="@id/end_line"
+        app:layout_constraintStart_toStartOf="@id/start_line" />
+
+    <Button
+        android:id="@+id/profile_exit_button"
+        style="@style/UnFillButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gap_48"
+        android:layout_marginBottom="@dimen/gap_16"
+        android:text="@string/profile_exit"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintBottom_toTopOf="@id/profile_delete_button"
+        app:layout_constraintEnd_toStartOf="@id/end_line"
+        app:layout_constraintStart_toStartOf="@id/start_line" />
+
+    <Button
+        android:id="@+id/profile_delete_button"
+        style="@style/DangerButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/gap_48"
+        android:text="@string/profile_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/end_line"
+        app:layout_constraintStart_toStartOf="@id/start_line" />
+</androidx.constraintlayout.widget.ConstraintLayout>
