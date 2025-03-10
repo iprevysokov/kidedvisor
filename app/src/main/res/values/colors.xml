@@ -15,4 +15,11 @@
     <color name="background_white">#DEFFFFFF</color>
     <color name="danger_red">#FF3A3A</color>
     <color name="none">#00000000</color>
+    <color name="rating_gray">#919292</color>
+    <color name="feedback_gray">#F2F2F7</color>
+    <color name="feedback_gray_bottoms_sheet">#F2F2F7</color>
+    <color name="progress_stars">#007AFF</color>
+    <color name="rating_touch_gray">#949494</color>
+    <color name="empty_progress_bar_background">#E2E4E6</color>
+    <color name="filled_progress_bar_background">#999999</color>
 </resources>
