@@ -72,6 +72,11 @@
 
     <style name="Title16" parent="MediumDarkText">
         <item name="android:textSize">@dimen/textSize_16</item>
+
+    </style>
+
+    <style name="Title24" parent="MediumDarkText">
+        <item name="android:textSize">@dimen/textSize_24</item>
     </style>
 
     <style name="Title20" parent="MediumDarkText">
@@ -143,5 +148,9 @@
         <item name="android:numStars">5</item>
         <item name="android:isIndicator">true</item>
         <item name="android:progressTint">@color/dark_blue</item>
+    </style>
+
+    <style name="HintRangeText" parent="RegularText14">
+        <item name="android:textColor">@color/hint_color</item>
     </style>
 </resources>

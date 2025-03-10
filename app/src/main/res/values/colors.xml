@@ -22,4 +22,5 @@
     <color name="rating_touch_gray">#949494</color>
     <color name="empty_progress_bar_background">#E2E4E6</color>
     <color name="filled_progress_bar_background">#999999</color>
+    <color name="hint_color">#959595</color>
 </resources>

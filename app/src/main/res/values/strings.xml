@@ -3,6 +3,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="common_of_reviews"><u>199 отзывов</u></string>
     <string name="schedule"><u>Расписание</u></string>
+    <string name="age">Возраст</string>
+    <string name="branch">Направление</string>
+    <string name="city">Город</string>
+    <string name="city_hint">Например, Москва</string>
     <string name="visit_website"><u>Посетить веб-сайт</u></string>
     <string name="show_all"><u>Показать все</u></string>
     <string name="contact_with_owner">Связаться с владельцем секции</string>
@@ -19,6 +23,7 @@
     <string name="popular_request">Популярные запросы сегодня</string>
     <string name="popular_clubs">Популярные секции</string>
     <string name="filters">Фильтры</string>
+    <string name="filter">Фильтр</string>
     <string name="more_detailed">Подробнее</string>
     <string name="my_details">Мои данные</string>
     <string name="profile">Профиль</string>
@@ -79,4 +84,9 @@
     <string name="other_reason">Другая причина</string>
     <string name="detailed_reason">Опишите причину подробнее</string>
     <string name="photo_user_feedbacks">Фотография пользователя</string>
+    <string name="from">от</string>
+    <string name="before">до</string>
+    <string name="rating">Рейтинг</string>
+    <string name="apply">Применить</string>
+    <string name="not_found_filter"><u>Не нашли нужный фильтр?</u></string>
 </resources>
