@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".search.ui.user_search.UserSearchFragment">
+
+    <!--  common input field  -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gap_16"
+        android:layout_marginTop="@dimen/gap_16"
+        android:layout_marginEnd="@dimen/gap_16"
+        android:background="@drawable/rounded_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text"
+                style="@style/SearchEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:hint="@string/search_hint" />
+
+
+            <ImageView
+                android:id="@+id/close_search_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/gap_8"
+                android:paddingEnd="@dimen/gap_18"
+                android:paddingStart="@dimen/gap_8"
+                android:src="@drawable/ic_close" />
+
+        </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/start_search_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/gap_16"
+        android:paddingTop="@dimen/gap_16"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_field"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:itemCount="5" />
+
+    <include
+        android:id="@+id/result_search"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        layout="@layout/include_result_search"
+        app:layout_constraintTop_toBottomOf="@id/input_field"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

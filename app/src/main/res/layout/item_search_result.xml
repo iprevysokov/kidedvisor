@@ -18,12 +18,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="208dp"
             android:scaleType="centerCrop"
             tools:src="@drawable/art1" />
 
         <TextView
+            android:id="@+id/rating_badge"
             style="@style/BadgeRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,11 +37,12 @@
     </androidx.cardview.widget.CardView>
 
     <RatingBar
-        android:id="@+id/ratingBar"
+        android:id="@+id/rating_bar"
         style="@style/SmallStars"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/gap_16"
+        android:layout_marginBottom="@dimen/gap_4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/club_banner"
         tools:rating="4.9" />
@@ -47,26 +50,34 @@
     <TextView
         android:id="@+id/club_title"
         style="@style/Title14"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/ratingBar"
-        app:layout_constraintTop_toBottomOf="@id/ratingBar"
+        android:layout_marginBottom="@dimen/gap_4"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="@id/rating_bar"
+        app:layout_constraintTop_toBottomOf="@id/rating_bar"
+        app:layout_constraintEnd_toStartOf="@id/more_btn"
         tools:text="Дворец спорта" />
 
     <TextView
         android:id="@+id/club_address"
         style="@style/RegularText12"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/ratingBar"
+        android:layout_marginBottom="@dimen/gap_4"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@id/more_btn"
+        app:layout_constraintStart_toStartOf="@id/rating_bar"
         app:layout_constraintTop_toBottomOf="@id/club_title"
         tools:text="Металлистов, д.1" />
 
     <ImageView
         android:id="@+id/type_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/ratingBar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintStart_toStartOf="@id/rating_bar"
         app:layout_constraintTop_toBottomOf="@id/club_address"
         tools:src="@drawable/ic_sports_soccer_24" />
 

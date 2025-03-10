@@ -1,34 +1,18 @@
 package com.example.kidedvisor.search.ui
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.kidedvisor.R
 import com.example.kidedvisor.databinding.FragmentSearchBinding
-import com.example.kidedvisor.search.presenter.SearchScreenState
-import com.example.kidedvisor.search.presenter.SearchViewModel
-import com.example.kidedvisor.search.ui.start_search.HeaderFirstItemDecoration
-import com.example.kidedvisor.search.ui.start_search.StartSearchAdapter
-import com.example.kidedvisor.search.ui.zero_search.FilterTagAdapter
-import com.example.kidedvisor.search.ui.zero_search.ZeroSearchAdapter
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
 
-    private val zeroSearchAdapter = ZeroSearchAdapter()
-    private val filterTagAdapter = FilterTagAdapter()
-    private val startSearchAdapter = StartSearchAdapter()
-
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
-
-    private val viewModel by viewModel<SearchViewModel>()
-
-    private var inputSearchText = DEF_TEXT
 
     override fun onDestroy() {
         super.onDestroy()
@@ -53,6 +37,10 @@ class SearchFragment : Fragment() {
 
         binding.editText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus && inputSearchText.isEmpty()) viewModel.renderStartSearch()
+        }
+
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigate(R.id.action_searchFragment_to_profileDetailsFragment)
         }
 
         val textWatcher = object : TextWatcher {

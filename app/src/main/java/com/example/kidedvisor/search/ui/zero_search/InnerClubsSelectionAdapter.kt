@@ -1,8 +1,10 @@
 package com.example.kidedvisor.search.ui.zero_search
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.kidedvisor.databinding.ItemInnerRvBinding
 import com.example.kidedvisor.search.domain.models.ClubInSearch
 
@@ -28,7 +30,11 @@ class InnerClubsSelectionAdapter(private val clubs: List<ClubInSearch>) :
     override fun onBindViewHolder(holder: ViewBinding, position: Int) {
         val item = clubs[position]
         holder.binding.clubTitle.text = item.name
-        holder.binding.image.setImageResource(item.image)
+
+        Glide.with(holder.binding.root)
+            .load(item.image)
+            .into(holder.binding.image)
+
         holder.binding.ratingBadge.text = item.rating.toString()
     }
 }
