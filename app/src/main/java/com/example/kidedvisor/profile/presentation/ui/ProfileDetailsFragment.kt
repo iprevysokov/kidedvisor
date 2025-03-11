@@ -33,6 +33,10 @@ class ProfileDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbarProfileDetails.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.personalAccount.setOnClickListener {
             findNavController().navigate(R.id.action_profileDetailsFragment_to_profileEditFragment)
         }
