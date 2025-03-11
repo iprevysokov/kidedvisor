@@ -6,16 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kidedvisor.R
 import com.example.kidedvisor.club.presentation.adapter.clickListener.FeedbacksClickListener
 import com.example.kidedvisor.club.presentation.adapter.viewHolder.FeedbackClubViewHolder
-import com.example.kidedvisor.club.presentation.adapter.viewHolder.PhotoClubViewHolder
 
 class FeedbacksAdapter(
     private val onItemClick: FeedbacksClickListener
-) :  RecyclerView.Adapter<FeedbackClubViewHolder>() {
+) : RecyclerView.Adapter<FeedbackClubViewHolder>() {
 
     private val feedback = ArrayList<String>() // временная заглушка
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedbackClubViewHolder {
-       val view = LayoutInflater.from(parent.context).inflate(R.layout.item_feedback, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_feedback, parent, false)
         return FeedbackClubViewHolder(view, onItemClick)
     }
 
@@ -24,6 +24,6 @@ class FeedbacksAdapter(
 
     }
 
-    override fun getItemCount(): Int =feedback.size
+    override fun getItemCount(): Int = feedback.size
 
 }
