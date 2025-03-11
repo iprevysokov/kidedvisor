@@ -49,8 +49,11 @@
         android:label="fragment_club"
         tools:layout="@layout/fragment_club">
         <action
-            android:id="@+id/action_clubFragment_to_feedbacksFragment2"
+            android:id="@+id/action_clubFragment_to_feedbacksFragment"
             app:destination="@id/feedbacksFragment" />
+        <argument
+            android:name="clubId"
+            app:argType="java.util.UUID" />
     </fragment>
 
     <fragment
