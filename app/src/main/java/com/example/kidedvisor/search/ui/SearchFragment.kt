@@ -30,86 +30,8 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getState().observe(viewLifecycleOwner) { state ->
-            render(state)
-
-        }
-
-        binding.editText.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus && inputSearchText.isEmpty()) viewModel.renderStartSearch()
-        }
-
         binding.toolbar.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_searchFragment_to_profileDetailsFragment)
         }
-
-        val textWatcher = object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                TODO("Not yet implemented")
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                inputSearchText = p0.toString()
-
-                if (inputSearchText.isEmpty()) viewModel.renderStartSearch()
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-//                TODO("Not yet implemented")
-            }
-        }
-
-        binding.editText.addTextChangedListener(textWatcher)
-    }
-
-    private fun render(state: SearchScreenState) {
-        when (state) {
-            is SearchScreenState.ZeroSearchState -> renderZeroSearchScreenState(state)
-            is SearchScreenState.StartSearchState -> renderStartSearchScreenState(state)
-        }
-    }
-
-    private fun renderZeroSearchScreenState(state: SearchScreenState.ZeroSearchState) {
-        visibilityZeroSearch(true)
-        visibilityStartSearch(false)
-
-        showFilterTags(state.branches)
-
-        zeroSearchAdapter.items = state.zeroSearchRVItem
-        binding.clubCollectionRecycler.adapter = zeroSearchAdapter
-    }
-
-    private fun renderStartSearchScreenState(state: SearchScreenState.StartSearchState) {
-        visibilityZeroSearch(false)
-        visibilityStartSearch(true)
-
-        startSearchAdapter.items = state.searchStartRVItems
-        binding.startSearchRecycler.adapter = startSearchAdapter
-        binding.startSearchRecycler.addItemDecoration(HeaderFirstItemDecoration())
-    }
-
-    private fun visibilityZeroSearch(visibility: Boolean) {
-        binding.apply {
-            filterTagRecycler.isVisible = visibility
-            filterSearch.isVisible = visibility
-            searchAction.isVisible = visibility
-            clubCollectionRecycler.isVisible = visibility
-        }
-    }
-
-    private fun visibilityStartSearch(visibility: Boolean) {
-        binding.apply {
-            closeSearchAction.isVisible = visibility
-            startSearchRecycler.isVisible = visibility
-        }
-    }
-
-    private fun showFilterTags(tags: List<String>) {
-        filterTagAdapter.filterTagList = tags
-        binding.filterTagRecycler.adapter = filterTagAdapter
-    }
-
-    companion object {
-        private const val DEF_TEXT = ""
     }
 }

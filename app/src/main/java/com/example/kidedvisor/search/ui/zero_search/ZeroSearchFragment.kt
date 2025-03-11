@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.kidedvisor.R
 import com.example.kidedvisor.databinding.FragmentZeroSearchBinding
@@ -47,6 +48,12 @@ class ZeroSearchFragment : Fragment() {
             if (hasFocus) findNavController().navigate(
                 R.id.action_zeroSearchFragment_to_startSearchFragment
             )
+        }
+
+        // переход на экран фильтров
+        binding.filterSearch.setOnClickListener {
+            Navigation.findNavController(requireActivity(), R.id.container_view)
+                .navigate(R.id.action_searchFragment_to_filtersFragment)
         }
     }
 
