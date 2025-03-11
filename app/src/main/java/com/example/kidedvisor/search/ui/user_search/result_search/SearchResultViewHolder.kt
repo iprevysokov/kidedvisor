@@ -8,12 +8,13 @@ import com.example.kidedvisor.databinding.ItemSearchResultBinding
 import com.example.kidedvisor.search.domain.models.ClubInSearch
 import com.example.kidedvisor.search.presenter.models.ResultSearchRVItem
 import com.example.kidedvisor.search.presenter.models.SearchStartRVItem
+import java.util.UUID
 
 class SearchResultViewHolder(
     private val binding: ItemSearchResultBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: ResultSearchRVItem.Result) {
+    fun bind(item: ResultSearchRVItem.Result, onClick: (clubId: UUID) -> Unit) {
         val club = item.clubInSearch
         binding.apply {
 
@@ -32,6 +33,7 @@ class SearchResultViewHolder(
 
             clubType.text = "${club.branch}, ${club.type}"
 
+            moreBtn.setOnClickListener { onClick(club.id) }
         }
     }
 

@@ -11,12 +11,16 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kidedvisor.R
+import com.example.kidedvisor.club.presentation.ui.fragment.ClubFragmentDirections
 import com.example.kidedvisor.databinding.FragmentStartSearchBinding
 import com.example.kidedvisor.search.presenter.user_search.UserSearchIntent
 import com.example.kidedvisor.search.presenter.user_search.UserSearchState
 import com.example.kidedvisor.search.presenter.user_search.UserSearchViewModel
+import com.example.kidedvisor.search.ui.SearchFragmentDirections
 import com.example.kidedvisor.search.ui.user_search.result_search.ResultSearchAdapter
 import com.example.kidedvisor.search.ui.user_search.start_search.HeaderFirstItemDecoration
 import com.example.kidedvisor.search.ui.user_search.start_search.StartSearchAdapter
@@ -30,7 +34,10 @@ class UserSearchFragment : Fragment() {
     private val viewModel by viewModel<UserSearchViewModel>()
 
     private val startSearchAdapter = StartSearchAdapter()
-    private val resultSearchAdapter = ResultSearchAdapter()
+    private val resultSearchAdapter = ResultSearchAdapter { clubId ->
+        Navigation.findNavController(requireActivity(), R.id.container_view)
+            .navigate(SearchFragmentDirections.actionSearchFragmentToClubFragment(clubId))
+    }
 
     private var inputSearchText = DEF_TEXT
 
