@@ -16,7 +16,6 @@ class ClubFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val args: ClubFragmentArgs by navArgs()
-    private val clubId = args.clubId
 
     private val photoAdapter = PhotoClubAdapter {
 

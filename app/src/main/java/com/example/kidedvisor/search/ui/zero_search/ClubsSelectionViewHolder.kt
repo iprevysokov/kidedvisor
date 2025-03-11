@@ -5,14 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidedvisor.databinding.ItemZeroSearchSelectionBinding
 import com.example.kidedvisor.search.presenter.models.ZeroSearchRVItem
+import java.util.UUID
 
 class ClubsSelectionViewHolder(
     private val binding: ItemZeroSearchSelectionBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: ZeroSearchRVItem.ClubSelectionItem) {
+    fun bind(item: ZeroSearchRVItem.ClubSelectionItem, onClick: (UUID) -> Unit) {
         binding.typeName.text = item.clubsSelection.branchName
-        binding.innerRv.adapter = InnerClubsSelectionAdapter(item.clubsSelection.clubs)
+        binding.innerRv.adapter = InnerClubsSelectionAdapter(item.clubsSelection.clubs, onClick)
     }
 
 

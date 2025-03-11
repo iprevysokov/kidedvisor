@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.kidedvisor.R
+import com.example.kidedvisor.club.presentation.ui.fragment.ClubFragmentDirections
 import com.example.kidedvisor.databinding.FragmentZeroSearchBinding
 import com.example.kidedvisor.search.presenter.zero_search.ZeroSearchState
 import com.example.kidedvisor.search.presenter.zero_search.ZeroSearchViewModel
+import com.example.kidedvisor.search.ui.SearchFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ZeroSearchFragment : Fragment() {
@@ -21,7 +23,10 @@ class ZeroSearchFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val filterTagAdapter = FilterTagAdapter()
-    private val zeroSearchAdapter = ZeroSearchAdapter()
+    private val zeroSearchAdapter = ZeroSearchAdapter { clubId ->
+        Navigation.findNavController(requireActivity(), R.id.container_view)
+            .navigate(SearchFragmentDirections.actionSearchFragmentToClubFragment(clubId))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

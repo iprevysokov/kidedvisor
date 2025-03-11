@@ -33,7 +33,10 @@ class UserSearchFragment : Fragment() {
 
     private val viewModel by viewModel<UserSearchViewModel>()
 
-    private val startSearchAdapter = StartSearchAdapter()
+    private val startSearchAdapter = StartSearchAdapter { clubId ->
+        Navigation.findNavController(requireActivity(), R.id.container_view)
+            .navigate(SearchFragmentDirections.actionSearchFragmentToClubFragment(clubId))
+    }
     private val resultSearchAdapter = ResultSearchAdapter { clubId ->
         Navigation.findNavController(requireActivity(), R.id.container_view)
             .navigate(SearchFragmentDirections.actionSearchFragmentToClubFragment(clubId))
