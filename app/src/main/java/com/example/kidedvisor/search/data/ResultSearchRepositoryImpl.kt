@@ -8,6 +8,7 @@ import com.example.kidedvisor.search.domain.api.ResultSearchRepository
 import com.example.kidedvisor.search.domain.models.ClubInSearch
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import java.util.UUID
 
 class ResultSearchRepositoryImpl(
     private val db: AppDatabase,
@@ -16,6 +17,7 @@ class ResultSearchRepositoryImpl(
 
     override suspend fun getAdClub(): ClubInSearch {
         return ClubInSearch(
+            id = UUID.fromString("8A7565BD-F1C6-4830-90FD-9C3F0360CE4E"),
             rating = 4.2,
             name = "Мир единоборств чертаново \"Пикассо\"",
             address = "Металлистов, д.1",

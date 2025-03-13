@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation_graph"
-    app:startDestination="@id/filtersFragment">
+    app:startDestination="@id/searchFragment">
 
     <fragment
         android:id="@+id/searchFragment"
@@ -17,23 +17,14 @@
             android:id="@+id/action_searchFragment_to_clubFragment"
             app:destination="@id/clubFragment" />
         <action
-            android:id="@+id/action_searchFragment_to_filter"
-            app:destination="@id/filter" />
-        <action
             android:id="@+id/action_searchFragment_to_profileDetailsFragment"
             app:destination="@id/profileDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/clubFragment"
-        android:name="com.example.kidedvisor.club.presentation.ui.fragment.ClubFragment"
-        android:label="fragment_club"
-        tools:layout="@layout/fragment_club">
         <action
-            android:id="@+id/action_searchFragment_to_clubFragment"
-            app:destination="@id/clubFragment" />
+            android:id="@+id/action_searchFragment_to_filtersFragment"
+            app:destination="@id/filtersFragment" />
     </fragment>
-    <fragment android:id="@+id/myData">
-    <fragment android:id="@+id/filter" />
+
+    <fragment android:id="@+id/myData" />
     <fragment android:id="@+id/review" />
 
     <fragment
@@ -45,7 +36,7 @@
             android:id="@+id/action_profileDetailsFragment_to_profileEditFragment"
             app:destination="@id/profileEditFragment" />
     </fragment>
-    <fragment android:id="@+id/filter" />
+
     <fragment android:id="@+id/support" />
     <fragment
         android:id="@+id/feedbacksFragment"
@@ -58,8 +49,11 @@
         android:label="fragment_club"
         tools:layout="@layout/fragment_club">
         <action
-            android:id="@+id/action_clubFragment_to_feedbacksFragment2"
+            android:id="@+id/action_clubFragment_to_feedbacksFragment"
             app:destination="@id/feedbacksFragment" />
+        <argument
+            android:name="clubId"
+            app:argType="java.util.UUID" />
     </fragment>
 
     <fragment

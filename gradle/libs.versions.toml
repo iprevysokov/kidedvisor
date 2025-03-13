@@ -23,6 +23,7 @@ navigationFragmentKtx = "2.8.5"
 navigationUiKtx = "2.8.5"
 koin-bom = "3.5.0"
 playServicesMaps = "19.0.0"
+safeargs = "2.8.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -56,4 +57,4 @@ play-services-maps = { group = "com.google.android.gms", name = "play-services-m
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-
+kotlin-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "safeargs" }

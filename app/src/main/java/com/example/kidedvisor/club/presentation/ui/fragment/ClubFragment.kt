@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kidedvisor.club.presentation.adapter.PhotoClubAdapter
 import com.example.kidedvisor.databinding.FragmentClubBinding
@@ -13,6 +14,8 @@ import com.example.kidedvisor.databinding.FragmentClubBinding
 class ClubFragment : Fragment() {
     private var _binding: FragmentClubBinding? = null
     private val binding get() = _binding!!
+
+    private val args: ClubFragmentArgs by navArgs()
 
     private val photoAdapter = PhotoClubAdapter {
 

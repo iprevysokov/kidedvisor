@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kidedvisor.databinding.ItemSearchStartClubBinding
 import com.example.kidedvisor.search.presenter.models.SearchStartRVItem
+import java.util.UUID
 
 class StartSearchClubViewHolder(
     private val binding: ItemSearchStartClubBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: SearchStartRVItem.Club) {
+    fun bind(item: SearchStartRVItem.Club, onClick: (UUID) -> Unit) {
 
         val club = item.clubInSearch
 
@@ -27,6 +28,8 @@ class StartSearchClubViewHolder(
             clubAddress.text = club.address
             typeIcon.setImageResource(club.branchIcon)
             clubType.text = "%s, %s".format(club.branch, club.type)
+
+            root.setOnClickListener { onClick(club.id) }
         }
     }
 

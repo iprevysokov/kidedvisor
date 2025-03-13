@@ -5,8 +5,11 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.kidedvisor.R
 import com.example.kidedvisor.search.presenter.models.ZeroSearchRVItem
+import java.util.UUID
 
-class ZeroSearchAdapter : RecyclerView.Adapter<ViewHolder>() {
+class ZeroSearchAdapter(
+    private val onClick: (UUID) -> Unit
+) : RecyclerView.Adapter<ViewHolder>() {
 
     var items = emptyList<ZeroSearchRVItem>()
 
@@ -32,7 +35,7 @@ class ZeroSearchAdapter : RecyclerView.Adapter<ViewHolder>() {
             R.layout.item_zero_search_selection -> {
                 val selectionHolder = holder as ClubsSelectionViewHolder
                 val item = items[position] as ZeroSearchRVItem.ClubSelectionItem
-                selectionHolder.bind(item)
+                selectionHolder.bind(item, onClick)
             }
         }
     }

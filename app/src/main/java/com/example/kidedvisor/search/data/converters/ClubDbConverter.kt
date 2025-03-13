@@ -15,6 +15,7 @@ class ClubDbConverter {
         clubEntity: ClubEntity
     ): ClubInSearch {
         return ClubInSearch(
+            id = clubEntity.id,
             name = clubEntity.name,
             address = clubEntity.address,
             branch = branch,
@@ -25,6 +26,7 @@ class ClubDbConverter {
 
     fun map(clubEntity: ClubEntity): ClubInSearch {
         return ClubInSearch(
+            id = clubEntity.id,
             name = clubEntity.name,
             address = clubEntity.address,
             branch = "Искусство",

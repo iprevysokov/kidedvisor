@@ -4,8 +4,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidedvisor.R
 import com.example.kidedvisor.search.presenter.models.ResultSearchRVItem
+import java.util.UUID
 
-class ResultSearchAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ResultSearchAdapter(
+    private val onClick: (clubId: UUID) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var items = emptyList<ResultSearchRVItem>()
 
@@ -31,7 +34,7 @@ class ResultSearchAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             R.layout.item_search_result -> {
                 val resultHolder = holder as SearchResultViewHolder
                 val item = items[position] as ResultSearchRVItem.Result
-                resultHolder.bind(item)
+                resultHolder.bind(item, onClick)
             }
         }
     }
