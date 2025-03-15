@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="gap_160">160dp</dimen>
     <dimen name="gap_112">112dp</dimen>
     <dimen name="gap_28">28dp</dimen>
     <dimen name="gap_70">70dp</dimen>

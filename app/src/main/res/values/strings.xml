@@ -89,4 +89,6 @@
     <string name="rating">Рейтинг</string>
     <string name="apply">Применить</string>
     <string name="not_found_filter"><u>Не нашли нужный фильтр?</u></string>
+    <string name="oops">Ой!</string>
+    <string name="page_not_exist">Эта страница не существует</string>
 </resources>

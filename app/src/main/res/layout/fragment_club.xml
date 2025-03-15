@@ -41,11 +41,11 @@
                 android:background="@drawable/placeholder"
                 android:clipToOutline="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sport3"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_under_club_photo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/constraint_in_scroll" />
+                app:layout_constraintTop_toTopOf="@+id/constraint_in_scroll"
+                tools:src="@drawable/sport3" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_under_club_photo"
@@ -297,7 +297,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#99000000"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_anchor="@id/toolbarclub"
         app:layout_anchorGravity="center" />
 
@@ -346,7 +346,7 @@
             android:id="@+id/schedule_group_bottom_sheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="gone"
             app:constraint_referenced_ids="schedule, tv_schedule_description" />
 
         <TextView
@@ -402,5 +402,74 @@
              season_tickets" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/layouts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="bottom_sheet_club, scrollView_club, toolbarclub" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_160"
+        android:src="@drawable/error_404"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/oops"
+        style="@style/Title20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_32"
+        android:text="@string/oops"
+        app:layout_constraintEnd_toEndOf="@+id/img_error"
+        app:layout_constraintStart_toStartOf="@+id/img_error"
+        app:layout_constraintTop_toBottomOf="@+id/img_error" />
+
+    <TextView
+        android:id="@+id/page_not_exist"
+        style="@style/RegularText16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_8"
+        android:text="@string/page_not_exist"
+        app:layout_constraintEnd_toEndOf="@+id/img_error"
+        app:layout_constraintStart_toStartOf="@+id/img_error"
+        app:layout_constraintTop_toBottomOf="@+id/oops" />
+
+    <Button
+        android:id="@+id/bt_error_ok"
+        style="@style/FillButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gap_24"
+        android:paddingHorizontal="@dimen/gap_48"
+        android:text="@string/ok"
+        app:layout_constraintEnd_toEndOf="@+id/img_error"
+        app:layout_constraintStart_toStartOf="@+id/img_error"
+        app:layout_constraintTop_toBottomOf="@+id/page_not_exist" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/error_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="img_error, oops, page_not_exist, bt_error_ok" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

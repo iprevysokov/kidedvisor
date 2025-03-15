@@ -18,6 +18,9 @@ interface ClubDao {
     @Query("SELECT * FROM $TABLE_NAME WHERE id IN (:ids)")
     suspend fun getClubsById(ids: List<UUID>): List<ClubEntity>
 
+    @Query("SELECT * FROM $TABLE_NAME WHERE id = :id")
+    suspend fun getClubById(id: UUID): ClubEntity
+
     companion object {
         const val TABLE_NAME = "Club"
     }

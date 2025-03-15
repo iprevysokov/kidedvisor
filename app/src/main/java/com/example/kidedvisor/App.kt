@@ -1,6 +1,9 @@
 package com.example.kidedvisor
 
 import android.app.Application
+import com.example.kidedvisor.club.di.interactorClubModule
+import com.example.kidedvisor.club.di.repositoryClubModule
+import com.example.kidedvisor.club.di.viewModelClubModule
 import com.example.kidedvisor.core.di.dataCoreModule
 import com.example.kidedvisor.sample.di.interactorSampleModule
 import com.example.kidedvisor.sample.di.repositorySampleModule
@@ -22,6 +25,9 @@ class App : Application() {
                 repositorySearchModule,
                 interactorSearchModule,
                 viewModelModule,
+                repositoryClubModule,
+                interactorClubModule,
+                viewModelClubModule,
             )
         }
     }
