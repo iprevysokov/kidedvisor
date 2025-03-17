@@ -13,6 +13,6 @@ data class Club(
     val price: String,
     val schedule: String,
     val description: String,
-    val photo: String,
+    val photo: Int,
     val isRecommend: Boolean = false,
 )

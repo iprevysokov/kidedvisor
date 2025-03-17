@@ -54,6 +54,12 @@
         <argument
             android:name="clubId"
             app:argType="java.util.UUID" />
+        <action
+            android:id="@+id/action_clubFragment_to_requestCardRightsFragment"
+            app:destination="@id/requestCardRightsFragment" />
+        <action
+            android:id="@+id/action_clubFragment_to_connectionFragment"
+            app:destination="@id/connectionFragment" />
     </fragment>
 
     <fragment
@@ -68,4 +74,14 @@
         android:name="com.example.kidedvisor.search.ui.filters.FiltersFragment"
         android:label="fragment_filters"
         tools:layout="@layout/fragment_filters" />
+    <fragment
+        android:id="@+id/connectionFragment"
+        android:name="com.example.kidedvisor.club.presentation.ui.fragment.ConnectionFragment"
+        android:label="fragment_connection"
+        tools:layout="@layout/fragment_connection" />
+    <fragment
+        android:id="@+id/requestCardRightsFragment"
+        android:name="com.example.kidedvisor.club.presentation.ui.fragment.RequestCardRightsFragment"
+        android:label="fragment_request_card_rights"
+        tools:layout="@layout/fragment_request_card_rights" />
 </navigation>

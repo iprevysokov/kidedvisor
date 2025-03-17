@@ -1,7 +1,6 @@
 package com.example.kidedvisor.club.presentation.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +10,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.kidedvisor.R
 import com.example.kidedvisor.club.domain.models.Club
 import com.example.kidedvisor.club.domain.models.ClubIntent
 import com.example.kidedvisor.club.domain.models.ClubState
 import com.example.kidedvisor.club.presentation.adapter.PhotoClubAdapter
 import com.example.kidedvisor.club.presentation.viewModel.ClubViewModel
 import com.example.kidedvisor.databinding.FragmentClubBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -27,6 +28,8 @@ class ClubFragment : Fragment() {
     private val viewModel by viewModel<ClubViewModel>()
 
     private val args: ClubFragmentArgs by navArgs()
+
+    private lateinit var bottomSheetSeason: BottomSheetBehavior<*>
 
     private val photoAdapter = PhotoClubAdapter {
 
@@ -74,11 +77,62 @@ class ClubFragment : Fragment() {
             progressBar.isVisible = false
             layouts.isVisible = true
             errorGroup.isVisible = false
-//            Log.d("Photo Club", club.photo)
+
+            btContact.setOnClickListener {
+                findNavController().navigate(R.id.action_clubFragment_to_connectionFragment)
+            }
+
+            tvRequestRights.setOnClickListener {
+                findNavController().navigate(R.id.action_clubFragment_to_requestCardRightsFragment)
+            }
+
+            bottomSheetSeason = BottomSheetBehavior.from(binding.bottomSheetClub).apply {
+                state = BottomSheetBehavior.STATE_HIDDEN
+            }
+
+            tvSchedule.setOnClickListener {
+                bottomSheetSeason.state = BottomSheetBehavior.STATE_COLLAPSED
+                scheduleGroupBottomSheet.isVisible = true
+                groupOfSeasonTickets.isVisible = false
+            }
+
+            btSeasonTicket.setOnClickListener {
+                bottomSheetSeason.state = BottomSheetBehavior.STATE_COLLAPSED
+                scheduleGroupBottomSheet.isVisible = false
+                groupOfSeasonTickets.isVisible = true
+            }
+
+            overlay.setOnClickListener {
+                bottomSheetSeason.state = BottomSheetBehavior.STATE_HIDDEN
+            }
+
+            bottomSheetSeason.addBottomSheetCallback(object :
+                BottomSheetBehavior.BottomSheetCallback() {
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+                    when (newState) {
+                        BottomSheetBehavior.STATE_COLLAPSED -> {
+                            overlay.isVisible = true
+                            bottomSheetClub.isVisible = true
+                        }
+
+                        BottomSheetBehavior.STATE_HIDDEN -> {
+                            overlay.isVisible = false
+                            bottomSheetClub.isVisible = false
+                            groupOfSeasonTickets.isVisible = false
+                            scheduleGroupBottomSheet.isVisible = false
+                        }
+                    }
+                }
+
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+            })
+
         }
+
         Glide.with(this)
             .load(club.photo)
             .into(binding.imgClub)
+
     }
 
     private fun loadingState() {
@@ -92,11 +146,17 @@ class ClubFragment : Fragment() {
 
     private fun errorState() {
         binding.apply {
+            bottomSheetClub.isVisible = false
             overlay.isVisible = false
             progressBar.isVisible = false
             layouts.isVisible = false
             errorGroup.isVisible = true
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

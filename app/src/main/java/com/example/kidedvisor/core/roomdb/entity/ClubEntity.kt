@@ -22,7 +22,7 @@ data class ClubEntity(
     val price: String = "",
     val schedule: String = "",
     val description: String = "",
-    val photo: String,
+    val photo: Int,
     @ColumnInfo(name = "is_recommend")
     val isRecommend: Boolean = false,
 )
