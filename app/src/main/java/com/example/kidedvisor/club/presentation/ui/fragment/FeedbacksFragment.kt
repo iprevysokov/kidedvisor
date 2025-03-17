@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kidedvisor.R
 import com.example.kidedvisor.club.presentation.adapter.FeedbacksAdapter
@@ -20,12 +22,10 @@ class FeedbacksFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var feedbacksAdapter: FeedbacksAdapter
-    private lateinit var photoAdapter: PhotoClubAdapter
+    private var photoAdapter = PhotoClubAdapter {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,15 +41,15 @@ class FeedbacksFragment : Fragment() {
 
         feedbacksAdapter = FeedbacksAdapter(object : FeedbacksClickListener {
             override fun onFeedbacksClick(feedback: String) {
-                TODO("Not yet implemented")
+                Toast.makeText(requireContext(), " Работает", Toast.LENGTH_SHORT).show()
             }
 
             override fun onMoreClick(feedback: String) {
-                TODO("Not yet implemented")
+                Toast.makeText(requireContext(), " Работает", Toast.LENGTH_SHORT).show()
             }
 
             override fun onCommentClick(feedback: String) {
-                TODO("Not yet implemented")
+                Toast.makeText(requireContext(), " Работает", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -105,6 +105,10 @@ class FeedbacksFragment : Fragment() {
             radioBtOtherReason.setOnClickListener {
                 uncheckRadioButtonFilter(radioBtOtherReason, radioButtonsClaim)
                 // Дальнейшая логика обработки выбранного элемента
+            }
+
+            toolbarFeedbacks.setNavigationOnClickListener {
+                findNavController().popBackStack()
             }
 
         }

@@ -96,6 +96,10 @@ class ClubFragment : Fragment() {
                 groupOfSeasonTickets.isVisible = false
             }
 
+            tvCommonOfReviews.setOnClickListener {
+                findNavController().navigate(R.id.action_clubFragment_to_feedbacksFragment)
+            }
+
             btSeasonTicket.setOnClickListener {
                 bottomSheetSeason.state = BottomSheetBehavior.STATE_COLLAPSED
                 scheduleGroupBottomSheet.isVisible = false
